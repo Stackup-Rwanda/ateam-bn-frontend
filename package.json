@@ -10,7 +10,8 @@
     "test": "npm run jest -- --coverage",
     "build-storybook": "build-storybook -s public",
     "storybook": "start-storybook -p 9009 -s public",
-    "story": "concurrently \"npm run start\" \"npm run storybook\""
+    "story": "concurrently \"npm run start\" \"npm run storybook\"",
+    "coveralls": "npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "eslintConfig": {
     "extends": "react-app"
