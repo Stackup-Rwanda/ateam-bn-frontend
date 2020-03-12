@@ -18,3 +18,5 @@ deploy:
   local_dir: build
   on:
     branch: develop
+    git:
+  depth: 125
