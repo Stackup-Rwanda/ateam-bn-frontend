@@ -3,16 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "serve -s ./build",
+    "dev": "npm run lint && react-scripts start",
     "build": "react-scripts build",
+    "test": "react-scripts test --watchAll",
+    "test:coverage": "react-scripts test --watchAll \"-- --coverage\"",
+    "test:CI": "CI=true react-scripts test \"-- --coverage\"",
+    "coveralls": "cat coverage/lcov.info | coveralls",
     "eject": "react-scripts eject",
-    "jest": "react-scripts test --watchAll ",
-    "test": "npm run jest -- --coverage",
+    "lint": "eslint . --fix",
     "build-storybook": "build-storybook -s public",
     "storybook": "start-storybook -p 9009 -s public",
-    "story": "concurrently \"npm run start\" \"npm run storybook\"",
-    "coverage": "react-scripts test --coverage  && nyc report --reporter=text-lcov ",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
+    "story": "concurrently \"npm run start\" \"npm run storybook\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,12 +52,12 @@
     "@storybook/addon-links": "^5.3.14",
     "@storybook/addons": "^5.3.14",
     "@storybook/preset-create-react-app": "^2.0.0",
-    "@storybook/react": "^5.3.14",
     "node-sass": "^4.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "babel-loader": "^8.0.6",
+    "coveralls": "^3.0.9",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
