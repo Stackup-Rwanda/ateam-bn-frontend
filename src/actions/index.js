@@ -1,10 +1,3 @@
-/*
-    all actions goes in this 'actions' folder
-    import all actions here one by one, in this file
-*/
+import oauthActions from './user/oauthActions';
 
-// PLEASE DELETE ALL THESE COMMENTS AFTER FIRST USE OF THE FILE :)
-
-/*
-    export all the imported actions here
-*/
+export { oauthActions };

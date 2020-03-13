@@ -1,10 +1,3 @@
-/*
-    all initial states goes in this 'initialStates' folder
-    import all initial states here one by one, in this file
-*/
+import userInitState from './userInitialState';
 
-// PLEASE DELETE ALL THESE COMMENTS AFTER FIRST USE OF THE FILE :)
-
-/*
-    export all the imported initial states here
-*/
+export default userInitState;
