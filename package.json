@@ -10,7 +10,9 @@
     "test": "npm run jest -- --coverage",
     "build-storybook": "build-storybook -s public",
     "storybook": "start-storybook -p 9009 -s public",
-    "story": "concurrently \"npm run start\" \"npm run storybook\""
+    "story": "concurrently \"npm run start\" \"npm run storybook\"",
+    "coverage": "react-scripts test --coverage  && nyc report --reporter=text-lcov ",
+    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
   },
   "eslintConfig": {
     "extends": "react-app"
