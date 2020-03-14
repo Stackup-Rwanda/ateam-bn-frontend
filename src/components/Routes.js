@@ -9,6 +9,7 @@ import Login from './login';
 import Profile from './profile';
 import Dashboard from './Dashboard';
 import Requests from './Requests/User';
+import userRole from './userRole/UserRole';
 
 const Routes = () => (
   <Switch>
@@ -22,8 +23,10 @@ const Routes = () => (
     <Route exact path="/reset-password/:userId/:token" render={(props) => <ResetPassword {...props} />} />
 
     {/* trip requests table routes */}
-    <Route exact path="/dashboard" render={(props) => <Dashboard {...props} />} />
-    <Route exact path="/requests" render={(props) => <Requests {...props} />} />
+    <Route exact path="/dashboard" component={Dashboard} />} />
+        <Route exact path="/requests" component={ Requests } />} />
+        {/* user role routes */ }
+        <Route exact path="/userRole" component={userRole} />} />
 
   </Switch>
 );

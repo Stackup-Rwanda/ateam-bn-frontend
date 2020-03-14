@@ -8,7 +8,8 @@ import { tripActions } from '../../../../actions';
 
 export class Thumbnails extends Component {
   componentDidMount() {
-    const { fetchRequests, token } = this.props;
+    const { fetchRequests } = this.props;
+    const { token } = localStorage;
     fetchRequests(
       token,
       1,

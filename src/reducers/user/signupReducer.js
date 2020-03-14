@@ -28,7 +28,7 @@ const reducer = (state, { type, payload }) => {
         validErrors: payload.error
       };
     default:
-      return state;
+      return null;
   }
 };
 

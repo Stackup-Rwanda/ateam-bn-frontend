@@ -78,7 +78,7 @@ ForgotPassword.propTypes = {
 const mapStateToProps = ({ user: { forgotPassword: { loading, message, errors } } }) => ({
   loading,
   message,
-  errors
+  errors,
 });
 
 export default connect(

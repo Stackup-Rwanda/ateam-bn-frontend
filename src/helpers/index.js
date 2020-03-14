@@ -3,6 +3,7 @@ import oauthHelper from './oauthHelper';
 import axiosHelper from './axiosHelper';
 import * as urlHelper from './urlHelper';
 import apiAction from './apiAction';
+import { lineManager } from './lineManagerHelper';
 import {
 
   profileHelper,
@@ -26,5 +27,6 @@ export {
   checkForm,
   assignPlaceName,
   checkPlace,
-  checkSearch
+  checkSearch,
+  lineManager
 };

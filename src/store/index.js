@@ -6,11 +6,9 @@ import initialState from './initialState';
 import apiMiddleware from '../middlewares/apiMiddleware';
 
 const middlewares = [thunk, apiMiddleware];
-
 const store = createStore(
   combineReducers(allReducers),
   initialState,
   composeWithDevTools(applyMiddleware(...middlewares))
 );
-
 export default store;

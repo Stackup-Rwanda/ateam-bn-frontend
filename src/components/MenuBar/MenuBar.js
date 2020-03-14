@@ -30,5 +30,4 @@ export class MenuBar extends Component {
     );
   }
 }
-
 export default MenuBar;

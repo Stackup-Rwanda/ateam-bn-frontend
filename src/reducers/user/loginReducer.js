@@ -25,7 +25,7 @@ const reducer = (state, { type, payload }) => {
         loginErrors: payload.error
       };
     default:
-      return state;
+      return null;
   }
 };
 export default reducer;
