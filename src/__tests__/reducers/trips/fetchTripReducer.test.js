@@ -1,5 +1,5 @@
-import fetchRequestsReducer from '../../../reducers/requests';
-import { requests as initialState } from '../../../store/initialState';
+import fetchRequestsReducer from '../../../reducers/trips';
+import initialState from '../../../store/initialState';
 import { tripsActionTypes } from '../../../actionTypes';
 
 describe('Testing fetchRequestsReducer', () => {

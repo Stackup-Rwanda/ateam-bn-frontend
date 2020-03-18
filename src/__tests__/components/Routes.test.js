@@ -3,10 +3,9 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { mount } from '../../../config/enzymeConfig';
 import store from '../../__mocks__/store';
-import Routes from '../../components/Routes';
+import Routes from '../../components/routes';
 import ForgotPassword from '../../components/ResetPassword/ForgotPassword';
 import ResetPassword from '../../components/ResetPassword/ResetPassword';
-import { Profile } from '../../components/profile';
 import Login from '../../components/login';
 
 describe('<Routes />', () => {
@@ -35,15 +34,6 @@ describe('<Routes />', () => {
       </MemoryRouter>
     </Provider>);
     expect(component.find(Login)).toHaveLength(1);
-  });
-
-  test('rendering <Profile />', () => {
-    const component = mount(<Provider store={store}>
-      <MemoryRouter initialEntries={['/profile']}>
-        <Routes />
-      </MemoryRouter>
-    </Provider>);
-    expect(component.find(Profile)).toHaveLength(1);
   });
 
   test('rendering <Dashboard/>', () => {

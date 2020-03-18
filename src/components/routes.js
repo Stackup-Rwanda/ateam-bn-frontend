@@ -5,7 +5,7 @@ import { PropTypes } from 'prop-types';
 import ForgotPassword from './ResetPassword/ForgotPassword';
 import ResetPassword from './ResetPassword/ResetPassword';
 import Login from './login';
-import { Profile } from './profile';
+import Profile from './profile';
 import Dashboard from './Dashboard';
 import Requests from './Requests/User';
 

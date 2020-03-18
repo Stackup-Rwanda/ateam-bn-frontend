@@ -1,4 +1,4 @@
-module.exports = {
+const userInitialState = {
   loading: false,
   loginErrors: null,
   token: localStorage.token,
@@ -16,3 +16,4 @@ module.exports = {
     errors: {}
   }
 };
+export default userInitialState;

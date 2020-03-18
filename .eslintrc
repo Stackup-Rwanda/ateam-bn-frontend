@@ -35,7 +35,7 @@
     "function-paren-newline": ["error", "multiline"],
     "import/no-named-as-default": 0,
     "import/prefer-default-export": 0,
-    "react/prop-types": 1,
+    "react/prop-types": 0,
     "react/jsx-uses-react": "error",
     "react/jsx-filename-extension": [
       1,

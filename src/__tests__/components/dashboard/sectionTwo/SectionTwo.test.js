@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import SectionTwo from '../../../../components/Dashboard/SectionTwo';
 import { shallow } from '../../../../../config/enzymeConfig';
-import { requests as initialState } from '../../../../store/initialState';
+import initialState from '../../../../store/initialState';
 
 export const mockStore = configureMockStore([thunk]);
 

@@ -1,4 +1,9 @@
-const user = require('./initialStates/userInitialState');
-const requests = require('./initialStates/requestsInitialState');
+import user from './initialStates/userInitialState';
+import requests from './initialStates/requestsInitialState';
+import profile from './initialStates/profileInitialState/profileUserDetails';
 
-module.exports = { user, requests };
+export default {
+  user,
+  requests,
+  profile
+};

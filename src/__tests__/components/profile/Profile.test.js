@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { shallow } from '../../../../config/enzymeConfig';
 import store from '../../../__mocks__/store';
-import { Profile } from '../../../components/profile';
+import Profile from '../../../components/profile/profile.s';
 
 
 describe('Testing <Profile />', () => {

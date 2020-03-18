@@ -13,7 +13,7 @@ describe('Login Component', () => {
       email: 'manzi@gmail.com',
       password: 'manzi123'
     };
-    mockAxios.post.mockResolvedValueOnce({ request, data: { data: { token: 'value', userData: { username: 'username' } } } });
+    mockAxios.post.mockResolvedValueOnce({ request, data: { data: { token: 'value' } } });
     const result = await store.dispatch(login(user));
     expect(result.payload).toHaveProperty('token');
   });

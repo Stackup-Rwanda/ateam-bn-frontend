@@ -24,9 +24,6 @@ const login = (data) => async (dispatch) => {
       data
     );
     const { token } = res.data.data;
-    const { username } = res.data.data.userData;
-    localStorage.setItem('token', token);
-    localStorage.setItem('username', username);
     localStorage.setItem('token', token);
     return dispatch(loginSuccess(token));
   } catch (error) {

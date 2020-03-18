@@ -9,6 +9,7 @@ export const fetchTripRequestsSuccess = (trips) => ({
   payload: trips
 });
 
+
 export const fetchTripRequestsFailure = (error) => ({
   type: tripsActionTypes.FETCH_REQUEST_FAILURE,
   payload: error
