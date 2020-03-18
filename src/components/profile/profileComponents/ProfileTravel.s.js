@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import place from '../../../assets/images/profile/place.png';
 import { fetchUserTravels, fetchPlaces } from '../../../actions';
 import { shortData, componentHelper, assignPlaceName, checkPlace } from '../../../helpers/ProfileHelper/profileHelper';
@@ -8,7 +10,17 @@ class ProfileTravels extends Component {
   componentDidMount() {
     const { token } = componentHelper(localStorage.getItem('token'));
     this.props.fetchThosePlaces(token);
-    this.props.fetchThisUserTravels(token);
+    this.props.fetchThisUserTravels(token, 1);
+  }
+
+  nextPage(data) {
+    const { token } = componentHelper(localStorage.getItem('token'));
+    this.props.fetchThisUserTravels(token, data.page);
+  }
+
+  previousPage(data) {
+    const { token } = componentHelper(localStorage.getItem('token'));
+    this.props.fetchThisUserTravels(token, data.page);
   }
 
   render() {
@@ -16,18 +28,18 @@ class ProfileTravels extends Component {
     const componentError = localStorage.getItem('didAmountError');
     return (
       <div className="request">
-        {this.props.userProfileTravels
+        {this.props.userProfileTravels.paginate
           && componentError === 'null'
           ? (<h4 className="request-title"> Travels </h4>)
           : (<h4 className="error">{`${this.props.message}, ${componentError}`}</h4>)}
         <div>
           {
-            this.props.userProfileTravels
-              && this.props.userProfileTravels.length > 0
+            this.props.userProfileTravels.paginate
+              && this.props.userProfileTravels.paginate.length > 0
               && this.props.message === 'Loading ...'
               && componentError === 'null'
               ? (
-                this.props.userProfileTravels.map((travels) => {
+                this.props.userProfileTravels.paginate.map((travels) => {
                   if (travels.to) {
                     const replacePlace = (travels.to.map((palceId) => (
                       assignPlaceName(palceId, palceNames)
@@ -61,6 +73,34 @@ class ProfileTravels extends Component {
               )
           }
         </div>
+        <div className="paginate-space">
+          <div className="paginate">
+            {
+              this.props.userProfileTravels
+                ? (
+                  <div>
+                    {this.props.userProfileTravels.Previous
+                      ? (<FontAwesomeIcon icon={faAngleLeft}
+                      className="angles"
+                      style={{ color: '#3ab397cc' }}
+                      onClick={() => { this.previousPage(this.props.userProfileTravels.Previous); }}/>)
+                      : (<FontAwesomeIcon icon={faAngleLeft}
+                        className="angles" />)}
+                    {this.props.userProfileTravels.Next ? (<span>{this.props.userProfileTravels.Next.page - 1}</span>)
+                      : this.props.userProfileTravels.Previous ? (<span>{this.props.userProfileTravels.Previous.page + 1}</span>) : null}
+                    {this.props.userProfileTravels.Next
+                      ? (<FontAwesomeIcon icon={faAngleRight}
+                      className="angles"
+                      style={{ color: '#3ab397cc' }}
+                      onClick={() => { this.nextPage(this.props.userProfileTravels.Next); }}/>)
+                      : (<FontAwesomeIcon icon={faAngleRight}
+                        className="angles" />)}
+                  </div>
+                )
+                : null
+            }
+          </div>
+        </div>
       </div>
     );
   }
@@ -80,8 +120,8 @@ const mapDispatchToProps = (dispatch) => (
     fetchThosePlaces: (token) => {
       dispatch(fetchPlaces(token));
     },
-    fetchThisUserTravels: (token) => {
-      dispatch(fetchUserTravels(token));
+    fetchThisUserTravels: (token, page) => {
+      dispatch(fetchUserTravels(token, page));
     },
   });
 

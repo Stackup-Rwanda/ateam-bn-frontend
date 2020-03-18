@@ -1,0 +1,47 @@
+@import './pixels';
+@import './colors';
+
+.btn {
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: ease-in 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.7;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.lg-btn {
+    padding: $paddingSmall $small;
+}
+
+.md-btn {
+    padding: $paddingSmall $xxsmall;
+}
+
+.sm-btn {
+    padding: $paddingSmall 10px;
+}
+
+.full-btn {
+    width: 100%;
+    padding: $paddingSmall 15px;
+}
+
+.auth-btn {
+    border: 3px solid #fff;
+}
+
+.social-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    transition: ease-in 0.3s;
+    margin: 0;
+}

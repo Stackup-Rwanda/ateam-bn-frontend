@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ForgotPassword from './ResetPassword/ForgotPassword';
 import ResetPassword from './ResetPassword/ResetPassword';
+import SignUp from './signup';
 import Login from './login';
 import Profile from './profile';
 import Dashboard from './Dashboard';
@@ -13,6 +14,7 @@ const Routes = () => (
   <Switch>
     {/* Auth routes */}
     <Route exact path="/profile" component={Profile} />
+    <Route exact path="/" component={SignUp} />
     <Route exact path="/login" component={Login} />
 
     {/* reset password routes */}

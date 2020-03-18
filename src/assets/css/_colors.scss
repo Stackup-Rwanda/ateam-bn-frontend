@@ -1,0 +1,31 @@
+$green: #3ab397;
+$white: #FFFFFF;
+
+
+.c-green {
+    color:$green;
+}
+
+.bg-half-white {
+    background-color: #F4F8F7;
+    color: #464242;
+}
+
+.bg-green {
+    background-color: $green;
+    color: #fff;
+}
+
+.bg-blue {
+    background-color: #3A559F;
+    color: #fff;
+}
+
+
+.text-white{
+    color: $white;
+}
+
+.text-green{
+    color: $green;
+}

@@ -1,0 +1,119 @@
+@import './pixels';
+@import './colors';
+
+
+.lg-input {
+    width: 100%;
+    padding: 15px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.sm-radius { border-radius: 4px;}
+
+.b-radius { border-radius: $xxsmall; }
+
+.b-radius-circle { border-radius: $medium; }
+.border-0 { border: 0; }
+
+.link {
+    color: #7a40f2;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+.l-hide {
+    display: none;
+}
+
+
+.form-field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.form-field label {
+    font-weight: 900;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.child {
+    flex: 1;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.m-20 {
+    margin: $xxsmall;
+}
+
+.m-top {
+    margin-top: $xxsmall;
+}
+
+.m-bottom {
+    margin-bottom: $xxsmall;
+}
+
+.m-left {
+    margin-left: $xxsmall;
+}
+
+.m-right {
+    margin-right: $xxsmall;
+}
+
+.p-20 {
+    padding: $xxsmall;
+}
+
+.p-top {
+    padding-top: $xxsmall;
+}
+
+.p-bottom {
+    padding-bottom: $xxsmall;
+}
+
+.p-left {
+    padding-left: $xxsmall;
+}
+
+.p-right {
+    padding-right: $xxsmall;
+}
+
+

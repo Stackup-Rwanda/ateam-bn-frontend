@@ -1,4 +1,9 @@
-/* ===== globle css ======================== */
+@import "./signup";
+@import "./button";
+@import "./colors";
+@import "./form";
+@import "./pixels";
+
 * {
     margin: 0;
     padding: 0
@@ -6,11 +11,11 @@
 
 body,
 html {
-    height: 100vh;
-    font-family: 'Nunito', sans-serif; /* Lato */
-    background-color: #FFFFFF; /* f9f9f9*/
-    color: rgb(65, 63, 63);
-    position: relative;
+  height: 100vh;
+  font-family: "Nunito", sans-serif; 
+  background-color: #ffffff; 
+  color: rgb(65, 63, 63);
+  position: relative;
 }
 
 .style {
@@ -96,7 +101,6 @@ html {
       color: #fff;
       text-overflow: '';
       -webkit-appearance: button;
-      /* hide default arrow in chrome OSX */
   }
   
   .dropdown::before,
@@ -107,8 +111,6 @@ html {
   }
   
   .dropdown::after {
-      /*  Custom dropdown arrow */
-      /* content: "\25BC"; */
       height: 1em;
       font-size: .625em;
       line-height: 1;
@@ -118,15 +120,12 @@ html {
   }
   
   .dropdown::before {
-      /*  Custom dropdown arrow cover */
       width: 2em;
       right: 0;
       top: 0;
       bottom: 0;
       border-radius: 0 3px 3px 0;
   }
-  
-  /* ===== common class ======================= */
   .lg-title {
       font-weight: bold;
       font-size: 50px;
@@ -178,6 +177,11 @@ html {
       padding: 12px 15px;
   }
   
+  .full-btn-login {
+    width: 90%;
+    padding: 12px 15px;
+  }
+
   .auth-btn {
       border: 3px solid #fff;
   }
@@ -186,7 +190,6 @@ html {
       display: flex;
       flex-direction: row;
       align-items: center;
-      /* justify-content: space-between; */
       cursor: pointer;
       transition: ease-in 0.3s;
       margin: 0;
@@ -350,8 +353,6 @@ html {
       color: #fff;
   }
   
-  /* ===== Layer-out ======================= */
-  
   .dashboard {
       width: 100%;
       display: grid;
@@ -360,8 +361,7 @@ html {
       height: 100vh;
       padding: 20px;
   }
-  
-  /* ==== Auth Page =========================== */
+
   .login {
       width: 100%;
       display: flex;
@@ -375,6 +375,10 @@ html {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+  }
+
+  .login-form button{
+    width: 100%;
   }
   
   .social-btn .img {
@@ -405,7 +409,6 @@ html {
       margin: auto;
   }
   
-  /* ==== Edit Password page =========================== */
   .edit-password {
       width: 100%;
       height: 85vh;
@@ -418,8 +421,7 @@ html {
       max-width: 500px;
       align-items: center;
   }
-  
-  /* ===== MENU ================================ */
+
   .menu {
       width: 90px;
       border-radius: 25px;
@@ -462,7 +464,6 @@ html {
       color: #7a40f2;
   }
   
-  /* ===== Main ======================= */
   .main {
       flex: 1;
       padding-left: 20px;
@@ -473,7 +474,6 @@ html {
       display: none;
   }
   
-  /* ===== header ============= */
   .main-header {
       margin-bottom: 20px;
       height: 50px;
@@ -511,7 +511,6 @@ html {
       width: 50px;
   }
   
-  /* ===== tables ============= */
   .welcome {
       background-color: #FFECC8;
       border-radius: 20px;
@@ -531,7 +530,6 @@ html {
       object-fit: scale-down;
   }
   
-  /* ===== summary ============= */
   .summary {
       width: 500px;
       background-color: #EDEEF4;
@@ -551,8 +549,6 @@ html {
   .summary .card i {
       font-size: 50px;
   }
-  
-  /* ======= table css ======= */
   
   #main-table {
       font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -599,7 +595,6 @@ html {
           display: block;
       }
   
-      /* =============== layout ============= */
       .dashboard {
           width: 100%;
           display: block;
@@ -608,7 +603,6 @@ html {
           position: relative;
       }
   
-      /* ===== MENU ================================ */
       .menu {
           width: 100%;
           height: 100%;
@@ -629,7 +623,6 @@ html {
           margin-right: 20px;
       }
   
-      /* ===== Main ======================= */
       .main {
           flex: 1;
           padding-left: 0;
@@ -650,15 +643,12 @@ html {
           display: none;
       }
   
-      /* ===== summary ============= */
       .summary {
           width: 100%;
           background-color: #EDEEF4;
           height: 100%;
           margin: 0 0 20px 0;
       }
-  
-      /* ===== header ============= */
   
       .search {
           max-width: 500px;
@@ -687,4 +677,30 @@ html {
           width: 100%;
       }
   }
+}
+
+.d-none {
+  display: none;
+}
+
+.m-top-bottom-40 {
+  margin: 40px 0;
+}
+
+.reset-pwd-form {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.foot-bottom {
+    background-color: #3AB397;
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
