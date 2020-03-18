@@ -14,6 +14,6 @@ export default (state, { type, payload }) => {
         oauthErrors: payload.error
       };
     default:
-      return state;
+      return null;
   }
 };

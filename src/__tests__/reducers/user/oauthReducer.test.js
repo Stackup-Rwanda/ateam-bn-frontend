@@ -1,5 +1,5 @@
 import oauthReducer from '../../../reducers/user';
-import initialState from '../../../initialStates';
+import initialState from '../../../store/initialState';
 import { userActionTypes } from '../../../actionTypes';
 
 describe('Testing oauthReducer', () => {
@@ -15,10 +15,10 @@ describe('Testing oauthReducer', () => {
   });
   it('default', () => {
     const reducerResult = oauthReducer(initialState, { type: 'fake_action', payload: { error: 'failed_to_login_user' } });
-    expect(reducerResult).toHaveProperty('token');
-    expect(reducerResult).toHaveProperty('oauthErrors');
-    expect(reducerResult.token).toEqual(undefined);
-    expect(reducerResult.oauthErrors).toEqual(null);
+    expect(reducerResult.user).toHaveProperty('token');
+    expect(reducerResult.user).toHaveProperty('oauthErrors');
+    expect(reducerResult.user.token).toEqual(undefined);
+    expect(reducerResult.user.oauthErrors).toEqual(null);
   });
   it('default', () => {
     const reducerResult = oauthReducer(undefined, { type: null, payload: null });

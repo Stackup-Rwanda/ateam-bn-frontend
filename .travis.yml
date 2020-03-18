@@ -1,6 +1,4 @@
-env:
-  global:
-    - NODE_ENV=test
+sudo: false
 
 language: node_js
 node_js:

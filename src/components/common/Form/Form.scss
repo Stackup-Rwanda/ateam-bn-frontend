@@ -1,0 +1,20 @@
+.reset-pwd-form {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 760px) {
+  .Form {
+    margin-left: 5% !important;
+  }
+}
+
+@media screen and (min-width: 761px) {
+  .Form {
+    margin-left: 24% !important;
+  }
+}

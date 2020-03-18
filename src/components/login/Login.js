@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import qs from 'qs';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SocialAuthButton from '../socialAuthButtons/socialAuthButton';
 import { oauthActions } from '../../actions';
@@ -47,8 +48,8 @@ class Login extends Component {
                 <input type="password" className="lg-input border-0 bg-half-white" placeholder="Password..." />
               </div>
 
-              <a href="#" className="btn md-btn b-radius-circle bg-green text-center sm-title">Sign In</a>
-              <div className="text-center"><a href="#" className="link c-green">Forgot password?</a></div>
+              <button className="btn md-btn b-radius-circle bg-green text-center sm-title m-top-bottom-40">Sign In</button>
+              <div className="text-center"><Link to="/forgot-password" className="link c-green">Forgot password?</Link></div>
             </div>
           </form>
           <div className="land-auth">
@@ -59,7 +60,7 @@ class Login extends Component {
                 Barefooter!
               </h1>
               <p className="xs-title m-top">Make company global travel and accommodation easy and convenient for the strong workforce of savvy members of staff, by leveraging the modern web.</p>
-              <a href="#" className="btn auth-btn md-btn b-radius-circle c-blue m-top text-center sm-title">Sign Up</a>
+              <Link to="#" className="btn auth-btn md-btn b-radius-circle c-blue m-top text-center sm-title">Sign Up</Link>
             </div>
           </div>
         </div>

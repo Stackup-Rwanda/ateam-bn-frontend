@@ -1,3 +1,7 @@
 import * as userActionTypes from './userActionsTypes';
+import * as apiActionsTypes from './apiActionsTypes';
 
-export { userActionTypes };
+export {
+  apiActionsTypes,
+  userActionTypes
+};
