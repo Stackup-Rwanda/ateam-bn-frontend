@@ -1,5 +1,5 @@
 import mockAxios from 'axios';
-import { login } from '../../../actions/user/login';
+import { login } from '../../../actions';
 import store from '../../../__mocks__/store';
 import { rejectedLoginRequest } from '../../../__mocks__/axios';
 

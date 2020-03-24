@@ -1,12 +1,13 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import qs from 'qs';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SocialAuthButton from '../socialAuthButtons/socialAuthButton';
-import { oauthActions } from '../../actions';
+import { oauthActions, login } from '../../actions';
 import AuthError from '../errors';
-import { login } from '../../actions/user/login';
+
 import '../../assets/css/style.scss';
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -14,21 +15,20 @@ class Login extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     };
   }
 
   componentDidMount() {
     const { oauthActions } = this.props;
-    const { token, error } = qs.parse(window.location.search, {
-      ignoreQueryPrefix: true
-    });
+    const { token, error } = qs.parse(window.location.search, { ignoreQueryPrefix: true });
     if (token || error) {
       oauthActions({ token, error });
     }
   }
-  handleSubmit = e => {
+
+  handleSubmit = (e) => {
     e.preventDefault();
     const { loginRequest } = this.props;
     const userData = {
@@ -38,21 +38,23 @@ class Login extends Component {
 
     loginRequest(userData);
   };
-  emailChange = event => {
+
+  emailChange = (event) => {
     this.setState({ email: event.target.value });
   };
 
-  passwordChange = event => {
+  passwordChange = (event) => {
     this.setState({ password: event.target.value });
   };
+
   render() {
     const { oauthErrors, loginErrors, history } = this.props;
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     let componentToRender;
     if (!token) {
       componentToRender = (
         <div className="login">
-          <form className="login-form m-20" onSubmit={this.handleSubmit}>
+          <form formTitle="Fill form to Login" className="login-form m-20" onSubmit={this.handleSubmit}>
             <div className="flex column p-20 b-radius m-bottom">
               {loginErrors && <AuthError error={loginErrors} />}
               {oauthErrors && <AuthError error={oauthErrors} />}
@@ -76,7 +78,7 @@ class Login extends Component {
                   onChange={this.emailChange}
                 />
               </div>
-              ​
+
               <div className="form-filed m-bottom">
                 <input
                   name="password"
@@ -85,18 +87,6 @@ class Login extends Component {
                   placeholder="Password..."
                   onChange={this.passwordChange}
                 />
-              </div>
-              <button
-                name="button"
-                type="submit"
-                className="btn md-btn b-radius-circle bg-green text-center sm-title"
-              >
-                Sign In
-              </button>
-              <div className="text-center">
-                <a href="#" className="link c-green">
-                  Forgot password?
-                </a>
               </div>
                 <button className="btn md-btn b-radius-circle bg-green text-center sm-title m-top-bottom-40">Sign In</button>
               <div className="text-center"><Link to="/forgot-password" className="link c-green">Forgot password?</Link></div>
@@ -116,7 +106,7 @@ class Login extends Component {
         </div>
       );
     } else {
-      componentToRender = history.push("/profile");
+      componentToRender = history.push('/profile');
     }
     return <div>{componentToRender}</div>;
   }

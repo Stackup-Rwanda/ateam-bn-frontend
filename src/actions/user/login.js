@@ -6,17 +6,17 @@ import {
   LOGIN_USER_REQUEST
 } from '../../actionTypes/userActionsTypes';
 
-export const loginSuccess = (token) => ({
+const loginSuccess = (token) => ({
   type: LOGIN_USER_SUCCESS,
   payload: { token }
 });
-export const loginFailure = (error) => ({
+const loginFailure = (error) => ({
   type: LOGIN_USER_FAILURE,
   payload: { error }
 });
-export const loginRequest = () => ({ type: LOGIN_USER_REQUEST });
+const loginRequest = () => ({ type: LOGIN_USER_REQUEST });
 
-export const login = (data) => async (dispatch) => {
+const login = (data) => async (dispatch) => {
   dispatch(loginRequest);
   try {
     const res = await axios.post(
@@ -30,4 +30,4 @@ export const login = (data) => async (dispatch) => {
     return dispatch(loginFailure(error.response.data.error));
   }
 };
-export default { login, loginSuccess, loginFailure };
+export default login;

@@ -7,7 +7,7 @@ import { MemoryRouter, BrowserRouter as Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import { configure } from 'enzyme';
 import store from '../../../__mocks__/store';
-import initialState from '../../../initialStates';
+import initialState from '../../../store/initialState';
 import { mount } from '../../../../config/enzymeConfig';
 import { login } from '../../../actions';
 import Login from '../../../components/login';
@@ -43,29 +43,32 @@ describe('Testing <Login />', () => {
   });
 });
 
-
+let component = '';
 describe('Testing <Login />', () => {
-  let wrapper;
   beforeEach(() => {
-    wrapper = mount(<Provider store={store}>
+    component = mount(<Provider store={store}>
       <MemoryRouter>
         <Login />
       </MemoryRouter>
     </Provider>);
   });
   it('<Login User />', () => {
-    expect(wrapper).toHaveLength(1);
+    expect(component).toHaveLength(1);
   });
   it('should accept email', () => {
-    const res = wrapper
+    component
       .find('input[name="email"]')
       .map((input) => input.simulate('change', { target: { name: 'email', value: 'manziguevara@gmail.com' } }));
-    expect(res).toHaveLength(1);
+    expect(component).toHaveLength(1);
   });
   it('should accept password', () => {
-    const res = wrapper
+    component
       .find('input[name="password"]')
       .map((input) => input.simulate('change', { target: { name: 'password', value: 'manzi123' } }));
-    expect(res).toHaveLength(1);
+    expect(component).toHaveLength(1);
+  });
+  it('should login user', () => {
+    component.find('form[title="Fill form to Login"]').map((button) => button.simulate('click'));
+    expect(component).toHaveLength(1);
   });
 });

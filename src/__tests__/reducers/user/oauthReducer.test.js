@@ -21,8 +21,8 @@ describe('Testing oauthReducer', () => {
     expect(reducerResult.user.oauthErrors).toEqual(null);
   });
   it('default', () => {
-    const reducerResult = oauthReducer(undefined, { type: null, payload: null });
-    expect(reducerResult.token).toEqual(undefined);
-    expect(reducerResult.oauthErrors).toEqual(null);
+    const reducerResult = oauthReducer(initialState, { type: null, payload: null });
+    expect(reducerResult.user.token).toEqual(undefined);
+    expect(reducerResult.user.oauthErrors).toEqual(null);
   });
 });

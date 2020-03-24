@@ -6,7 +6,7 @@ export const resolvedRequest = {
   statusText: 'OK',
   headers: {},
   config: {}
-}
+};
 export const resolvedLoginRequest = {
   data: { token: 'generatedToken' },
   status: 200,
@@ -40,10 +40,5 @@ export default {
   put: jest.fn(() => Promise.resolve({ ...resolvedRequest })),
   delete: jest.fn(() => Promise.resolve({ ...resolvedRequest })),
   patch: jest.fn(() => Promise.resolve({ ...resolvedRequest })),
-  get: jest.fn(() => Promise.resolve({ ...resolvedLoginRequest })),
-  post: jest.fn(() => Promise.resolve({ ...resolvedLoginRequest, status: 201 })),
-  put: jest.fn(() => Promise.resolve({ ...resolvedLoginRequest })),
-  delete: jest.fn(() => Promise.resolve({ ...resolvedLoginRequest })),
-  patch: jest.fn(() => Promise.resolve({ ...resolvedLoginRequest })),
   create: jest.fn(() => mockAxios)
 };
