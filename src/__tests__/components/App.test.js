@@ -1,5 +1,6 @@
 import React from 'react';
 import App from '../../components/App';
+import Routes from '../../components/routes';
 import { shallow } from '../../../config/enzymeConfig';
 import ForgotPassword from '../../components/ResetPassword/ForgotPassword';
 import ResetPassword from '../../components/ResetPassword/ResetPassword';
@@ -22,5 +23,8 @@ describe('Testing App component', () => {
 
   test('rendering ResetPassword component', () => {
     expect(wrapper.find(<ResetPassword />));
+});
+test('rendering div', () => {
+    expect(wrapper.find(<Routes />));
   });
 });

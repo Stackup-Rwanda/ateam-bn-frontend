@@ -15,3 +15,8 @@ export const matchedResetPassword = {
 
 export const sendEmail = { email: 'jajajaden01@gmail.com' };
 export const fakeEmail = { email: 'fsdfsdfsdfdsf--gmail.com' };
+export const loginUser = {
+  ...Object.user,
+  email: 'manziguevara@gmail.com',
+  password: 'manzi123'
+};

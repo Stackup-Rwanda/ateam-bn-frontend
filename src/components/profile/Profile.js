@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../../assets/css/style.scss';
-
 // eslint-disable-next-line react/prefer-stateless-function
 class Home extends Component {
   render() {
@@ -11,5 +10,4 @@ class Home extends Component {
     );
   }
 }
-
 export default Home;

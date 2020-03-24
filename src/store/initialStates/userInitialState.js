@@ -1,4 +1,6 @@
 module.exports = {
+  loading: false,
+  loginErrors: null,
   token: localStorage.token,
   oauthErrors: null,
   profile: localStorage.profile,
