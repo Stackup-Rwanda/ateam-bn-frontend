@@ -5,12 +5,21 @@ import qs from 'qs';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SocialAuthButton from '../socialAuthButtons/socialAuthButton';
-import { oauthActions } from '../../actions';
+import { oauthActions, login } from '../../actions';
 import AuthError from '../errors';
+
 import '../../assets/css/style.scss';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Login extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: ''
+    };
+  }
+
   componentDidMount() {
     const { oauthActions } = this.props;
     const { token, error } = qs.parse(window.location.search, { ignoreQueryPrefix: true });
@@ -19,16 +28,36 @@ class Login extends Component {
     }
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { loginRequest } = this.props;
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    loginRequest(userData);
+  };
+
+  emailChange = (event) => {
+    this.setState({ email: event.target.value });
+  };
+
+  passwordChange = (event) => {
+    this.setState({ password: event.target.value });
+  };
+
   render() {
-    const { oauthErrors, history } = this.props;
+    const { oauthErrors, loginErrors, history } = this.props;
     const token = localStorage.getItem('token');
     let componentToRender;
     if (!token) {
       componentToRender = (
         <div className="login">
-          <form className="login-form m-20">
+          <form formTitle="Fill form to Login" className="login-form m-20" onSubmit={this.handleSubmit}>
             <div className="flex column p-20 b-radius m-bottom">
-              { oauthErrors && <AuthError error={oauthErrors} /> }
+              {loginErrors && <AuthError error={loginErrors} />}
+              {oauthErrors && <AuthError error={oauthErrors} />}
               <h1 className="md-title c-green m-bottom">Sign in to Barefoot</h1>
               <SocialAuthButton
                 type="facebook"
@@ -41,14 +70,25 @@ class Login extends Component {
                 text="Sign in with Google"
               />
               <div className="form-filed m-bottom">
-                <input type="email" className="lg-input border-0 bg-half-white" placeholder="Email..." />
+                <input
+                  name="email"
+                  type="email"
+                  className="lg-input border-0 bg-half-white"
+                  placeholder="Email..."
+                  onChange={this.emailChange}
+                />
               </div>
 
               <div className="form-filed m-bottom">
-                <input type="password" className="lg-input border-0 bg-half-white" placeholder="Password..." />
+                <input
+                  name="password"
+                  type="password"
+                  className="lg-input border-0 bg-half-white"
+                  placeholder="Password..."
+                  onChange={this.passwordChange}
+                />
               </div>
-
-              <button className="btn md-btn b-radius-circle bg-green text-center sm-title m-top-bottom-40">Sign In</button>
+                <button className="btn md-btn b-radius-circle bg-green text-center sm-title m-top-bottom-40">Sign In</button>
               <div className="text-center"><Link to="/forgot-password" className="link c-green">Forgot password?</Link></div>
             </div>
           </form>
@@ -66,13 +106,9 @@ class Login extends Component {
         </div>
       );
     } else {
-      componentToRender = (history.push('/profile'));
+      componentToRender = history.push('/profile');
     }
-    return (
-      <div>
-        { componentToRender }
-      </div>
-    );
+    return <div>{componentToRender}</div>;
   }
 }
 
@@ -81,17 +117,20 @@ Login.defaultProps = { oauthErrors: null };
 Login.propTypes = {
   oauthActions: PropTypes.func.isRequired,
   oauthErrors: PropTypes.string,
+  loginRequest: PropTypes.func.isRequired,
   history: PropTypes.shape({ push: PropTypes.func }).isRequired
 };
 
 const mapStateToProps = ({ user }) => ({
   token: user.token,
-  oauthErrors: user.oauthErrors
+  oauthErrors: user.oauthErrors,
+  loading: user.loading,
+  loginErrors: user.loginErrors
 });
 
-
-const mapDispatchToProps = (dispatch) => (
-  { oauthActions: (payload) => dispatch(oauthActions(payload)) }
-);
+const mapDispatchToProps = (dispatch) => ({
+  oauthActions: (payload) => dispatch(oauthActions(payload)),
+  loginRequest: (payload) => dispatch(login(payload))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
