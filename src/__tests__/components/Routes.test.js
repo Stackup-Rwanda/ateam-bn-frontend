@@ -1,0 +1,48 @@
+import React from 'react';
+import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
+import { mount } from '../../../config/enzymeConfig';
+import store from '../../__mocks__/store';
+import Routes from '../../components/Routes';
+import ForgotPassword from '../../components/ResetPassword/ForgotPassword';
+import ResetPassword from '../../components/ResetPassword/ResetPassword';
+import { Profile } from '../../components/profile';
+import Login from '../../components/login';
+
+describe('<Routes />', () => {
+  test('renders <ForgotPassword /> without crashing', () => {
+    const component = mount(<Provider store={store}>
+        <MemoryRouter initialEntries={['/forgot-password']}>
+          <Routes />
+        </MemoryRouter>
+      </Provider>);
+    expect(component.find(ForgotPassword)).toHaveLength(1);
+  });
+
+  test('renders <ResetPassword /> without crashing', () => {
+    const component = mount(<Provider store={store}>
+        <MemoryRouter initialEntries={['/reset-password/:userId/:token']}>
+          <Routes />
+        </MemoryRouter>
+      </Provider>);
+    expect(component.find(ResetPassword)).toHaveLength(1);
+  });
+
+  test('rendering <Login />', () => {
+    const component = mount(<Provider store={store}>
+      <MemoryRouter initialEntries={['/login']}>
+        <Routes />
+      </MemoryRouter>
+    </Provider>);
+    expect(component.find(Login)).toHaveLength(1);
+  });
+
+  test('rendering <Profile />', () => {
+    const component = mount(<Provider store={store}>
+      <MemoryRouter initialEntries={['/profile']}>
+        <Routes />
+      </MemoryRouter>
+    </Provider>);
+    expect(component.find(Profile)).toHaveLength(1);
+  });
+});

@@ -1,3 +1,7 @@
 import oauthActions from './user/oauthActions';
+import * as userAction from './user';
 
-export { oauthActions };
+export {
+  oauthActions,
+  userAction
+};

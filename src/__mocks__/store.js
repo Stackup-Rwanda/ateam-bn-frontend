@@ -1,11 +1,10 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import initialState from '../initialStates';
+import configureMockStore from 'redux-mock-store';
+import initialState from '../store/initialState';
+import apiMiddleware from '../middlewares/apiMiddleware';
 
 export { initialState };
-
-export { thunk };
-export const mockStore = configureMockStore([thunk]);
+export const middlewares = [thunk, apiMiddleware];
+export const mockStore = configureMockStore(middlewares);
 
 export default mockStore({ ...initialState, user: { ...initialState.user, oauthErrors: null } });
