@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
-@import '../../../style/button';
-@import '../../../style/colors';
-@import '../../../style/fontsize';
-@import '../../../style/pixels';
-@import '../../../style/mixin';
+@import '../../../assets/style/button';
+@import '../../../assets/style/colors';
+@import '../../../assets/style/fontsize';
+@import '../../../assets/style/pixels';
+@import '../../../assets/style/mixin';
 
 .wrapper {
   width: 100%;
@@ -13,16 +13,10 @@
     width: $leftSidebarWidth;
     background-color: $white;
     border-right: 1px solid #D2CBCB;
-
-    // hr {
-    //   width: 756px;
-    //   border: 1px solid #D2CBCB;
-    //   transform: rotate(89.92deg);
-    // }
-
+    text-align: center;
     a {
       display: block;
-      
+
       img {
         object-fit: cover;
       }
@@ -33,7 +27,7 @@
       }
     }
 
-    
+
     .options {
       display: block;
       margin-top: 60px;
@@ -48,10 +42,12 @@
     .logout {
       position: absolute;
       bottom: 0;
-
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
       img {
         width: $xsmall;
-        padding: 20px;
+        margin: auto;
       }
     }
   }
@@ -60,7 +56,7 @@
     width: $middleWidth;
     background-color: $white;
     height: 100%;
-    @include flexCenter(column);
+    @include flexLeftNu(column);
 
     .title {
       @include flexCenter(row);
@@ -151,15 +147,15 @@
         }
 
         .pending {
-          background-color: rgba(246, 162, 64, 0.8);
+          background-color: #f6a240cc;
         }
 
         .approved {
-          background-color: rgba(58, 179, 151, 0.8);
+          background-color: #3ab397cc;
         }
 
         .rejected {
-          background-color: rgba(200, 58, 58, 0.8);
+          background-color: #c83a3acc;
         }
 
         .details {
@@ -169,6 +165,7 @@
             font-size: 18px;
             font-weight: bolder;
             color: #000000;
+            padding: 10px 0;
           }
           &-departure {
             font-family: 'Nunito', sans-serif;
@@ -176,6 +173,7 @@
             font-weight: bold;
             font-size: 13px;
             color: #666666;
+            padding: 10px 0;
           }
           &-return {
             font-family: 'Nunito', sans-serif;
@@ -183,11 +181,13 @@
             font-weight: bold;
             font-size: 13px;
             color: #666666;
+            padding: 10px 0;
           }
           &-city {
             font-size: 14px;
             font-weight: bold;
             color: #2D2D2D;
+            padding: 10px 0;
           }
           &-address {
             font-family: 'Nunito', sans-serif;
@@ -195,6 +195,7 @@
             font-weight: bold;
             font-size: 13px;
             color: #666666;
+            padding: 10px 0;
           }
         }
 
@@ -208,9 +209,12 @@
       text-align: center;
       margin: 20px 0;
 
-      input {
+      .angles {
         margin: 0 30px;
         border: none;
+        font-weight: bold;
+        line-height: 16px;
+        font-size: 20px;
       }
 
       span {
@@ -230,6 +234,110 @@
   .right-sidebar {
     width: $rightSidebarWidth;
     background-color: #F4F8F7;
-    color: red;
+    .title {
+      @include flexLeft(row);
+      margin-top: 35px;
+      ul {
+        list-style-type: none;
+        margin: 0;
+
+        li {
+          display: inline-block;
+          margin-right: 20px;
+
+          &:first-child {
+            line-height: 28px;
+            border-bottom: 3px solid #3E9B86;
+          }
+
+          a {
+            text-decoration: none;
+            color: $gray;
+            font-size: $xxxsmall;
+            font-weight: bold;
+
+            .notification {
+              position: relative;
+              display: inline-block;
+
+              .faIcon {
+                font-size: $xsmall;
+              }
+
+              .badge {
+                position: absolute;
+                top: -10px;
+                right: -9px;
+                padding: 6px 6px;
+                font-size: 11px;
+                border-radius: 50%;
+                background: #C83A3A;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .stats {
+      @include flexStats(column);
+      margin-top: 60px;
+      width: 100%;
+
+      .status {
+        display: block;
+        background: #F4F8F7;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        padding: 2px 10px;
+        width: 191px;
+        @include flexStats(row);
+        margin-bottom: 20px;
+        .icon {
+          margin-top: 0;
+          width: 30%;
+
+          img {
+            width: 50px;
+            height: 48px;
+          }
+        }
+
+        .text {
+          width:70%;
+          margin: 0;
+          padding: 0 0 0 20px;
+          line-height: 0;
+
+          p:first-child {
+            font-family: Nunito;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+          }
+
+          p:nth-child(2) {
+            font-family: Nunito;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 13px;
+            line-height: 8px;
+          }
+
+          .approved {
+            color: rgba(32, 153, 148, 0.7);
+          }
+
+          .pending {
+            color: rgba(246, 162, 64, 0.7);
+          }
+
+          .rejected {
+            color: rgba(200, 58, 58, 0.7);
+          }
+        }
+      }
+    }
   }
 }

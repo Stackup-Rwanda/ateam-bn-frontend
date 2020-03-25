@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-named-as-default-member
 import initialState from '../../store/initialState';
 import clearUserStoreReducer from './clearUserStoreReducer';
 import forgotPasswordReducer from './forgotPasswordReducer';

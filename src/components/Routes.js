@@ -6,6 +6,8 @@ import ForgotPassword from './ResetPassword/ForgotPassword';
 import ResetPassword from './ResetPassword/ResetPassword';
 import Login from './login';
 import { Profile } from './profile';
+import Dashboard from './Dashboard';
+import Requests from './Requests/User';
 
 const Routes = () => (
   <Switch>
@@ -16,6 +18,10 @@ const Routes = () => (
     {/* reset password routes */}
     <Route exact path="/forgot-password" render={(props) => <ForgotPassword {...props} />} />
     <Route exact path="/reset-password/:userId/:token" render={(props) => <ResetPassword {...props} />} />
+
+    {/* trip requests table routes */}
+    <Route exact path="/dashboard" render={(props) => <Dashboard {...props} />} />
+    <Route exact path="/requests" render={(props) => <Requests {...props} />} />
 
   </Switch>
 );

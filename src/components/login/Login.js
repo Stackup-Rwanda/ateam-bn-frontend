@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import qs from 'qs';
@@ -108,7 +107,11 @@ class Login extends Component {
     } else {
       componentToRender = history.push('/profile');
     }
-    return <div>{componentToRender}</div>;
+    return (
+      <div className="style">
+        { componentToRender }
+      </div>
+    );
   }
 }
 

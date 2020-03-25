@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+@import '../../assets/style/button';
+@import '../../assets/style/colors';
+@import '../../assets/style/fontsize';
+@import '../../assets/style/pixels';
+@import '../../assets/style/mixin';
+
+.right-sidebar {
+  width: $rightSidebarWidth;
+  background-color: #F4F8F7;
+  .title {
+    @include flexLeft(row);
+    margin-top: 35px;
+    ul {
+      list-style-type: none;
+      margin-left: 0;
+
+      li {
+        display: inline-block;
+        margin: 0 20px;
+
+        &:first-child {
+          line-height: 28px;
+          border-bottom: 3px solid #3E9B86;
+        }
+
+        a {
+          text-decoration: none;
+          color: $gray;
+          font-size: $xxxsmall;
+          font-weight: bold;
+
+          .notification {
+            position: relative;
+            display: inline-block;
+
+            .faIcon {
+              font-size: $xsmall;
+            }
+
+            .badge {
+              position: absolute;
+              top: -10px;
+              right: -9px;
+              padding: 6px 6px;
+              font-size: 11px;
+              border-radius: 50%;
+              background: #C83A3A;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .stats {
+    @include flexStats(column);
+    margin-top: 60px;
+    width: 100%;
+
+    .status {
+      display: block;
+      background: #F4F8F7;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+      border-radius: 10px;
+      padding: 2px 10px;
+      width: 191px;
+      @include flexStats(row);
+      margin-bottom: 20px;
+      .icon {
+        margin-top: 0;
+        width: 30%;
+
+        img {
+          width: 50px;
+          height: 48px;
+        }
+      }
+
+      .text {
+        width:70%;
+        margin: 0;
+        padding: 0 0 0 20px;
+        line-height: 0;
+
+        p:first-child {
+          font-family: Nunito;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 18px;
+          margin-top: 20px;
+        }
+
+        p:nth-child(2) {
+          font-family: Nunito;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 13px;
+          line-height: 8px;
+          margin-top: 20px;
+          margin-bottom: 10px;
+        }
+
+        .approved {
+          color: rgba(32, 153, 148, 0.7);
+        }
+
+        .pending {
+          color: rgba(246, 162, 64, 0.7);
+        }
+
+        .rejected {
+          color: rgba(200, 58, 58, 0.7);
+        }
+      }
+    }
+  }
+}
