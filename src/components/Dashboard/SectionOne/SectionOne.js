@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { faPlaneDeparture } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import dashboard from '../../../assets/images/dashboard.png';
-import trip from '../../../assets/images/trip.png';
 import paris from '../../../assets/images/paris.jpg';
 import './SectionOne.scss';
 
@@ -14,7 +15,7 @@ class SectionOne extends Component {
             <p>Welcome Mugisha!</p>
             <button type="button">
               <span>Create Trip </span>
-              <span><img alt="trip" src={trip} /></span>
+              <span><FontAwesomeIcon icon={faPlaneDeparture} /></span>
             </button>
           </div>
         </div>
