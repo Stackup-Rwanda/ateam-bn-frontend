@@ -45,4 +45,22 @@ describe('<Routes />', () => {
     </Provider>);
     expect(component.find(Profile)).toHaveLength(1);
   });
+
+  test('rendering <Dashboard/>', () => {
+    const component = mount(<Provider store={store}>
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <Routes />
+      </MemoryRouter>
+    </Provider>);
+    expect(component.find(Login).length).toBe(1);
+  });
+
+  test('rendering <Requests />', () => {
+    const component = mount(<Provider store={store}>
+      <MemoryRouter initialEntries={['/requests']}>
+        <Routes />
+      </MemoryRouter>
+    </Provider>);
+    expect(component.find(Login).length).toBe(1);
+  });
 });

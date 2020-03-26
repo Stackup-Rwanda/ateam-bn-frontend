@@ -1,6 +1,6 @@
 import forgotPasswordReducer from '../../../reducers/user/forgotPasswordReducer';
 import updatePasswordReducer from '../../../reducers/user/updatePasswordReducer';
-import initialState from '../../../store/initialState';
+import { user as initialState } from '../../../store/initialState';
 import { userActionTypes } from '../../../actionTypes';
 import { matchedResetPassword, mismatchedResetPassword } from '../../../__mocks__/user';
 

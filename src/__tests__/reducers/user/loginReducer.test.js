@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/named
 import initialState from '../../../store/initialState';
 import { userActionTypes } from '../../../actionTypes';
 import loginReducer from '../../../reducers/user';
@@ -21,23 +22,5 @@ describe('Testing Login Reducer', () => {
     });
     expect(reducerResult).toHaveProperty('loginErrors');
     expect(reducerResult.loginErrors).toEqual('password or email is incorrect');
-  });
-  it('default', () => {
-    const reducerResult = loginReducer(initialState, {
-      type: 'fake_action',
-      payload: { error: 'failed_to_login_user' }
-    });
-    expect(reducerResult.user).toHaveProperty('token');
-    expect(reducerResult.user).toHaveProperty('loginErrors');
-    expect(reducerResult.user.token).toEqual(undefined);
-    expect(reducerResult.user.oauthErrors).toEqual(null);
-  });
-  it('Default', () => {
-    const reducerResult = loginReducer(undefined, {
-      type: null,
-      payload: null
-    });
-    expect(reducerResult.user.token).toEqual(undefined);
-    expect(reducerResult.user.loginErrors).toEqual(null);
   });
 });

@@ -1,5 +1,5 @@
 import clearUserStoreReducer from '../../../reducers/user/clearUserStoreReducer';
-import initialState from '../../../store/initialState';
+import { user as initialState } from '../../../store/initialState';
 import { userActionTypes } from '../../../actionTypes';
 
 describe('cleanUserStore reducer', () => {

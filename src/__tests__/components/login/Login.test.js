@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import { mount } from '../../../../config/enzymeConfig';
-import initialState from '../../../store/initialState';
+import { user as initialState } from '../../../store/initialState';
 import { oauthActions } from '../../../actions';
 import Login from '../../../components/login';
 

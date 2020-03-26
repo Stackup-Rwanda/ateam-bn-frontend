@@ -42,7 +42,7 @@ export class ForgotPassword extends Component {
     const { loading } = this.props;
     const { email } = this.state;
     return (
-      <div>
+      <div className="styles">
         <div className="reset-password">
           <Form formTitle="Find your Barefoot account" formClass="reset-pwd-form m-20" onSubmit={this.handleSubmit}>
             <ToastContainer position={toast.POSITION.TOP_CENTER} />

@@ -7,7 +7,7 @@ import { MemoryRouter, BrowserRouter as Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import { configure } from 'enzyme';
 import store from '../../../__mocks__/store';
-import initialState from '../../../store/initialState';
+import { user as initialState } from '../../../store/initialState';
 import { mount } from '../../../../config/enzymeConfig';
 import { login } from '../../../actions';
 import Login from '../../../components/login';
