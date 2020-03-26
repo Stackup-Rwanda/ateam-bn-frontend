@@ -34,11 +34,25 @@ export const rejectedLoginRequest = {
   }
 };
 
+export const resolvedTripsRequest = {
+  response: {
+    data: {
+      status: 200,
+      message: 'manzi Those are data from this page 1',
+      data: {
+        paginate: [],
+        Next: {}
+      }
+    }
+  }
+};
+
 export default {
   get: jest.fn(() => Promise.resolve({ ...resolvedRequest })),
   post: jest.fn(() => Promise.resolve({ ...resolvedRequest, status: 201 })),
   put: jest.fn(() => Promise.resolve({ ...resolvedRequest })),
   delete: jest.fn(() => Promise.resolve({ ...resolvedRequest })),
   patch: jest.fn(() => Promise.resolve({ ...resolvedRequest })),
-  create: jest.fn(() => mockAxios)
+  create: jest.fn(() => mockAxios),
+  gets: jest.fn(() => Promise.resolve({ ...resolvedTripsRequest }))
 };
