@@ -1,0 +1,450 @@
+@import '../../../style/button';
+@import '../../../style/colors';
+@import '../../../style/fontsize';
+@import '../../../style/pixels';
+@import '../../../style/mixin';
+​
+/* Menu Staff */
+.side-menu {
+  border-right: $green 01px solid;
+  background-color: $white;  
+  padding-top: $xxsmall;
+  position: fixed;
+  height: 100%;
+  width: 05%;
+  top: 0;
+  left: 05;
+}
+​
+​
+.side-menu .logo{
+  padding: $xxsmall $xxsmall $xxsmall 05px;
+  padding-bottom: $xsmall;
+  padding-top: 0px;
+  margin: auto;
+  width: 2px;
+}
+​
+.side-menu img {
+  padding: 10px $xxsmall $xxsmall 0px;
+  display: block;
+  margin: auto;
+  width: $xxsmall;
+}
+​
+.side-menu .logout{
+  padding: $xxsmall $xxsmall $xxsmall $xxsmall;
+  position: fixed;
+  width: $xxsmall;
+  bottom: 0;
+}
+​
+/* Profile images Staff */
+.profile {
+  position: relative;
+  text-align: center;
+  margin-left: 05.055555%;
+}
+​
+.background-profile{
+  width: 100%;
+  height: 300px;
+  border-radius: 00px 00px 05px 05px;
+}
+​
+.avatar {
+  position: absolute;
+  top: 250px;
+  left: 60px;
+}
+​
+.user-name {
+  position: absolute;
+  top: 300px;
+  left: 180px;
+}
+.avatar img{
+  border: $white 10px solid;
+  border-radius: 100px;
+  height: 100px;
+  width: 100px;
+}
+​
+/* Profile Contents Staff */
+.request {
+  font-size: 28px; 
+  margin-left: 06%;
+  padding: $xxsmall $xxsmall;
+}
+​
+.user-details{
+	width: 25%;
+	float: left;
+	font-size: 15px;
+	margin-top: 80px;
+	padding-right: 80px;
+}
+​
+.profile-button{
+	height: 35px;
+	width: 135px;
+	color: $white;
+    margin-top: $xxsmall;
+    font-weight: bold;
+    margin-bottom: $xxsmall;
+	background: $green;
+	border-radius: $xxsmall $xxsmall $xxsmall $xxsmall;
+}
+​
+.form-cover{
+	width: 90%;
+	padding: 0px;
+	margin-top: $xsmall;
+	color: $green;
+	margin-bottom: $xsmall;
+	border-radius: 05px 05px 05px 05px;
+}
+​
+.form-cover .form input{
+	background: #f3f3f3;
+	margin-top: 10px;
+	font-size: 11px;
+	color: gray;
+	height: $xxsmall;
+	width: 95%;
+}
+​
+.form-cover .form select{
+	background: #f3f3f3;
+	font-size: 11px;
+	margin-top: 10px;
+	color: gray;
+	height: 25px;
+	width: 96%;
+}
+​
+​
+/* Travels Contents Staff */
+.request .title{
+	width: 64%;
+	float: left;
+	color: $green;
+	border-bottom: 05px solid $green;
+}
+​
+.travels{
+	width: 30%;
+	float: left;
+	font-size: 15px;
+	margin-left: $xxsmall;
+	box-shadow: 01px 2.5px 2.5px 01px rgba(0,0,0,0.05);
+}
+​
+.travels .column{
+	padding: 10px;
+}
+​
+​
+.column img {
+	margin-right: 08px; 
+	width: $xxsmall;
+}
+​
+​
+.travels img{
+	width: 100%;
+	height: 200px;
+}
+​
+.travels h5{
+	color: #454545;
+    font-weight: bold;
+    font-family: "Arial Black", Gadget, sans-serif
+}
+​
+.travels .date{
+	color:  $green;
+    font-weight: bold;
+	font-size: 10px;
+    font-family: "Arial Black", Gadget, sans-serif
+}
+​
+
+	.side-menu .logo{
+		padding: 0px $xxsmall $xxsmall 5px;
+		width: 45px;
+  }
+
+	.side-menu .logout{
+		padding: $xxsmall $xxsmall $xxsmall 15px;
+	}
+	.request .title{
+	width: 65%;
+    }
+​
+	.user-details{
+	width: 24%;
+	padding: 08px;
+	padding-right: 80px;
+    }
+​
+    .travels{
+	width: 27%;
+	padding: 08px;
+	margin-left: $small;
+    }
+​
+    .profile-button{
+	height: 35px;
+	width: 130px;
+    margin-left: $xxxsmall;
+    }
+​
+// @media(max-width: 1240px) {
+// ​
+// 	.side-menu .logo{
+// 		padding: 0px $xxsmall $xxsmall 05px;
+// 		width: $small;
+// 	}
+// 	.side-menu .logout{
+// 		padding: $xxsmall $xxsmall $xxsmall 15px;
+// 	}
+// ​
+// 	.request {
+// 	margin-left: 06%;
+// 	padding: $xxsmall $xxxsmall;
+//     }
+// ​
+// 	.user-details{
+// 	width: 23%;
+// 	padding: 07px;
+// 	padding-right: 80px;
+//     }
+// ​
+//     .travels{
+// 	width: 28%;
+// 	margin-left: 20px;
+//     }
+// ​
+//     .profile-button{
+// 	height: 35px;
+// 	width: 120px;
+//     margin-left: 16px;
+//     }
+// }
+// ​
+// ​
+// @media(max-width: 1070px) {
+// ​
+// 	.side-menu .logo{
+// 		padding: 0px $xxsmall $xxsmall 05px;
+// 		width: 35px;
+// 	}
+// 	.side-menu .logout{
+// 		padding: $xxsmall $xxsmall $xxsmall 10px;
+// 	}
+// 	.request {
+// 	margin-left: 06%;
+// 	padding: $xxsmall $xxxsmall;
+//     }
+// ​
+// 	.user-details{
+// 	width: 22%;
+// 	padding: 07px;
+// 	padding-right: 75px;
+//     }
+// ​
+//     .travels{
+// 	width: 27%;
+// 	padding: 07px;
+// 	margin-left: $xxsmall;    
+//     }
+// ​
+//     .profile-button{
+// 	height: 35px;
+// 	width: 120px;
+//     margin-left: 14px;
+//     }
+// ​
+// }
+// ​
+// @media(max-width: 970px) {
+// 	.side-menu .logo{
+// 		padding: 0px $xxsmall $xxsmall 05px;
+// 		width: $xsmall;
+// 	}
+// 	.side-menu .logout{
+// 		padding: $xxsmall $xxsmall $xxsmall 10px;
+// 	}
+// }
+// ​
+// ​
+// @media(max-width: 830px) {
+// 	.side-menu .logo{
+// 		padding: 0px $xxsmall $xxsmall 05px;
+// 		width: 25px;
+// 	}
+// 	.side-menu .logout{
+// 		padding: $xxsmall $xxsmall $xxsmall 05px;
+// 	}
+// ​
+// 	.request {
+// 	margin-left: 06%;
+// 	padding: $xxsmall 18px;
+//     }
+// ​
+// 	.user-details{
+// 	width: 22%;
+// 	padding: 06px;
+// 	padding-right: $xsmall;
+//     }
+// ​
+//     .travels{
+// 	width: 26%;
+// 	padding: 06px;
+// 	margin-left: $xsmall;    
+//     }
+// ​
+//     .profile-button{
+// 	height: 35px;
+// 	width: 100px;
+//     margin-left: 12px;
+//     }
+	
+// }
+// ​
+// @media(max-width: 670px) {
+// 	.side-menu .logo{
+// 		padding: 0px $xxsmall $xxsmall 01px;
+// 		width: 25px;
+// 	}
+// 	.side-menu .logout{
+// 		padding: $xxsmall $xxsmall $xxsmall 05px;
+// 	}
+// 	.request {
+// 	margin-left: 2.5%;
+// 	padding: $xxsmall 25px;
+//     }
+// ​
+// 	.user-details{
+//     display: block;
+// 	width: 90%;
+// 	}
+// ​
+//     .travels{
+//     display: block;
+// 	width: 90%;
+//     }
+// ​
+// ​
+// 	.profile-button{
+// 	height: 35px;
+// 	width: 120px;
+//     }
+// }
+// ​
+// ​
+// ​
+// @media(max-width: 540px) {
+// 	.side-menu .logo{
+// 		padding: 0px $xxsmall $xxsmall 01px;
+// 		width: 25px;
+// 	}
+// 	.side-menu .logout{
+// 		padding: $xxsmall $xxsmall $xxsmall 01px;
+// 		width: 10px;
+// 	}
+// 	.request {
+// 	margin-left: 2.5%;
+// 	padding: $xxsmall 25px;
+//     }
+// ​
+// 	.user-details{
+//     display: block;
+// 	width: 80%;
+// 	}
+// ​
+//     .travels{
+//     display: block;
+// 	width: 80%;
+//     }
+// }
+// ​
+// ​
+// @media(max-width: 480px) {
+// 	.side-menu .logo{
+// 		padding: 0px $xxsmall $xxsmall 01px;
+// 		width: $xxsmall;
+// 	}
+// 	.side-menu .logout{
+// 		padding: $xxsmall $xxsmall $xxsmall 01px;
+// 		width: 10px;
+// 	}
+// ​
+// 	.user-name {
+// 	top: 300px;
+// 	left: 180px;
+// 	font-size: 10px;
+// 	}
+	
+// 	.request {
+// 	margin-left: 2.5%;
+// 	padding: $xxsmall $xxsmall;
+//     }
+// ​
+// 	.user-details{
+//     display: block;
+// 	width: 80%;
+// 	}
+// ​
+//     .travels{
+//     display: block;
+// 	width: 80%;
+//     }
+// ​
+// ​
+// 	.profile-button{
+// 	height: 35px;
+// 	width: 120px;
+//     }
+// }
+// ​
+// ​
+// @media(max-width: 370px) {
+// 	.side-menu .logo{
+// 		padding: 0px $xxsmall $xxsmall 01px;
+// 		width: 17px;
+// 	}
+// 	.side-menu .logout{
+// 		padding: $xxsmall $xxsmall $xxsmall 01px;
+// 		width: 10px;
+// 	}
+// 	.side-menu img {
+// 		width: 15px;
+// 	}
+// 	.side-menu .logout{
+// 		width: 15px;
+// 	}
+// 	.avatar {
+// 	left: 35px;
+// 	}
+// 	.user-name {
+// 	top: 300px;
+// 	left: 150px;
+// 	font-size: 10px;
+// 	}
+// ​
+// 	.request {
+// 	margin-left: 05%;
+// 	padding: $xxsmall 10px;
+//     }
+// ​
+// 	.user-details{
+//     display: block;
+// 	width: 60%;
+// 	}
+// ​
+//     .travels{
+//     display: block;
+// 	width: 60%;
+//     }

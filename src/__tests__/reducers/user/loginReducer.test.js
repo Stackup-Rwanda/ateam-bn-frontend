@@ -1,4 +1,5 @@
-import initialState from '../../../store/initialState';
+// eslint-disable-next-line import/named
+import { user as initialState } from '../../../store/initialState';
 import { userActionTypes } from '../../../actionTypes';
 import loginReducer from '../../../reducers/user';
 

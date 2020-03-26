@@ -58,7 +58,7 @@ export class ResetPassword extends Component {
     const { loading } = this.props;
     const { form } = this.state;
     return (
-        <div>
+        <div className="styles">
         <div className="reset-password">
           <Form formTitle="Change your Password" formClass="reset-pwd-form m-20" onSubmit={this.handleSubmit}>
             <ToastContainer position={toast.POSITION.TOP_CENTER} />

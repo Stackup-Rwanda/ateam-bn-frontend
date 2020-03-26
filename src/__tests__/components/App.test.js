@@ -23,8 +23,8 @@ describe('Testing App component', () => {
 
   test('rendering ResetPassword component', () => {
     expect(wrapper.find(<ResetPassword />));
-});
-test('rendering div', () => {
+  });
+  test('rendering div', () => {
     expect(wrapper.find(<Routes />));
   });
 });
