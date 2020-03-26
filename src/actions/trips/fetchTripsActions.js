@@ -15,7 +15,7 @@ export const fetchTripRequestsFailure = (error) => ({
 });
 
 export const fetchRequests = (token, page, limit) => (dispatch) => {
-  const config = { headers: { token } };
+  const config = { headers: { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJNckR1bW15MiIsImVtYWlsIjoiZHVtbXkyQGVtYWlsLnJ3Iiwicm9sZSI6IlNVUEVSIEFETUlOSVNUUkFUT1IiLCJpc1ZlcmlmaWVkIjp0cnVlLCJpYXQiOjE1ODUwNzI5MDV9.sZG6-NlM6rxIZWZkfzHvnRo3v_S3j2eMdPfIiu7Rxno' } };
 
   dispatch(fetchTripRequests());
   axios.get(`${backendURLs.BASE_URL}/trips?page=${page}&limit=${limit}`, config)

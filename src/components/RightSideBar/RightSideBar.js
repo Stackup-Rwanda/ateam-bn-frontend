@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { faBell } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faPlaneDeparture } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import trip from '../../assets/images/trip.png';
 import './RightSideBar.scss';
 
 class RightSideBar extends Component {
@@ -25,7 +24,7 @@ class RightSideBar extends Component {
         <div className="stats">
           <div className="status">
             <div className="icon">
-              <img className="menus" src={trip} alt="trip" />
+              <FontAwesomeIcon icon={faPlaneDeparture} className="menus" size="2x" />
             </div>
             <div className="text">
               <p className="approved">Approved</p>
@@ -34,7 +33,7 @@ class RightSideBar extends Component {
           </div>
           <div className="status">
             <div className="icon">
-              <img className="menus" src={trip} alt="trip" />
+              <FontAwesomeIcon icon={faPlaneDeparture} className="menus" size="2x" />
             </div>
             <div className="text">
               <p className="pending">Pending</p>
@@ -43,7 +42,7 @@ class RightSideBar extends Component {
           </div>
           <div className="status">
             <div className="icon">
-              <img className="menus" src={trip} alt="trip" />
+              <FontAwesomeIcon icon={faPlaneDeparture} className="menus" size="2x" />
             </div>
             <div className="text">
               <p className="rejected">Rejected</p>

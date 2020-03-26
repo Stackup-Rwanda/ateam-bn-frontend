@@ -9,12 +9,12 @@ import SectionTwo from './SectionTwo';
 import '../../assets/style/layout.scss';
 
 class Dashboard extends Component {
-  componentWillMount() {
-    const { token, history } = this.props;
-    if (!token) {
-      history.push('/login');
-    }
-  }
+  // componentWillMount() {
+  //   const { token, history } = this.props;
+  //   if (!token) {
+  //     history.push('/login');
+  //   }
+  // }
 
   render() {
     return (

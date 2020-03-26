@@ -33,6 +33,7 @@
     .menus {
       width: $xsmall;
       margin-bottom: 40px;
+      color: black;
     }
   }
 
@@ -42,9 +43,10 @@
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    img {
+    .menus {
       width: $xsmall;
       margin: auto;
+      color: black;
     }
   }
 }
