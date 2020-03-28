@@ -1,6 +1,6 @@
 import React from 'react';
 import App from '../../components/App';
-import Routes from '../../components/routes';
+import Routes from '../../components/Routes';
 import { shallow } from '../../../config/enzymeConfig';
 import ForgotPassword from '../../components/ResetPassword/ForgotPassword';
 import ResetPassword from '../../components/ResetPassword/ResetPassword';
