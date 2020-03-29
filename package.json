@@ -17,6 +17,17 @@
     "storybook": "start-storybook -p 9009 -s public",
     "story": "concurrently \"npm run start\" \"npm run storybook\""
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/**/*.js",
+      "!<rootDir>/src/serviceWorker.js",
+      "!<rootDir>/src/index.js",
+      "!<rootDir>/**/*.s.js",
+      "!<rootDir>/.storybook/**/*.*",
+      "!<rootDir>/coverage/**/*.*",
+      "!<rootDir>/build/**/*.*"
+    ]
+  },
   "eslintConfig": {
     "extends": "react-app"
   },

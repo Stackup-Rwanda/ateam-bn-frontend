@@ -1,0 +1,33 @@
+$xxxsmall: 18px;
+$xxsmall: 20px;
+$xsmall: 30px;
+$small: 40px;
+$medium: 50px;
+$large: 57px;
+$xlarge: 287px;
+$xxlarge: 585px;
+$xxxlarge: 802px;
+
+.xxxsmall-text{
+    font-size: $xxxsmall;
+}
+.xxsmall-text{
+    font-size: $xxsmall;
+}
+.xsmall-text{
+    font-size: $xsmall;
+}
+.small-text{
+    font-size: $small;
+}
+.medium-text{
+    font-size: $medium;
+}
+.large-text{
+    font-size: $large;
+}
+
+$paragraphWidth: 521px;
+$paragraphHeight: 115px;
+$lineHeightParagraph: 27px;
+
