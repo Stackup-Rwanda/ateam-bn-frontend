@@ -5,7 +5,7 @@ class Button extends Component {
   render() {
     return (
       <>
-        <button type="button">Add Trip</button>
+        <button className="dont-mess-mine-use-class-please" type="button">Add Trip</button>
       </>
     );
   }

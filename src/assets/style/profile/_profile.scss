@@ -1,0 +1,604 @@
+/* importing Staff */
+@import './colors';
+@import './pixels';
+*{
+	margin: 0;
+	padding: 0;
+}
+/* Menu Staff */
+.side-menu {
+  border-right: $green 01px solid;
+  background-color: $white;  
+  padding-top: $xxsmall;
+  position: fixed;
+  height: 100%;
+  width: 05%;
+  top: 0;
+  left: 05;
+}
+
+
+.side-menu {
+	.logo{
+  padding: $xxsmall $xxsmall $xxsmall 05px;
+  padding-bottom: $xsmall;
+  padding-top: 0px;
+  margin: auto;
+  width: $medium; }
+}
+
+.side-menu {
+	img {
+  padding: 10px $xxsmall $xxsmall 0px;
+  display: block;
+  margin: auto;
+  width: $xxsmall; }
+}
+
+.side-menu .logout{
+  padding: $xxsmall $xxsmall $xxsmall $xxsmall;
+  position: fixed;
+  width: $xxsmall;
+  bottom: 0;
+}
+
+/* Profile images Staff */
+.profile {
+  position: relative;
+  text-align: center;
+  margin-left: 05.0666%;
+}
+
+.background-profile{
+  width: 100%;
+  height: 300px;
+  border-radius: 00px 00px 05px 05px;
+}
+
+.avatar {
+  position: absolute;
+  top: 250px;
+  left: 60px;
+}
+
+.user-name {
+  position: absolute;
+  color: rgb(99, 99, 99);
+  top: 300px;
+  left: 180px;
+}
+.avatar {
+	img{
+  border: $white 10px solid;
+  border-radius: 100px;
+  height: 100px;
+  width: 100px; }
+}
+
+.empty{
+	position: absolute;
+    top: 290px;
+	width: 99.9%;
+	height: 80px;
+	background: #ffffffff;
+	border-radius: 20px 20px 00px 00px;
+}
+
+/* Profile Contents Staff */
+.request {
+  font-size: 28px; 
+  margin-left: 06%;
+  padding: $xxsmall $xxsmall;
+
+}
+
+.user-details{
+	width: 25%;
+	float: left;
+	font-size: 15px;
+	margin-top: 80px;
+	padding-right: 80px;
+}
+
+
+.my-column { 
+	p {
+	color: rgb(99, 99, 99);
+    font-weight: bold;
+    font-family: "Arial Black", Gadget, sans-serif }
+}
+
+.edit-button{
+	height: 40px;
+	width: 135px;
+	color: $white;
+    margin-top: $xxsmall;
+    font-weight: bold;
+    margin-bottom: $xxsmall;
+	background: $green;
+	border-radius: $xxsmall $xxsmall $xxsmall $xxsmall;
+}
+
+.update-button{
+	height: 40px;
+	width: 90%;
+	color: $white;
+    font-weight: bold;
+    margin-bottom: $xxsmall;
+	background: $green;
+	border-radius: $xxsmall $xxsmall $xxsmall $xxsmall;
+}
+
+.form-cover{
+	width: 90%;
+	padding: 0px;
+	color: $green;
+	text-align: center;
+	margin-top: $xsmall;
+	margin-bottom: $xsmall;
+	border-radius: 05px 05px 05px 05px;
+}
+
+
+.form-cover .file {
+	border-radius: 05px 05px 05px 05px;
+	background: #f3f3f3;
+	padding-left:20px;
+	padding-top: 10px;
+	margin-top: 20px;
+	font-size: 12px;
+	height: $xsmall;
+	width: 90%;
+	border: 2;
+}
+
+.form-cover .form .inputs{
+	border-radius: 05px 05px 05px 05px;
+	background: #f3f3f3;
+	padding-left:20px;
+	margin-top: 20px;
+	font-size: 15px;
+	height: $small;
+	color: gray;
+	width: 90%;
+	border: 0;
+}
+
+.placehold{
+	color: #028859;
+	font-size: 11px;
+}
+
+.form-cover .form {
+	select{
+	border-radius: 05px 05px 05px 05px;
+	background: #f3f3f3;
+	padding-left:20px;
+	margin-top: 20px;
+	font-size: 15px;
+	height: $small;
+	color: gray;
+	width: 97%;
+	border: 0; }
+}
+
+/* Travels Contents Staff */
+.request {
+	.request-title{
+	width: 64%;
+	float: left;
+	color: $green;
+	border-bottom: 05px solid $green; }
+}
+
+.travels{
+	width: 31%;
+	height: 380px;
+	float: left;
+	font-size: 15px;
+	margin-left: $xxsmall;
+	margin-bottom: 50px;
+	box-shadow: 01px 2.5px 2.5px 01px rgba(0,0,0,0.03);
+}
+
+.travels .my-column{
+	padding: 10px;
+}
+
+.my-column {
+	img {
+	margin-right: 08px; 
+	width: $xxsmall; }
+}
+
+
+.travels {
+	img{
+	width: 100%;
+	height: 200px; }
+}
+
+.travels { 
+	h5{
+	color: #454545;
+    font-weight: bold;
+    font-family: "Arial Black", Gadget, sans-serif }
+}
+
+.error{
+	margin-top: 100px;
+	color: #90beb3;
+    font-weight: bold;
+    font-family: "Arial Black", Gadget, sans-serif
+}
+
+.resultError{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: #90beb3;
+    font-weight: bold;
+    font-family: "Arial Black", Gadget, sans-serif
+}
+
+.travels .date{
+	margin-top: 20px;
+	color: $green;
+	font-size: 10px;
+	font-weight: bold;
+    font-family: "Arial Black", Gadget, sans-serif
+}
+
+/* Ensure All Platform */
+@media(max-width: 1340px) {
+
+	.side-menu .logo{
+		padding: 0px $xxsmall $xxsmall 05px;
+		width: 045px;
+	}
+	.side-menu .logout{
+		padding: $xxsmall $xxsmall $xxsmall 15px;
+	}
+	.request {
+		.request-title{
+	width: 65%; }
+    }
+
+	.user-details{
+	width: 24%;
+	padding: 08px;
+	font-size: 14px;
+	padding-right: 80px;
+    }
+
+    .travels{
+	width: 27%;
+	padding: 08px;
+	height: 370px;
+	margin-left: $small;
+    }
+
+    .profile-button{
+	height: 35px;
+	width: 130px;
+    margin-left: $xxxsmall;
+    }
+}
+
+@media(max-width: 1240px) {
+
+	.side-menu .logo{
+		padding: 0px $xxsmall $xxsmall 05px;
+		width: $small;
+	}
+	.side-menu .logout{
+		padding: $xxsmall $xxsmall $xxsmall 15px;
+	}
+
+	.request {
+	margin-left: 06%;
+	padding: $xxsmall $xxxsmall;
+    }
+
+	.user-details{
+	width: 23%;
+	padding: 07px;
+	font-size: 13px;
+	padding-right: 80px;
+	}
+	
+	
+	.form-cover .file {
+		padding-left:05px;
+		margin-top: 10px;
+		font-size: 12px;
+		height: $xsmall;
+	}
+	
+	.form-cover .form .inputs{
+		padding-left:05px;
+		margin-top: 10px;
+		font-size: 12px;
+		height: $xsmall;
+	}
+	
+	.form-cover .form {
+		select{
+		padding-left:05px;
+		margin-top: 10px;
+		font-size: 12px;
+		height: $xsmall;
+		width: 92%; }
+	}
+
+    .travels{
+	width: 28%;
+	height: 380px;
+	margin-left: 20px;
+    }
+
+    .profile-button{
+	height: 35px;
+	width: 120px;
+    margin-left: 16px;
+    }
+}
+
+
+@media(max-width: 1070px) {
+
+	.side-menu .logo{
+		padding: 0px $xxsmall $xxsmall 05px;
+		width: 35px;
+	}
+	.side-menu .logout{
+		padding: $xxsmall $xxsmall $xxsmall 10px;
+	}
+	.request {
+	margin-left: 06%;
+	padding: $xxsmall $xxxsmall;
+    }
+
+	.user-details{
+	width: 22%;
+	padding: 07px;
+	font-size: 12px;
+	padding-right: 75px;
+	}
+	
+	.form-cover .file {
+		padding-left:05px;
+		margin-top: 10px;
+		font-size: 10px;
+		height: $xxsmall;
+	}
+	
+	.form-cover .form .inputs{
+		padding-left:05px;
+		margin-top: 10px;
+		font-size: 12px;
+		height: $xsmall;
+	}
+	
+	.form-cover .form { 
+		select{
+		padding-left:05px;
+		margin-top: 10px;
+		font-size: 12px;
+		height: $xsmall;
+		width: 92%; }
+	}
+	
+	
+
+    .travels{
+	width: 27%;
+	padding: 07px;
+	height: 390px;
+	margin-left: $xxsmall;    
+    }
+
+    .profile-button{
+	height: 35px;
+	width: 120px;
+    margin-left: 14px;
+    }
+
+}
+
+@media(max-width: 970px) {
+	.side-menu .logo{
+		padding: 0px $xxsmall $xxsmall 05px;
+		width: $xsmall;
+	}
+	.side-menu .logout{
+		padding: $xxsmall $xxsmall $xxsmall 10px;
+	}
+
+	.user-details{
+		font-size: 11px;
+		}
+	.travels{
+		height: 400px;
+		}
+}
+
+
+@media(max-width: 830px) {
+	.side-menu .logo{
+		padding: 0px $xxsmall $xxsmall 05px;
+		width: 25px;
+	}
+	.side-menu .logout{
+		padding: $xxsmall $xxsmall $xxsmall 05px;
+	}
+
+	.request {
+	margin-left: 06%;
+	padding: $xxsmall 18px;
+    }
+
+	.user-details{
+	width: 22%;
+	padding: 06px;
+	font-size: 10px;
+	padding-right: $xsmall;
+    }
+
+    .travels{
+	width: 26%;
+	padding: 06px;
+	height: 450px;
+	margin-left: $xsmall;    
+    }
+
+    .profile-button{
+	height: 35px;
+	width: 100px;
+    margin-left: 12px;
+    }
+	
+}
+
+@media(max-width: 670px) {
+	.side-menu .logo{
+		padding: 0px $xxsmall $xxsmall 01px;
+		width: 25px;
+	}
+	.side-menu .logout{
+		padding: $xxsmall $xxsmall $xxsmall 05px;
+	}
+	.request {
+	margin-left: 2.5%;
+	padding: $xxsmall 25px;
+    }
+
+	.user-details{
+	display: block;
+	font-size: 15px;
+	width: 90%;
+	}
+
+    .travels{
+    display: block;
+	height: 370px;
+	width: 90%;
+    }
+
+
+	.profile-button{
+	height: 35px;
+	width: 120px;
+    }
+}
+
+
+
+@media(max-width: 540px) {
+	.side-menu .logo{
+		padding: 0px $xxsmall $xxsmall 01px;
+		width: 25px;
+	}
+	.side-menu .logout{
+		padding: $xxsmall $xxsmall $xxsmall 01px;
+		width: 10px;
+	}
+	.request {
+	margin-left: 2.5%;
+	padding: $xxsmall 25px;
+    }
+
+	.user-details{
+    display: block;
+	width: 80%;
+	}
+
+    .travels{
+    display: block;
+	width: 80%;
+    }
+}
+
+
+@media(max-width: 480px) {
+	.side-menu .logo{
+		padding: 0px $xxsmall $xxsmall 01px;
+		width: $xxsmall;
+	}
+	.side-menu .logout{
+		padding: $xxsmall $xxsmall $xxsmall 01px;
+		width: 10px;
+	}
+
+	.user-name {
+	top: 300px;
+	left: 180px;
+	font-size: 10px;
+	}
+	
+	.request {
+	margin-left: 2.5%;
+	padding: $xxsmall $xxsmall;
+    }
+
+	.user-details{
+    display: block;
+	font-size: 10px;
+	width: 80%;
+	}
+
+    .travels{
+    display: block;
+	height: 400px;
+	width: 80%;
+    }
+
+
+	.profile-button{
+	height: 35px;
+	width: 120px;
+    }
+}
+
+
+@media(max-width: 370px) {
+	.side-menu .logo{
+		padding: 0px $xxsmall $xxsmall 01px;
+		width: 17px;
+	}
+	.side-menu .logout{
+		padding: $xxsmall $xxsmall $xxsmall 01px;
+		width: 10px;
+	}
+	.side-menu {
+		img {
+		width: 15px; }
+	}
+	.side-menu .logout{
+		width: 15px;
+	}
+	.avatar {
+	left: 35px;
+	}
+	.user-name {
+	top: 300px;
+	left: 150px;
+	font-size: 10px;
+	}
+
+	.request {
+	margin-left: 05%;
+	padding: $xxsmall 10px;
+    }
+
+	.user-details{
+    display: block;
+	width: 60%;
+	}
+
+    .travels{
+    display: block;
+	width: 60%;
+    }
+}
+
+
