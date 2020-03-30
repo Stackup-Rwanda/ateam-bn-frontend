@@ -13,15 +13,14 @@ describe('Testing Login Reducer', () => {
       type: userActionTypes.LOGIN_USER_SUCCESS,
       payload: { token: 'token' }
     });
-    expect(reducerResult).toHaveProperty('token');
+    expect(reducerResult.user).toHaveProperty('token');
   });
   it('LOGIN FAILURE', () => {
     const reducerResult = loginReducer(initialState, {
       type: userActionTypes.LOGIN_USER_FAILURE,
       payload: { error: 'password or email is incorrect' }
     });
-    expect(reducerResult).toHaveProperty('loginErrors');
-    expect(reducerResult.loginErrors).toEqual('password or email is incorrect');
+    expect(reducerResult.user).toHaveProperty('loginErrors');
   });
   it('default', () => {
     const reducerResult = loginReducer(initialState, {

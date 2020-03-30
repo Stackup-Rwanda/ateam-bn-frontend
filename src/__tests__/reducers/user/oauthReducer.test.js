@@ -13,6 +13,11 @@ describe('Testing oauthReducer', () => {
     expect(reducerResult).toHaveProperty('oauthErrors');
     expect(reducerResult.oauthErrors).toEqual('failed_to_login_user');
   });
+  it('AUTH_MESSAGE', () => {
+    const reducerResult = oauthReducer(initialState, { type: userActionTypes.AUTH_MESSAGE, payload: { message: 'auth message' } });
+    expect(reducerResult).toHaveProperty('authMessage');
+    expect(reducerResult.authMessage).toEqual('auth message');
+  });
   it('default', () => {
     const reducerResult = oauthReducer(initialState, { type: 'fake_action', payload: { error: 'failed_to_login_user' } });
     expect(reducerResult.user).toHaveProperty('token');

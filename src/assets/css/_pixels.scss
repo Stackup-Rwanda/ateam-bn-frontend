@@ -1,0 +1,46 @@
+$xxxsmall: 18px;
+$xxsmall: 20px;
+$xsmall: 30px;
+$small: 40px;
+$medium: 50px;
+$large: 57px;
+$xlarge: 282px;
+$xxlarge: 585px;
+$xxxlarge: 802px;                   
+$paddingSmall: 12px;
+
+$paragraphWidth: 521px;
+$paragraphHeight: 115px;
+$lineHeightParagraph: 27px;
+$lineHeightInput: 33px;
+$lineHeightButton: 41px;
+
+.lg-title {
+    font-weight: bold;
+    font-size: $medium;
+    line-height: 68px;
+}
+
+.md-title {
+    font-size: $small;
+}
+
+
+.sm-title {
+    font-size: $xsmall;
+}
+
+.xs-title {
+    font-size: $xxsmall;
+}
+
+$paragraphWidth: 521px;
+$paragraphHeight: 115px;
+$lineHeightParagraph: 27px;
+$leftSidebarWidth: 5%;
+$rightSidebarWidth: 20%;
+$middleWidth: 75%;
+.m-left-social-btn{
+    margin-left: 10px;
+}
+

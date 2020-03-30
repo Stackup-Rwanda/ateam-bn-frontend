@@ -1,0 +1,148 @@
+@import './pixels';
+@import './colors';
+
+
+.sign {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    height: 48vw;
+}
+
+.bg-half-white-sign {
+    background-color: #F4F8F7;
+    color: #464242;
+    font-size: larger
+}
+
+.sign a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.sign-form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8vw;
+}
+
+.sign-form select {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 5px 0;
+    display: inline-block;
+    border-radius: 4px;
+    font-size: 18px;
+    color: inherit;
+    box-sizing: border-box;
+}
+
+.sign-form h1{
+    margin-left: 10vw;
+}
+
+.form-container .row { justify-content: space-between; }
+
+.row .form-field-sign{
+    width: 30%;
+    margin-left: 3vh;
+    margin-right: 3vh;
+}
+
+
+.row .form-field-sign input[type='radio']{
+    width: 6%;
+    height: 4vh;
+}
+
+.row .form-field-sign input[type='radio']:checked + label {
+    color:black;
+    font-weight: 600;
+}
+
+
+.radio {
+    cursor: pointer;
+}
+
+.row .form-field-sign label{
+    font-size: 22px;
+}
+
+.social-btn .img-sign {
+    width: 10%;
+    height: 10%;
+}
+
+.land-auth-sign {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $green;
+}
+
+.welcome-auth-sign {
+    display: flex;
+    flex-direction: column;
+    padding: $xxsmall;
+    color: #fff;
+}
+
+.welcome-auth-sign .btn{
+    width: 60%;
+    margin: auto;
+    margin-top: 5vh;
+}
+
+.welcome-auth-sign p{
+    margin-bottom: 10vw;
+}
+
+.welcome-auth-sign h1{
+    margin-bottom: 4vw;
+}
+
+.card-sign{
+    -webkit-box-shadow: 0px 5px 14px -2px rgba(58,179,151,0.75);
+    -moz-box-shadow: 0px 5px 14px -2px rgba(58,179,151,0.75);
+    box-shadow: 0px 5px 14px -2px rgba(58,179,151,0.75);
+    width: 40vw;
+    height: 50vh;
+    text-align: center;
+    line-height: 2;
+    background-color: #3ab397;
+    border-radius: 5vh;
+}
+
+.sign-form h2{
+    margin-top: 3vw;
+    color:#FFFFFF;
+    font-weight: 600;
+    font-size: xx-large;
+}
+
+.ml-1 {
+    margin-left: 1vw;
+    width: -webkit-fill-available;
+  }
+ 
+  .text-danger{
+    color: #e00606;
+    font-size: large;
+  }
+
+  .btn-sign {
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: ease-in 0.3s;
+    width: 40%;
+    height: 8vh;
+    margin-top: 10vh;
+    margin-left: 7vw;
+}

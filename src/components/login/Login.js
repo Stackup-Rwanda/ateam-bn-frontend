@@ -21,9 +21,9 @@ class Login extends Component {
 
   componentDidMount() {
     const { oauthActions } = this.props;
-    const { token, error } = qs.parse(window.location.search, { ignoreQueryPrefix: true });
-    if (token || error) {
-      oauthActions({ token, error });
+    const { token, error, message } = qs.parse(window.location.search, { ignoreQueryPrefix: true });
+    if (token || error || message) {
+      oauthActions({ token, error, message });
     }
   }
 
@@ -47,7 +47,7 @@ class Login extends Component {
   };
 
   render() {
-    const { oauthErrors, loginErrors, history } = this.props;
+    const { oauthErrors, loginErrors, authMessage, history } = this.props;
     const token = localStorage.getItem('token');
     let componentToRender;
     if (!token) {
@@ -57,15 +57,22 @@ class Login extends Component {
             <div className="flex column p-20 b-radius m-bottom">
               {loginErrors && <AuthError error={loginErrors} />}
               {oauthErrors && <AuthError error={oauthErrors} />}
+              {authMessage && <AuthError error={authMessage} />}
               <h1 className="md-title c-green m-bottom">Sign in to Barefoot</h1>
               <SocialAuthButton
                 type="facebook"
-                linkClass="full-btn sm-radius bg-blue social-btn"
+                divClass="form-filed m-bottom"
+                imgClass="img"
+                spanClass="xs-title m-left"
+                linkClass="full-btn-login sm-radius bg-blue social-btn"
                 text="Sign in with Facebook"
               />
               <SocialAuthButton
                 type="google"
-                linkClass="full-btn sm-radius bg-half-white social-btn"
+                divClass="form-filed m-bottom"
+                imgClass="img"
+                spanClass="xs-title m-left"
+                linkClass="full-btn-login sm-radius bg-half-white social-btn"
                 text="Sign in with Google"
               />
               <div className="form-filed m-bottom">
@@ -99,7 +106,7 @@ class Login extends Component {
                 Barefooter!
               </h1>
               <p className="xs-title m-top">Make company global travel and accommodation easy and convenient for the strong workforce of savvy members of staff, by leveraging the modern web.</p>
-              <Link to="#" className="btn auth-btn md-btn b-radius-circle c-blue m-top text-center sm-title">Sign Up</Link>
+              <Link to="/" className="btn auth-btn md-btn b-radius-circle c-blue m-top text-center sm-title">Sign Up</Link>
             </div>
           </div>
         </div>
@@ -121,6 +128,8 @@ Login.propTypes = {
   oauthActions: PropTypes.func.isRequired,
   oauthErrors: PropTypes.string,
   loginRequest: PropTypes.func.isRequired,
+  loginErrors: PropTypes.string,
+  authMessage: PropTypes.string,
   history: PropTypes.shape({ push: PropTypes.func }).isRequired
 };
 
@@ -128,7 +137,8 @@ const mapStateToProps = ({ user }) => ({
   token: user.token,
   oauthErrors: user.oauthErrors,
   loading: user.loading,
-  loginErrors: user.loginErrors
+  loginErrors: user.loginErrors,
+  authMessage: user.authMessage
 });
 
 const mapDispatchToProps = (dispatch) => ({

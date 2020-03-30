@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { mount } from '../../../config/enzymeConfig';
 import store from '../../__mocks__/store';
-import Routes from '../../components/routes';
+import Routes from '../../components/Routes';
 import ForgotPassword from '../../components/ResetPassword/ForgotPassword';
 import ResetPassword from '../../components/ResetPassword/ResetPassword';
 import Login from '../../components/login';
