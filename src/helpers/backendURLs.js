@@ -4,6 +4,7 @@ const LOCAL_URL = 'http://localhost:4000';
 const facebookAuth = `${BASE_URL}/auth/facebook`;
 const googleAuth = `${BASE_URL}/auth/google`;
 const LOGIN_URL = `${BASE_URL}/auth/signin`;
+const LOGOUT_URL = `${BASE_URL}/auth/logout`;
 
 export {
   BASE_URL,
@@ -11,5 +12,6 @@ export {
   LOCAL_URL,
   facebookAuth,
   googleAuth,
-  LOGIN_URL
+  LOGIN_URL,
+  LOGOUT_URL
 };
