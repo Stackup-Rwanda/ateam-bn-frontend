@@ -5,9 +5,11 @@ import forgotPasswordReducer from './forgotPasswordReducer';
 import updatePasswordReducer from './updatePasswordReducer';
 import oauthReducer from './oauthReducer';
 import loginReducer from './loginReducer';
+import signupReducer from './signupReducer';
 
 export default (state = initialState, action) => {
   const clearUserStore = clearUserStoreReducer(state, action);
+  const signup = signupReducer(state, action);
   const login = loginReducer(state, action);
   const oauth = oauthReducer(state, action);
   const forgotPassword = forgotPasswordReducer(state, action);
@@ -17,6 +19,7 @@ export default (state = initialState, action) => {
       || oauth
       || forgotPassword
       || updatePassword
+      || signup
       || login
       || state
   );

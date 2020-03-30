@@ -15,6 +15,14 @@ export const resolvedLoginRequest = {
   config: {}
 };
 
+export const resolvedSignUpRequest = {
+  data: { message: 'User was created successfully, Verify your email to confirm registration' },
+  status: 201,
+  statusText: 'Created',
+  headers: {},
+  config: {}
+};
+
 export const rejectedRequest = {
   response: {
     data: { errors: { message: 'errors' } },
@@ -29,6 +37,34 @@ export const rejectedLoginRequest = {
     data: { error: 'password or email is incorrect' },
     status: 401,
     statusText: 'ERROR',
+  }
+};
+
+export const badRequest = {
+  response: {
+    data: {
+      status: 400,
+      error: {
+        name: 'Please enter your name',
+        username: 'Please enter your username',
+        email: 'Please enter your email',
+        password: 'Please enter your password',
+        passportId: 'Please enter your passportId'
+      }
+    },
+    statusText: 'BAD REQUEST',
+    headers: {},
+    config: {}
+  }
+};
+
+export const conflict = {
+  response: {
+    data: {
+      status: 409,
+      error: 'This user already exists, use another email or username'
+    },
+    statusText: 'Conflict',
     headers: {},
     config: {}
   }
@@ -49,7 +85,10 @@ export const resolvedTripsRequest = {
 
 export default {
   get: jest.fn(() => Promise.resolve({ ...resolvedRequest })),
-  post: jest.fn(() => Promise.resolve({ ...resolvedRequest, status: 201 })),
+  post: jest.fn(() => Promise.resolve(
+    { ...resolvedRequest, status: 201 },
+    { ...resolvedRequest, status: 200 }
+  )),
   put: jest.fn(() => Promise.resolve({ ...resolvedRequest })),
   delete: jest.fn(() => Promise.resolve({ ...resolvedRequest })),
   patch: jest.fn(() => Promise.resolve({ ...resolvedRequest })),

@@ -13,6 +13,11 @@ export default (state, { type, payload }) => {
         ...state,
         oauthErrors: payload.error
       };
+    case userActionTypes.AUTH_MESSAGE:
+      return {
+        ...state,
+        authMessage: payload.message
+      };
     default:
       return null;
   }

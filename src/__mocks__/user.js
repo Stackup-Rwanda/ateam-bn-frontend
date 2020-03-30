@@ -20,3 +20,15 @@ export const loginUser = {
   email: 'manziguevara@gmail.com',
   password: 'manzi123'
 };
+export const userToRegister = {
+  name: 'kkkkk',
+  email: 'aaa@gmail.com',
+  username: 'gggg',
+  department: 'it',
+  password: '123456789',
+  passportId: '1234567',
+  prefferedLanguage: 'English',
+  prefferedCurrency: 'RWF',
+  birthdate: '2001-03-20',
+  gender: 'female'
+};

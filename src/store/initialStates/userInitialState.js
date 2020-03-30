@@ -5,6 +5,11 @@ const userInitialState = {
   oauthErrors: null,
   profile: localStorage.profile,
   isAuth: localStorage.isAuth,
+  signedUp: false,
+  validErrors: {},
+  signUpErrors: '',
+  message: '',
+  authMessage: '',
   forgotPassword: {
     loading: false,
     message: '',

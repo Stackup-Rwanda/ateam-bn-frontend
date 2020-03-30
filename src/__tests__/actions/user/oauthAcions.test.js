@@ -10,4 +10,8 @@ describe('Testing oauthActions', () => {
     const result = await store.dispatch(oauthActions({ token: 'token', error: null }));
     expect(result).toHaveProperty('type');
   });
+  it('should dipatch message', async () => {
+    const result = await store.dispatch(oauthActions({ message: 'message' }));
+    expect(result).toHaveProperty('type');
+  });
 });
