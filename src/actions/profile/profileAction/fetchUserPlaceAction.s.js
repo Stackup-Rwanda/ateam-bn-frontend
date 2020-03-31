@@ -14,7 +14,7 @@ export const fetchPlaces = (token) => {
     .catch((error) => {
       dispatch({
         type: profileTypes.REQUEST_FAILURE,
-        payload: error
+        payload: error.response.data.error
       });
     });
 };

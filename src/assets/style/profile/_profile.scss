@@ -32,7 +32,7 @@
   padding: 10px $xxsmall $xxsmall 0px;
   display: block;
   margin: auto;
-  width: $xxsmall; }
+  width: 25px; }
 }
 
 .side-menu .logout{
@@ -247,6 +247,35 @@
 	font-weight: bold;
     font-family: "Arial Black", Gadget, sans-serif
 }
+
+.paginate-space {
+	text-align: center;
+}
+.paginate {
+	width: 100%;
+	display: inline-block;
+
+	.angles {
+	  margin: 0 30px;
+	  border: none;
+	  font-weight: bold;
+	  line-height: 16px;
+	  font-size: 20px;
+	}
+
+	span {
+	  font-family: Nunito;
+	  font-style: normal;
+	  font-weight: bold;
+	  font-size: 12px;
+	  line-height: 16px;
+	  padding: 08px 30px;
+	  background: rgb(224, 223, 223);
+	  color: #000000;
+	  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+	  border-radius: 08px 08px 08px 08px;
+	}
+  }
 
 /* Ensure All Platform */
 @media(max-width: 1340px) {
