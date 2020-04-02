@@ -46,3 +46,158 @@
     }
   }
 } 
+
+.app-search {
+  input {
+    display: inline;
+    background: #F4F8F7;
+    width: 367px;
+    object-fit: cover;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 25px;
+    padding: 6px 15px;
+    margin-right: 10px;
+    color: rgba(0, 0, 0, 0.3);
+  }
+  img {
+    display: inline;
+    cursor: pointer;
+    width: 20px;
+    height: 14px;
+  }
+  span {
+    display: block;
+    font-size: 15px;
+    color:  #3AB397;
+    text-align: center;
+  }
+}
+
+
+/* Ensure All Platform */
+@media(max-width: 1340px) {
+.app-search {
+  input {
+    width: 350px;
+  }
+  span {
+    width: 370px;
+  }
+} 
+}
+
+@media(max-width: 1270px) {
+  .app-search {
+    input {
+      width: 320px;
+    }
+    span {
+      width: 340px;
+    }
+  } 
+}
+
+
+  
+@media(max-width: 1170px) {
+  .app-search {
+    input {
+      width: 300px;
+    }
+    
+    span {
+      width: 320px;
+    }
+  } 
+}
+
+
+@media(max-width: 1140px) {
+  .app-search {
+    input {
+      width: 280px;
+    }
+    span {
+      width: 300px;
+    }
+  }
+}
+
+@media(max-width: 1080px) {
+  .app-search {
+    input {
+      width: 230px;
+    }
+    span {
+      width: 250px;
+    }
+  }
+}
+    
+@media(max-width: 980px) {
+  .app-search {
+    input {
+      width: 200px;
+    }
+    span {
+      width: 220px;
+    }
+  }
+}
+
+@media(max-width: 880px) {
+  .app-search {
+    input {
+      width: 180px;
+    }
+    span {
+      width: 200px;
+    }
+  }
+}
+
+@media(max-width: 780px) {
+  .app-search {
+    input {
+      width: 120px;
+    }
+    span {
+      width: 140px;
+    }
+  } 
+}
+
+@media(max-width: 680px) {
+  .app-search {
+    margin-top: 50px;
+    input {
+      width: 150px;
+    }
+    span {
+      width: 170px;
+    }
+  }
+}
+
+@media(max-width: 580px) {
+  .app-search {
+    float: left;
+    input {
+      width: 100px;
+    }
+    span {
+      width: 120px;
+    }
+  } 
+}
+
+@media(max-width: 480px) {
+  .app-search {
+    display: none;
+  }
+}

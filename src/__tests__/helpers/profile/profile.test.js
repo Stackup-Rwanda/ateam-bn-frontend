@@ -4,7 +4,8 @@ import {
   componentHelper,
   checkForm,
   assignPlaceName,
-  checkPlace
+  checkPlace,
+  checkSearch
 } from '../../../helpers';
 
 
@@ -102,6 +103,16 @@ describe('Testing Helper', () => {
   const state = { name: 'name', gender: 'gender', birthdate: 'birthdate', preferredLanguage: 'preferredLanguage', preferredCurrency: 'pref', location: 'location' };
   it('Testing checkForm helper', () => {
     expect(checkForm(state)).toBeTruthy();
+  });
+
+  it('Testing checkSearch helper', () => {
+    const state = { search: '' };
+    expect(checkSearch(state)).toBeTruthy();
+  });
+
+  it('Testing checkSearch helper', () => {
+    const state = { search: 'Approved' };
+    expect(checkSearch(state)).toBeTruthy();
   });
 
   const placeId = 1;

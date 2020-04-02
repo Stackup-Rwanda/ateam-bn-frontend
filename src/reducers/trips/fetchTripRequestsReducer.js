@@ -1,4 +1,4 @@
-import { tripsActionTypes } from '../../actionTypes';
+import { tripsActionTypes, searchType } from '../../actionTypes';
 
 export default (state, { type, payload }) => {
   switch (type) {
@@ -20,6 +20,17 @@ export default (state, { type, payload }) => {
         ...state,
         error: payload,
         loading: false
+      };
+    case searchType.SEARCH_SUCCESS:
+      return {
+        ...state,
+        trips: [...payload],
+        searchErrors: ' '
+      };
+    case searchType.SEARCH_FAILURE:
+      return {
+        ...state,
+        searchErrors: payload
       };
     default:
       return state;

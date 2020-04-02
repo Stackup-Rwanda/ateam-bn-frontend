@@ -37,7 +37,7 @@ export const updateUserProfileDetails = (token, userUpdates) => {
     .catch((error) => {
       dispatch({
         type: profileTypes.UPDATE_PROFILE_FAILURE,
-        payload: error.message
+        payload: error.response.data.error
       });
     });
 };

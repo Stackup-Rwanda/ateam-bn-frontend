@@ -14,7 +14,7 @@ export const fetchUserProfileDetails = (token) => {
     .catch((error) => {
       dispatch({
         type: profileTypes.REQUEST_FAILURE,
-        payload: error.message
+        payload: error.response.data.error
       });
     });
 };

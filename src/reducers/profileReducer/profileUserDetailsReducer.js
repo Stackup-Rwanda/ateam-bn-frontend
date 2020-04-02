@@ -25,7 +25,7 @@ export default (state, { type, payload }) => {
     case profileTypes.GET_USER_TRAVEL_FAILURE:
       return {
         ...state,
-        userTravelsError: `Hello, Travel ${payload}`
+        userTravelsError: `Hello, ${payload}`
       };
     case profileTypes.UPDATE_PROFILE_FAILURE:
       return {

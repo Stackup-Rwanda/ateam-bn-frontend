@@ -15,7 +15,7 @@ export const fetchUserTravels = (token, page) => {
     .catch((error) => {
       dispatch({
         type: profileTypes.GET_USER_TRAVEL_FAILURE,
-        payload: error.message
+        payload: error.response.data.message
       });
     });
 };

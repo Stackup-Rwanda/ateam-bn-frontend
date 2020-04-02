@@ -10,7 +10,8 @@ import {
   componentHelper,
   checkForm,
   assignPlaceName,
-  checkPlace
+  checkPlace,
+  checkSearch
 } from './ProfileHelper/profileHelper';
 
 export {
@@ -24,5 +25,6 @@ export {
   componentHelper,
   checkForm,
   assignPlaceName,
-  checkPlace
+  checkPlace,
+  checkSearch
 };

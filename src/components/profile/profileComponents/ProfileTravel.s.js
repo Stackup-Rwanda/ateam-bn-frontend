@@ -31,7 +31,8 @@ class ProfileTravels extends Component {
         {this.props.userProfileTravels.paginate
           && componentError === 'null'
           ? (<h4 className="request-title"> Travels </h4>)
-          : (<h4 className="error">{`${this.props.message}, ${componentError}`}</h4>)}
+          : (<h4 className="error">{' '}</h4>)
+          }
         <div>
           {
             this.props.userProfileTravels.paginate
@@ -73,7 +74,11 @@ class ProfileTravels extends Component {
               )
           }
         </div>
-        <div className="paginate-space">
+
+        {this.props.userProfileTravels.paginate
+          && componentError === 'null'
+          ? (
+            <div className="paginate-space">
           <div className="paginate">
             {
               this.props.userProfileTravels
@@ -83,11 +88,16 @@ class ProfileTravels extends Component {
                       ? (<FontAwesomeIcon icon={faAngleLeft}
                       className="angles"
                       style={{ color: '#3ab397cc' }}
-                      onClick={() => { this.previousPage(this.props.userProfileTravels.Previous); }}/>)
+                      onClick={() => {
+                        this.previousPage(this.props.userProfileTravels.Previous);
+                      }}/>)
                       : (<FontAwesomeIcon icon={faAngleLeft}
                         className="angles" />)}
-                    {this.props.userProfileTravels.Next ? (<span>{this.props.userProfileTravels.Next.page - 1}</span>)
-                      : this.props.userProfileTravels.Previous ? (<span>{this.props.userProfileTravels.Previous.page + 1}</span>) : null}
+                    {this.props.userProfileTravels.Next
+                      ? (<span>{this.props.userProfileTravels.Next.page - 1}</span>)
+                      : this.props.userProfileTravels.Previous
+                        ? (<span>{this.props.userProfileTravels.Previous.page + 1}</span>)
+                        : (<span>1</span>)}
                     {this.props.userProfileTravels.Next
                       ? (<FontAwesomeIcon icon={faAngleRight}
                       className="angles"
@@ -101,6 +111,11 @@ class ProfileTravels extends Component {
             }
           </div>
         </div>
+
+          )
+          : (<h4 className="error">{' '}</h4>)
+          }
+
       </div>
     );
   }
