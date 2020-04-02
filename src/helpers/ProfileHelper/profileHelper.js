@@ -46,6 +46,17 @@ const checkForm = (state) => {
   return formError;
 };
 
+const checkSearch = (state) => {
+  let searchError;
+  if (state.search.length < 1) {
+    searchError = 'No search found';
+    return searchError;
+  }
+
+  searchError = 'Loading...';
+  return searchError;
+};
+
 const assignPlaceName = (palceId, palceNames) => (
   palceId === 1 ? `  and  ${palceNames[0]}  ` : palceId
     && palceId === 2 ? `   ${palceNames[1]}  and  ` : palceId
@@ -71,5 +82,6 @@ export {
   componentHelper,
   checkForm,
   assignPlaceName,
-  checkPlace
+  checkPlace,
+  checkSearch
 };

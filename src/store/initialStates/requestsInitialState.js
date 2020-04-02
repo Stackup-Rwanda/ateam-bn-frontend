@@ -1,7 +1,8 @@
 const initState = {
   loading: false,
   trips: [],
-  errors: {}
+  errors: {},
+  searchErrors: 'null'
 };
 
 export default initState;

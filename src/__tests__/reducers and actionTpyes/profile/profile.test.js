@@ -1,6 +1,8 @@
-import { profileTypes } from '../../../actionTypes';
+import { profileTypes, searchType } from '../../../actionTypes';
 import profile from '../../../store/initialState';
 import profileUserDetailsReducer from '../../../reducers/profileReducer';
+import request from '../../../store/initialState';
+import fetchTripRequestsReducer from '../../../reducers/trips/fetchTripRequestsReducer';
 
 describe('Profile Reducer', () => {
   it('Testing profile reducer', () => {
@@ -77,6 +79,31 @@ describe('Profile Reducer', () => {
     expect(newState).toBeTruthy();
   });
 
+  it('Testing travel reducer', () => {
+    const userTravel = [
+      {
+        name: 'john',
+        passportId: 'PC234567',
+        userId: 1,
+        tripType: 'One-way',
+        from: 1,
+        to: [2, 1],
+        date: new Date(),
+        returnDate: null,
+        reasons: 'being a mannager',
+        accommodationId: 1,
+        status: 'Approved',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+    ];
+    const newState = fetchTripRequestsReducer(request, {
+      type: searchType.SEARCH_SUCCESS,
+      payload: userTravel
+    });
+    expect(newState).toBeTruthy();
+  });
+
   it('Testing update reducer', () => {
     const userDetails = [
       {
@@ -117,6 +144,14 @@ describe('Profile Reducer', () => {
     const newState = profileUserDetailsReducer(profile, {
       type: profileTypes.REQUEST_FAILURE,
       serverData: { message: 'Hello, Travel Bad request' }
+    });
+    expect(newState).toBeTruthy();
+  });
+
+  it('Testing travel reducer', () => {
+    const newState = fetchTripRequestsReducer(request, {
+      type: searchType.SEARCH_FAILURE,
+      payload: '"request with given input was not found'
     });
     expect(newState).toBeTruthy();
   });
