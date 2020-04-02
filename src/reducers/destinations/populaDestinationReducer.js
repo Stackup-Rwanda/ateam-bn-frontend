@@ -10,7 +10,7 @@ export default (state, { type, payload }) => {
     case tripsActionTypes.GET_DESTINATION_END:
       return {
         ...state,
-        getDestinations: { ...state.getUsers, message: '', loading: false,destinationErrors: {} }
+        getDestinations: { ...state.getUsers, message: '', loading: false, destinationErrors: {} }
       };
     case tripsActionTypes.GET_DESTINATION_SUCCESS:
       console.log(payload, 'reducer success case');
