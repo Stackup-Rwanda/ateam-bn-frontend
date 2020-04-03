@@ -69,12 +69,10 @@ SectionTwo.defaultProps = { requests: null };
 
 SectionTwo.propTypes = {
   fetchRequests: PropTypes.func.isRequired,
-  requests: PropTypes.shape({ trips: PropTypes.array.isRequired }),
-  token: PropTypes.string.isRequired,
-  history: PropTypes.shape({ push: PropTypes.func }).isRequired
+  requests: PropTypes.shape({ trips: PropTypes.array.isRequired })
 };
 
-const mapStateToProps = ({ requests, user }) => ({ requests, token: user.token });
+const mapStateToProps = ({ requests }) => ({ requests });
 
 const mapDispatchToProps = (dispatch) => {
   const { fetchRequests } = tripActions;

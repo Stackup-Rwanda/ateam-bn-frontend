@@ -7,6 +7,7 @@ import { fetchUserProfileDetails } from './profile/profileAction/getUserProfileA
 import { fetchUserTravels } from './profile/profileAction/getUserTravelAction.s';
 import { fetchPlaces } from './profile/profileAction/fetchUserPlaceAction.s';
 import { searchData } from './search/searchAction';
+import { getAllApprovals } from './approvals';
 
 
 export {
@@ -18,5 +19,6 @@ export {
   fetchUserTravels,
   fetchPlaces,
   updateUserProfileDetails,
-  searchData
+  searchData,
+  getAllApprovals
 };

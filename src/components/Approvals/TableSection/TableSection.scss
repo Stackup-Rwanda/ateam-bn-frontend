@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+@import '../../../assets/style/button';
+@import '../../../assets/style/colors';
+@import '../../../assets/style/fontsize';
+@import '../../../assets/style/pixels';
+@import '../../../assets/style/mixin';
+
+.table-section {
+  display: flex;
+  align-items: left;
+  flex-direction: column;
+  padding: 30px;
+  height: 100%;
+
+  span:first-child {
+    padding-left: 10px;
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 33px;
+    color: $gray;
+  }
+
+  .table {
+    background-color: #F7F7F7;
+    margin-top: 10px;
+    border-radius: 15px 15px 0px 0px;
+
+    table {
+      width: 100%;
+
+      th {
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: bolder;
+        font-size: 14px;
+        line-height: 16px;
+        color: #666666;
+        padding: 15px;
+        text-align: center;
+      }
+
+      td {
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        color: #666666;
+        padding: 8px;
+        text-align: center;
+
+        img {
+          width: 89px;
+          height: 51px;
+          border-radius: 6px;
+        }
+
+        span {
+          font-family: Nunito;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 16px;
+          padding: 0;
+        }
+
+        .approved {
+          color: rgba(32, 153, 148, 0.7);
+        }
+
+        .pending {
+          color: rgba(246, 162, 64, 0.7);
+        }
+
+        .rejected {
+          color: rgba(200, 58, 58, 0.7);
+        }
+      }
+    }
+  }
+}

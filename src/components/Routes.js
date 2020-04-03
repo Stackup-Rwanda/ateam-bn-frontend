@@ -10,6 +10,7 @@ import Profile from './profile';
 import Dashboard from './Dashboard';
 import Requests from './Requests/User';
 import userRole from './userRole/UserRole';
+import Approvals from './Approvals';
 
 const Routes = () => (
   <Switch>
@@ -27,6 +28,11 @@ const Routes = () => (
     {/* user role routes */ }
     <Route exact path="/userRole" component={userRole} />
     <Route exact path="/dashboard" component={Dashboard} />
+    <Route exact path="/dashboard" component={Dashboard} />
+    <Route exact path="/requests" component={Requests} />
+
+    {/* Manager's approvals trip request */}
+    <Route exact path="/approvals" component={Approvals} />
 
   </Switch>
 );
