@@ -10,12 +10,25 @@ const userInitialState = {
   signUpErrors: '',
   message: '',
   authMessage: '',
+  getUsers: {
+    loading: false,
+    message: '',
+    errors: {}
+  },
+  listOfUsers: [],
+  Next: {},
+  Previous: {},
   forgotPassword: {
     loading: false,
     message: '',
     errors: {}
   },
   updatePassword: {
+    loading: false,
+    message: '',
+    errors: {}
+  },
+  editRole: {
     loading: false,
     message: '',
     errors: {}

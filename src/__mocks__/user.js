@@ -32,3 +32,13 @@ export const userToRegister = {
   birthdate: '2001-03-20',
   gender: 'female'
 };
+
+export default (Object.user = {
+  id: 1,
+  Name: 'John, Smith',
+  username: 'josmi',
+  email: 'josmi@email.com',
+  lineManager: 3,
+  role: 'REQUESTER',
+
+});

@@ -6,6 +6,8 @@ import updatePasswordReducer from './updatePasswordReducer';
 import oauthReducer from './oauthReducer';
 import loginReducer from './loginReducer';
 import signupReducer from './signupReducer';
+import assignUserRole from './assignUserRole';
+import getUsersReducer from './getUsersReducer';
 
 export default (state = initialState, action) => {
   const clearUserStore = clearUserStoreReducer(state, action);
@@ -14,13 +16,17 @@ export default (state = initialState, action) => {
   const oauth = oauthReducer(state, action);
   const forgotPassword = forgotPasswordReducer(state, action);
   const updatePassword = updatePasswordReducer(state, action);
+  const getUsers = getUsersReducer(state, action);
+  const assignRole = assignUserRole(state, action);
   return (
     clearUserStore
-      || oauth
       || forgotPassword
       || updatePassword
       || signup
       || login
+      || getUsers
+      || assignRole
+      || oauth
       || state
   );
 };

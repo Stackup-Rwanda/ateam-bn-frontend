@@ -12,8 +12,8 @@ script:
   - npm run test:CI
 
 after_script: # Upload coverage reports 
-  - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
+  # - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 after_success:
-  - npm run coveralls
+  # - npm run coveralls

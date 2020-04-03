@@ -10,7 +10,8 @@ import '../../assets/style/layout.scss';
 
 class Dashboard extends Component {
   componentWillMount() {
-    const { token, history } = this.props;
+    const { history } = this.props;
+    const { token } = localStorage;
     if (!token) {
       history.push('/login');
     }

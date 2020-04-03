@@ -54,5 +54,4 @@ class RightSideBar extends Component {
     );
   }
 }
-
 export default RightSideBar;

@@ -10,7 +10,8 @@ import './Requests.scss';
 
 class Requests extends Component {
   componentWillMount() {
-    const { token, history } = this.props;
+    const { history } = this.props;
+    const { token } = localStorage;
     if (!token) {
       history.push('/login');
     }
