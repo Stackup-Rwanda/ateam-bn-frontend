@@ -19,6 +19,14 @@ html {
     position: relative;
 }
 
+.hide {
+    display: none;
+}
+
+.block {
+  display: block;
+}
+
 .styles {
   input {
       width: 100%;
@@ -87,8 +95,7 @@ html {
       border-radius: 4px;
       outline: none;
       text-indent: 0.01px;
-      background-color: #7a40f2;
-      color: #fff;
+      color: inherit;
       text-overflow: '';
       -webkit-appearance: button;
       /* hide default arrow in chrome OSX */
@@ -103,7 +110,7 @@ html {
   
   .dropdown::after {
       /*  Custom dropdown arrow */
-      /* content: "\25BC"; */
+      content: "\25BC";
       height: 1em;
       font-size: .625em;
       line-height: 1;
@@ -230,15 +237,20 @@ html {
   
   
   .form-field {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-  }
-  
-  .form-field label {
-      font-weight: 900;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    .field-label {
+    font-weight: 900;
+    font-size: 20px;
+    margin: 0;
+    font-family: Nunito;
+    font-style: normal;
+    line-height: none;
+    }
   }
   
   .column {

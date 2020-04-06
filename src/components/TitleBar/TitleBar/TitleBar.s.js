@@ -39,7 +39,7 @@ class TitleBar extends Component {
           <img
             src={searchBtn}
             alt="search btn"
-            onClick={() => { this.onsubmit(); }} />{console.log(this.props.searchErrors)}
+            onClick={() => { this.onsubmit(); }} />
 
           {
             this.props.searchErrors && this.props.searchErrors !== 'null'
