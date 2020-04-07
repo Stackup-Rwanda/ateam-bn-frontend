@@ -32,6 +32,11 @@ const userInitialState = {
     loading: false,
     message: '',
     errors: {}
+  },
+  logout: {
+    loading: false,
+    message: '',
+    logoutErrors: {}
   }
 };
 export default userInitialState;

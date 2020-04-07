@@ -23,10 +23,10 @@ const Routes = () => (
     <Route exact path="/reset-password/:userId/:token" render={(props) => <ResetPassword {...props} />} />
 
     {/* trip requests table routes */}
-    <Route exact path="/dashboard" component={Dashboard} />} />
-        <Route exact path="/requests" component={ Requests } />} />
-        {/* user role routes */ }
-        <Route exact path="/userRole" component={userRole} />} />
+    <Route exact path="/requests" component={ Requests } />
+    {/* user role routes */ }
+    <Route exact path="/userRole" component={userRole} />
+    <Route exact path="/dashboard" component={Dashboard} />
 
   </Switch>
 );

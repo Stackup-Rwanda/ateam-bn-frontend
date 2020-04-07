@@ -3,6 +3,7 @@ import forgotPassword from './forgotPasswordAction';
 import updatePassword from './updatePasswordAction';
 import adminGetUserAction from './adminGetUserAction';
 import AssignUserRoleAction from './AssignUserRoleAction';
+import logout from './logout';
 
 export
 {
@@ -10,5 +11,6 @@ export
   forgotPassword,
   updatePassword,
   adminGetUserAction,
-  AssignUserRoleAction
+  AssignUserRoleAction,
+  logout
 };

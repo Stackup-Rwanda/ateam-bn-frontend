@@ -27,7 +27,7 @@ const login = (data) => async (dispatch) => {
     localStorage.setItem('token', token);
     return dispatch(loginSuccess(token));
   } catch (error) {
-    return dispatch(loginFailure(error.response.data.error));
+    return dispatch(loginFailure(error.response.data.error.email || error.response.data.error.password || error.response.data.error));
   }
 };
 export default login;
