@@ -14,6 +14,7 @@ import {
   checkPlace,
   checkSearch
 } from './ProfileHelper/profileHelper';
+import { findByTestAttr, checkProps } from './testHelpers';
 
 export {
   axiosHelper,
@@ -28,5 +29,7 @@ export {
   assignPlaceName,
   checkPlace,
   checkSearch,
-  lineManager
+  lineManager,
+  findByTestAttr,
+  checkProps
 };

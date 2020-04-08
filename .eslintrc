@@ -67,6 +67,19 @@
     ],
     "import/no-unresolved": 0,
     "class-methods-use-this": 0,
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "no-unused-expressions": 0,
+    "no-nested-ternary": 0,
+    "max-len": [
+      "error",
+      {
+        "code": 400,
+        "comments": 200,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreTrailingComments": true
+      }
+    ]
   }
 }

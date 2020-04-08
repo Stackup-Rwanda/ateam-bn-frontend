@@ -32,12 +32,7 @@ class Dashboard extends Component {
   }
 }
 
-Dashboard.defaultProps = { token: null };
-
-Dashboard.propTypes = {
-  token: PropTypes.string,
-  history: PropTypes.shape({ push: PropTypes.func }).isRequired
-};
+Dashboard.propTypes = { history: PropTypes.shape({ push: PropTypes.func }).isRequired };
 
 const mapStateToProps = ({ user }) => ({ token: user.token });
 

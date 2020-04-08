@@ -32,12 +32,7 @@ class Requests extends Component {
   }
 }
 
-Requests.defaultProps = { token: null };
-
-Requests.propTypes = {
-  token: PropTypes.string,
-  history: PropTypes.shape({ push: PropTypes.func }).isRequired
-};
+Requests.propTypes = { history: PropTypes.shape({ push: PropTypes.func }).isRequired };
 
 const mapStateToProps = ({ user }) => ({ token: user.token });
 
