@@ -12,17 +12,27 @@ import Requests from './Requests/User';
 import userRole from './userRole/UserRole';
 import Approvals from './Approvals';
 import Accommodation from './accommodation/Accommodation';
+import NewAccommodation from './accommodation/NewAccommodation';
+import SpecificAccommodation from './accommodation/SpecificAccommodation';
 
 const Routes = () => (
-    <Switch>
-      {/* Auth routes */}
-      <Route exact path="/profile" component={Profile} />
-      <Route exact path="/" component={SignUp} />
-      <Route exact path="/login" component={Login} />
+  <Switch>
+    {/* Auth routes */}
+    <Route exact path="/profile" component={Profile} />
+    <Route exact path="/" component={SignUp} />
+    <Route exact path="/login" component={Login} />
 
-      {/* reset password routes */}
-      <Route exact path="/forgot-password" render={(props) => <ForgotPassword {...props} />} />
-      <Route exact path="/reset-password/:userId/:token" render={(props) => <ResetPassword {...props} />} />
+    {/* reset password routes */}
+    <Route
+      exact
+      path="/forgot-password"
+      render={(props) => <ForgotPassword {...props} />}
+    />
+    <Route
+      exact
+      path="/reset-password/:userId/:token"
+      render={(props) => <ResetPassword {...props} />}
+    />
 
       {/* trip requests table routes */}
       <Route exact path="/requests" component={ Requests } />
@@ -31,11 +41,18 @@ const Routes = () => (
       <Route exact path="/dashboard" component={Dashboard} />
       <Route exact path="/requests" component={Requests} />
 
-      {/* Manager's approvals trip request */}
-      <Route exact path="/approvals" component={Approvals} />
+    {/* Manager's approvals trip request */}
+    <Route exact path="/approvals" component={Approvals} />
 
     {/* accommodation */}
-    <Route exact path="/trip/:tripId/accommodation/:accommodationId" render={(props) => <Accommodation {...props} />} />
+    <Route
+      exact
+      path="/trip/:tripId/accommodation/:accommodationId"
+      render={(props) => <Accommodation {...props} />}
+    />
+    {/* accommodation routes */}
+    <Route exact path="/accommodations" component={NewAccommodation} />
+    <Route exact path="/accommodations/:id" component={SpecificAccommodation} />
   </Switch>
 );
 

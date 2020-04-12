@@ -9,7 +9,8 @@ const reducer = (state, { type, payload }) => {
     case LOGIN_USER_REQUEST:
       return {
         ...state,
-        loading: true
+        loading: true,
+        loginErrors: null
       };
     case LOGIN_USER_SUCCESS:
       return {

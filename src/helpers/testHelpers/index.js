@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-foreign-prop-types */
 import checkPropTypes from 'check-prop-types';
 
 export const findByTestAttr = (component, attr) => {

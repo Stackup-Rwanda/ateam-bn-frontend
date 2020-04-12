@@ -73,7 +73,6 @@ export class MenuBar extends Component {
 
     const icon = document.querySelector(`#${currentPage}`);
     const indicationBar = document.querySelector(`#${currentPage}-indicator`);
-    console.log('>>>>>>>>>>', indicationBar, '<<<<<<<<<<<');
     indicationBar.classList.remove('not-indicated');
     indicationBar.classList.add('indicated');
     icon.classList.remove('not-selected');
@@ -85,9 +84,7 @@ export class MenuBar extends Component {
     const token = localStorage.getItem('token');
     if (token) {
       const { role } = jwt.decode(token);
-      console.log(role);
       if (allowedRoles.includes(role)) {
-        console.log('role found: ', role);
         if (role === 'REQUESTER') {
           return (
             <div className="sidebar-options">

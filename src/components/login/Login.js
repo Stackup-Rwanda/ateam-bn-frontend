@@ -46,15 +46,20 @@ class Login extends Component {
     loginRequest(userData);
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.authMessage) {
-      toast.success(nextProps.authMessage);
-    } else if (nextProps.loginErrors) {
-      toast.error(nextProps.loginErrors);
-    } else if (nextProps.oauthErrors) {
-      toast.error(nextProps.oauthErrors);
-    }
-  }
+  componentWillReceiveProps = (nextProps) => {
+    const alertMessage = (nextProps.authMessage && toast.success(nextProps.authMessage))
+      || (nextProps.loginErrors
+        && toast.error(nextProps.loginErrors)) || (nextProps.oauthErrors && toast.error(nextProps.oauthErrors));
+
+    return !nextProps.loading && alertMessage;
+    // if (nextProps.authMessage) {
+    //   toast.success(nextProps.authMessage);
+    // } else if (nextProps.loginErrors) {
+    //   toast.error(nextProps.loginErrors);
+    // } else if (nextProps.oauthErrors) {
+    //   toast.error(nextProps.oauthErrors);
+    // }
+  };
 
   emailChange = (event) => {
     this.setState({ email: event.target.value });
@@ -71,8 +76,16 @@ class Login extends Component {
     if (!token) {
       componentToRender = (
         <div className="login" data-test="test-div">
-          <form formTitle="Fill form to Login" className="login-form m-20" onSubmit={this.handleSubmit}>
-          <ToastContainer position={toast.POSITION.TOP_CENTER} autoClose={8000}/>
+          <form
+            formTitle="Fill form to Login"
+            className="login-form m-20"
+            onSubmit={this.handleSubmit}
+          >
+            <ToastContainer
+            closeButton={false}
+              position={toast.POSITION.TOP_CENTER}
+              className="loginMessages"
+            />
             <div className="flex column p-20 b-radius m-bottom">
               <h1 className="md-title c-green m-bottom">Sign in to Barefoot</h1>
               <SocialAuthButton
@@ -110,8 +123,14 @@ class Login extends Component {
                   onChange={this.passwordChange}
                 />
               </div>
-                <button className="btn md-btn b-radius-circle bg-green text-center sm-title m-top-bottom-40">Sign In</button>
-              <div className="text-center"><Link to="/forgot-password" className="link c-green">Forgot password?</Link></div>
+              <button className="btn md-btn b-radius-circle bg-green text-center sm-title m-top-bottom-40">
+                Sign In
+              </button>
+              <div className="text-center">
+                <Link to="/forgot-password" className="link c-green">
+                  Forgot password?
+                </Link>
+              </div>
             </div>
           </form>
           <div className="land-auth">
@@ -121,8 +140,17 @@ class Login extends Component {
                 <br />
                 Barefooter!
               </h1>
-              <p className="xs-title m-top">Make company global travel and accommodation easy and convenient for the strong workforce of savvy members of staff, by leveraging the modern web.</p>
-              <Link to="/" className="btn auth-btn md-btn b-radius-circle c-blue m-top text-center sm-title">Sign Up</Link>
+              <p className="xs-title m-top">
+                Make company global travel and accommodation easy and convenient
+                for the strong workforce of savvy members of staff, by
+                leveraging the modern web.
+              </p>
+              <Link
+                to="/"
+                className="btn auth-btn md-btn b-radius-circle c-blue m-top text-center sm-title"
+              >
+                Sign Up
+              </Link>
             </div>
           </div>
         </div>
