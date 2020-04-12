@@ -83,6 +83,7 @@ export const resolvedTripsRequest = {
   }
 };
 
+
 export default {
   get: jest.fn(() => Promise.resolve({ ...resolvedRequest })),
   post: jest.fn(() => Promise.resolve(

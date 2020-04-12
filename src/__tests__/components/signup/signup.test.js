@@ -15,9 +15,7 @@ export const mockStore = configureMockStore([thunk]);
 let inputs = '';
 let selects = '';
 
-// let input = '';
 let button = '';
-// let form = '';
 let component = '';
 
 describe('<Signup />', () => {
@@ -71,7 +69,7 @@ describe('<Signup />', () => {
       </MemoryRouter>
     </Provider>);
     const button = wrapper.find('button');
-    mockAxios.post.mockRejectedValueOnce(resolvedSignUpRequest);
+    mockAxios.post.mockResolvedValueOnce(resolvedSignUpRequest);
     button.simulate('click', { target: {}, preventDefault: jest.fn() });
     expect(wrapper).toHaveLength(1);
   });

@@ -11,6 +11,7 @@ import Dashboard from './Dashboard';
 import Requests from './Requests/User';
 import userRole from './userRole/UserRole';
 import Approvals from './Approvals';
+import accommodation from './accommodation/Accommodation';
 
 const Routes = () => (
   <Switch>
@@ -34,6 +35,8 @@ const Routes = () => (
     {/* Manager's approvals trip request */}
     <Route exact path="/approvals" component={Approvals} />
 
+    {/* accommodation */}
+    <Route exact path="/accommodation" component={accommodation} />
   </Switch>
 );
 

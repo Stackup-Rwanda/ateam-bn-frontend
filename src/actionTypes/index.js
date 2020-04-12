@@ -4,6 +4,7 @@ import * as tripsActionTypes from './tripsActionsTypes';
 import * as profileTypes from './profileType/profileTypes';
 import * as searchType from './searchType/searchType';
 import * as approvalsActionTypes from './approvalsActionsTypes';
+import * as roomActionsType from './roomActionsType';
 
 export {
   apiActionsTypes,
@@ -11,5 +12,6 @@ export {
   tripsActionTypes,
   profileTypes,
   searchType,
-  approvalsActionTypes
+  approvalsActionTypes,
+  roomActionsType
 };
