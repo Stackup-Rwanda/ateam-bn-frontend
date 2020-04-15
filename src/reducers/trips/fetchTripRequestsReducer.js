@@ -1,8 +1,9 @@
 import { tripsActionTypes, searchType } from '../../actionTypes';
+import requests from '../../store/initialState';
 
-export default (state, { type, payload }) => {
+export default (state = requests, { type, payload }) => {
   switch (type) {
-    case tripsActionTypes.FETCH_REQUEST:
+    case tripsActionTypes.FETCH_REQUEST_START:
       return {
         ...state,
         loading: true
@@ -10,10 +11,17 @@ export default (state, { type, payload }) => {
     case tripsActionTypes.FETCH_REQUEST_SUCCESS:
       return {
         ...state,
-        trips: [...payload.trips],
+        trips: [...payload.data.paginate],
         pages: payload.pages,
+        Next: { ...payload.data.Next },
+        Previous: { ...payload.data.Previous },
         error: null,
         loading: false
+      };
+    case tripsActionTypes.FETCH_REQUEST_END:
+      return {
+        ...state,
+        getRequests: { ...state.getRequests, message: '', loading: false, errors: {} }
       };
     case tripsActionTypes.FETCH_REQUEST_FAILURE:
       return {

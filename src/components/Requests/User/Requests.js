@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { Link } from 'react-router-dom';
 import { faAngleLeft, faAngleRight, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from 'react-select';
@@ -104,8 +107,8 @@ class Requests extends Component {
     this.setState({ rememberMe: false });
     this.setState({ fromLocation: '' });
 
-    const { fetchRequests, token } = this.props;
-    fetchRequests(token, 1, 6);
+    const { getAllRequests } = this.props;
+    getAllRequests(1, 6);
 
     setInterval(() => {
       this.setState({ errors: {} });
@@ -119,9 +122,8 @@ class Requests extends Component {
   };
 
   componentDidMount() {
-    const { fetchRequests, token, fetchLocations } = this.props;
-    fetchRequests(
-      token,
+    const { getAllRequests, fetchLocations } = this.props;
+    getAllRequests(
       1,
       6
     );
@@ -146,10 +148,20 @@ class Requests extends Component {
     }
   }
 
+  nextPagination = () => {
+    const { getAllRequests, Next } = this.props;
+    getAllRequests(Next.page, 6);
+  };
+
+  prevPagination = () => {
+    const { getAllRequests, Previous } = this.props;
+    getAllRequests(Previous.page, 6);
+  }
+
   render() {
     const { modalStyle, form, errors, fromLocation } = this.state;
 
-    const { loading, requests, locationsList, accommodationList } = this.props;
+    const { loading, requests, locationsList, accommodationList, Next, Previous } = this.props;
 
     const locations = locationsList.map((data) => ({ value: data.id, label: data.name }));
 
@@ -163,6 +175,7 @@ class Requests extends Component {
       return newData;
     });
 
+    // eslint-disable-next-line no-unused-vars
     const goingTo = (array) => {
       let location = '';
       array.forEach((element) => {
@@ -173,6 +186,58 @@ class Requests extends Component {
       });
       return location;
     };
+
+    const currentPage = Next && !Next.page ? (
+      Previous.page + 1
+    ) : (
+      Previous.page ? (
+        Previous.page + 1
+      ) : (
+        Next.page - 1
+      )
+    );
+
+    const mainJsx = loading ? (
+      <div className="loader-section" data-test="LoaderComponent">
+        <ClipLoader
+          css={{ display: 'block', margin: '0 auto' }}
+          size={150}
+          color={'#3AB397'}
+          loading={loading}
+        />
+      </div>
+    ) : (
+      <>
+        <div className="requests">
+          { requests && requests.trips && requests.trips.map((req) => (
+            <div key={req.id} className="trip">
+              <Link to={`approvals/${req.id}`}><img alt="trip One" src={req.Accommodations.image} /></Link>
+              <span className="status pending">{req.status}</span>
+              <div className="details">
+                <p className="details-place">Paris</p>
+                <p className="details-departure">
+                  Departure date:
+                  {' '}
+                  { moment(req.date).format('MMMM Do YYYY') }
+                </p>
+                <p className="details-return">
+                  Return date:
+                  {' '}
+                  { req.returnDate ? moment(req.returnDate).format('MMMM Do YYYY') : 'Not Specified' }
+                </p>
+                <p className="details-city">City:</p>
+                <p className="details-address">Kampala, Uganda, Africa</p>
+              </div>
+            </div>
+          )) }
+        </div>
+        <div className="pagination" data-test="paginationDiv">
+          <FontAwesomeIcon icon={faAngleLeft} className="angles" onClick={this.prevPagination} data-test="iconPrev" />
+          <span>{Next.page || Previous.page ? currentPage : 0}</span>
+          <FontAwesomeIcon icon={faAngleRight} className="angles" style={{ color: '#3ab397cc' }} onClick={this.nextPagination} data-test="iconNext" />
+        </div>
+      </>
+    );
 
     return (
       <div className="wrapper">
@@ -185,39 +250,7 @@ class Requests extends Component {
             children="Add Trip"
           />
 
-          <div className="requests">
-            { requests && requests.trips && requests.trips.map((req) => (
-              <div key={req.id} className="trip">
-                <img alt="trip One" src={req.Accommodations.image} />
-                <span className={`status ${req.status}`}>{req.status}</span>
-                <div className="details">
-                  <p className="details-place">{req.Accommodations.name}</p>
-                  <p className="details-departure">
-                    Departure date:
-                    {' '}
-                    { moment(req.date).format('MMMM Do YYYY') }
-                  </p>
-                  <p className="details-return">
-                    Return date:
-                    {' '}
-                    { req.returnDate ? moment(req.returnDate).format('MMMM Do YYYY') : 'Not Specified' }
-                  </p>
-                  <p className="details-city">City:</p>
-                  <p className="details-address">{goingTo(req.to)}</p>
-                </div>
-                {(req.status === 'Pending') ? (
-                  <Button type="submit" onClick={() => this.showModal(req)} buttonClass="btn-edit">
-                    <FontAwesomeIcon icon={faEdit} className="angles" />
-                  </Button>
-                ) : ''}
-              </div>
-            )) }
-          </div>
-          <div className="pagination">
-            <FontAwesomeIcon icon={faAngleLeft} className="angles" />
-            <span>3</span>
-            <FontAwesomeIcon icon={faAngleRight} className="angles" style={{ color: '#3ab397cc' }} />
-          </div>
+          {mainJsx}
 
           <div className="">
             <Modal modalStyle={modalStyle} closeModal={this.hideModal}>
@@ -344,7 +377,7 @@ Requests.defaultProps = { token: null, requests: null };
 Requests.propTypes = {
   token: PropTypes.string,
   history: PropTypes.shape({ push: PropTypes.func }).isRequired,
-  fetchRequests: PropTypes.func.isRequired,
+  getAllRequests: PropTypes.func.isRequired,
   requests: PropTypes.shape({ trips: PropTypes.array.isRequired }),
   loading: PropTypes.bool,
   message: PropTypes.string,
@@ -363,15 +396,17 @@ const mapStateToProps = ({ user, requests, location: { locations: { list } }, ac
   message: requests.message,
   errors: requests.errors,
   locationsList: list,
-  accommodationList: accommodations.list
+  accommodationList: accommodations.list,
+  Next: requests.Next,
+  Previous: requests.Previous
 });
 
 const mapDispatchToProps = (dispatch) => {
-  const { fetchRequests, createTripRequestAction, editTripRequestAction } = tripActions;
+  const { getAllRequests, createTripRequestAction, editTripRequestAction } = tripActions;
   const { fetchLocationsAction } = locationActions;
   const { fetchAccommodationAction } = accommodationActions;
   return {
-    fetchRequests: (token, page, limit) => dispatch(fetchRequests(token, page, limit)),
+    getAllRequests: (page, limit) => dispatch(getAllRequests(page, limit)),
     fetchLocations: () => dispatch(fetchLocationsAction()),
     fetchAccommodations: () => dispatch(fetchAccommodationAction()),
     createTripRequest: (form) => dispatch(createTripRequestAction(form)),

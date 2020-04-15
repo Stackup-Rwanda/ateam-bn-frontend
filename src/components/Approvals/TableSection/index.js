@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import ClipLoader from 'react-spinners/ClipLoader';
 import { Link } from 'react-router-dom';
 import { faEye, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getAllApprovals } from '../../../actions';
+
 import './TableSection.scss';
 
 class TableSection extends Component {
@@ -25,8 +27,7 @@ class TableSection extends Component {
   }
 
   render() {
-    // eslint-disable-next-line no-unused-vars
-    const { listOfApprovals, errors, Next, Previous } = this.props;
+    const { listOfApprovals, Next, Previous, loading } = this.props;
 
     const currentPage = Next && !Next.page ? (
       Previous.page + 1
@@ -42,8 +43,10 @@ class TableSection extends Component {
 
     const jsx = approvals && approvals.map((approval, index) => (
       <tr key={index}>
-        <td>{approval.User.name}</td>
-        <td><img alt="profileImage" src={approval.User.profilePhoto} /></td>
+        <td>
+          <img className="profileImg" alt="profileImage" src={approval.User.profilePhoto} />
+          <p>{approval.User.name}</p>
+        </td>
         <td><img alt="AccomodationImage" src={approval.Accommodations.image} /></td>
         <td>{approval.tripType}</td>
         <td>{ moment(approval.date).format('MMMM Do YYYY') }</td>
@@ -52,7 +55,16 @@ class TableSection extends Component {
         <td><Link to={`approvals/${approval.id}`}><FontAwesomeIcon icon={faEye} /></Link></td>
       </tr>));
 
-    return (
+    const mainJsx = loading ? (
+      <div className="loader-section" data-test="LoaderComponent">
+        <ClipLoader
+          css={{ display: 'block', margin: '0 auto' }}
+          size={150}
+          color={'#3AB397'}
+          loading={loading}
+        />
+      </div>
+    ) : (
       <>
         <div className="table-section" data-test="tableSectionComponent">
           <span data-test="titleSpan">Requested Trips</span>
@@ -61,7 +73,6 @@ class TableSection extends Component {
               <thead>
                 <tr>
                   <th>User</th>
-                  <th>Picture</th>
                   <th>Accommodation</th>
                   <th>Trip type</th>
                   <th>Departure date</th>
@@ -77,10 +88,16 @@ class TableSection extends Component {
           </div>
         </div>
         <div className="pagination" data-test="paginationDiv">
-          <FontAwesomeIcon icon={faAngleLeft} className="angles" onClick={this.nextPagination} data-test="iconPrev" />
+          <FontAwesomeIcon icon={faAngleLeft} className="angles" onClick={this.prevPagination} data-test="iconPrev" />
           <span>{Next.page || Previous.page ? currentPage : 0}</span>
           <FontAwesomeIcon icon={faAngleRight} className="angles" style={{ color: '#3ab397cc' }} onClick={this.nextPagination} data-test="iconNext" />
         </div>
+      </>
+    );
+
+    return (
+      <>
+        {mainJsx}
       </>
     );
   }
@@ -102,7 +119,7 @@ const mapStateToProps = ({ approvals }) => ({
   loading: approvals.loading
 });
 
-const mapDispatchToProps = (dispatch) => ({ getAllApprovals: (token, page, limit) => dispatch(getAllApprovals(token, page, limit)) });
+const mapDispatchToProps = (dispatch) => ({ getAllApprovals: () => dispatch(getAllApprovals()) });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableSection);
 export { TableSection };
