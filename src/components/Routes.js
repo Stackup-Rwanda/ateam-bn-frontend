@@ -14,6 +14,7 @@ import Approvals from './Approvals';
 import Accommodation from './accommodation/Accommodation';
 import NewAccommodation from './accommodation/NewAccommodation';
 import SpecificAccommodation from './accommodation/SpecificAccommodation';
+import Approval from './SingleApproval';
 
 const Routes = () => (
   <Switch>
@@ -43,6 +44,7 @@ const Routes = () => (
 
     {/* Manager's approvals trip request */}
     <Route exact path="/approvals" component={Approvals} />
+    <Route exact path="/approvals/:id" component={Approval} />
 
     {/* accommodation */}
     <Route
