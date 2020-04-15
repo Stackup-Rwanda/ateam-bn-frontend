@@ -7,6 +7,8 @@ import * as approvalsActionTypes from './approvalsActionsTypes';
 import * as roomActionsType from './roomActionsType';
 import * as locationActionTypes from './locationActionTypes';
 import * as accommodationActionTypes from './accommodationActionTypes';
+import * as approvalActionTypes from './approvalActionsTypes';
+import * as approveRejectActionTypes from './approveRejectActionsTypes';
 
 export {
   apiActionsTypes,
@@ -17,5 +19,7 @@ export {
   approvalsActionTypes,
   roomActionsType,
   locationActionTypes,
-  accommodationActionTypes
+  accommodationActionTypes,
+  approvalActionTypes,
+  approveRejectActionTypes
 };

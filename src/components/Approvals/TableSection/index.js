@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 import { faEye, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getAllApprovals } from '../../../actions';
@@ -48,7 +49,7 @@ class TableSection extends Component {
         <td>{ moment(approval.date).format('MMMM Do YYYY') }</td>
         <td>{ approval.returnDate ? moment(approval.returnDate).format('MMMM Do YYYY') : 'Not Specified' }</td>
         <td><span className={approval.status.toLowerCase()}>{approval.status}</span></td>
-        <td><FontAwesomeIcon icon={faEye} /></td>
+        <td><Link to={`approvals/${approval.id}`}><FontAwesomeIcon icon={faEye} /></Link></td>
       </tr>));
 
     return (
