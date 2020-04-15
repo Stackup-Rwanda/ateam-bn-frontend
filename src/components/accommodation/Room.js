@@ -17,11 +17,15 @@ class room extends Component {
     this.setState({ showPopup: !this.state.showPopup });
   }
 
+  hidePopup() {
+    this.setState({ showPopup: false });
+  }
+
   render() {
     return (
       <div>
         {this.state.showPopup ? (
-          <Popup roomId={this.props.room.id} closePopup={this.togglePopup.bind(this)}/>
+          <Popup roomId={this.props.room.id} tripId={this.props.tripId} closePopup={this.togglePopup.bind(this)}/>
         ) : (
           <div className="column-room box">
               <img className="rooms-img" alt="" src={this.props.room.image}/>

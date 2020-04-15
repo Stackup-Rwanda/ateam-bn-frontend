@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import qs from 'qs';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import SocialAuthButton from '../socialAuthButtons/socialAuthButton';
 import { oauthActions, login } from '../../actions';
-import AuthError from '../errors';
 
 import '../../assets/css/style.scss';
 
@@ -38,6 +38,16 @@ class Login extends Component {
     loginRequest(userData);
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.authMessage) {
+      toast.success(nextProps.authMessage);
+    } else if (nextProps.loginErrors) {
+      toast.error(nextProps.loginErrors);
+    } else if (nextProps.oauthErrors) {
+      toast.error(nextProps.oauthErrors);
+    }
+  }
+
   emailChange = (event) => {
     this.setState({ email: event.target.value });
   };
@@ -47,17 +57,15 @@ class Login extends Component {
   };
 
   render() {
-    const { oauthErrors, loginErrors, authMessage, history } = this.props;
+    const { history } = this.props;
     const token = localStorage.getItem('token');
     let componentToRender;
     if (!token) {
       componentToRender = (
-        <div className="login">
+        <div className="login" data-test="test-div">
           <form formTitle="Fill form to Login" className="login-form m-20" onSubmit={this.handleSubmit}>
+          <ToastContainer position={toast.POSITION.TOP_CENTER} autoClose={8000}/>
             <div className="flex column p-20 b-radius m-bottom">
-              {loginErrors && <AuthError error={loginErrors} />}
-              {oauthErrors && <AuthError error={oauthErrors} />}
-              {authMessage && <AuthError error={authMessage} />}
               <h1 className="md-title c-green m-bottom">Sign in to Barefoot</h1>
               <SocialAuthButton
                 type="facebook"

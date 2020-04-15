@@ -117,7 +117,7 @@
   color: #000000;
 }
 
-.card-two p{
+.card-two p {
   margin-bottom: 3vh;
   font-size: 2.5vh;
 }
@@ -227,11 +227,11 @@
   margin-right: 3vh;
 }
 
-.rooms-container h3{
+.rooms-container h3 {
   margin-top: 2vh;
 }
 
-.popup {
+.popup-room {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -250,6 +250,8 @@
   bottom: 25%;
   margin: auto;
   background: $white;
+  width: 45vw;
+  height: 20vw;
 }
 
 .mar-auto {
@@ -257,17 +259,17 @@
   margin-left: 6vh;
 }
 
-.popup h1 {
+.popup-room h1 {
   margin-bottom: 3vh;
 }
 
-.popup button {
+.popup-room button {
   margin-left: 3vh;
   width: 7vw;
   cursor: pointer;
 }
 
-.popup button:active {
+.popup-room button:active {
   border-radius: 1vh;
 }
 
@@ -288,9 +290,18 @@
 
 .mar-auto h2 {
   font-size: 4vh;
-  margin-bottom: 4vh;
-  margin-left: 3vh;
   color: #3ab397;
+}
+
+.popup-inner label {
+  margin-top: 25px;
+  display: block;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.5vh;
+  line-height: 49px;
+  margin-left: auto;
 }
 
 .popup-inner hr {
@@ -298,4 +309,8 @@
   width: 98%;
   margin-left: 1%;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.row .form-field-room {
+  margin-left: 3vh;
 }

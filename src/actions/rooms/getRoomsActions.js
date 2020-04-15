@@ -9,21 +9,17 @@ const getAllRooms = (rooms) => ({
 
 const getAllRoomsfail = (error) => ({
   type: GET_ALL_ROOMS_FAIL,
-  payload: { error }
+  payload: { ...error }
 });
 
-const getRooms = (token) => async (dispatch) => {
+const getRooms = (token, accommodationId) => async (dispatch) => {
   try {
     const config = { headers: { token } };
     const result = await axios.get('https://ateam-bn-backend-staging.herokuapp.com/api/room', config);
-    console.log(result);
-
     const Rooms = result.data.data.paginate;
-    // console.log(Rooms);
-
-    return dispatch(getAllRooms(Rooms));
+    const filteredRooms = Rooms.filter((room) => room.accommodationId.toString() === accommodationId);
+    return dispatch(getAllRooms(filteredRooms));
   } catch (error) {
-    console.log(error);
     return dispatch(getAllRoomsfail(error));
   }
 };
