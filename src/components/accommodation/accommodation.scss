@@ -1,0 +1,301 @@
+@import "../../assets/css/pixels";
+@import "../../assets/css/colors";
+
+.accommodation-container {
+  width: 70%;
+  margin-left: 6vh;
+}
+.card-one {
+  display: flex;
+}
+
+.wifi-computer {
+  display: flex;
+}
+.wifi-computer img {
+  width: 3vh;
+  margin-top: 2vh;
+  margin-right: 3vh;
+  margin-bottom: 2vh;
+  height: auto;
+}
+.icons {
+  display: flex;
+}
+.icons img {
+  width: 3vh;
+  margin-top: 2vh;
+  margin-right: 3vh;
+  margin-bottom: 2vh;
+  height: auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.price {
+  width: 3vh;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 33px;
+
+  color: #000000;
+}
+.location {
+  display: flex;
+}
+.location p {
+  width: 135px;
+  height: 20px;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 4vh;
+  color: #000000;
+}
+
+.location img {
+  width: 3vh;
+  margin-top: 2vh;
+  margin-right: 3vh;
+  margin-bottom: 2vh;
+}
+
+.rooms-container {
+  width: 50%;
+  height: 10%;
+  margin-right: 5vw;
+}
+
+.rooms-container button {
+  width: 7vh;
+  height: 4vh;
+  background-color: $green;
+  border-radius: 1vh;
+  margin-right: $xxsmall;
+  border: none;
+  cursor: pointer;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 33px;
+  color: #ffffff;
+}
+
+.rooms-container button:active {
+  background-color: #319e85;
+  border-radius: 1vh;
+}
+
+.img-unlike {
+  width: 3vh;
+  height: auto;
+  margin-right: 3vh;
+  margin-bottom: 2vh;
+}
+
+.picture {
+  width: 30vw;
+  height: 21vw;
+  margin-top: 2vh;
+  margin-right: 3vh;
+  margin-bottom: 5vh;
+}
+
+.card-two p h3 {
+  font-family: Nunito;
+  font-style: normal;
+  font-size: 15vh;
+  line-height: 30px;
+
+  color: #000000;
+}
+
+.card-two p{
+  margin-bottom: 3vh;
+  font-size: 2.5vh;
+}
+
+.img-like {
+  width: 5vh;
+  // margin-top: 2vh;
+  margin-right: 3vh;
+  margin-bottom: 2vh;
+}
+
+.edit-btn {
+  width: 15vh;
+  height: 5vh;
+  background-color: $green;
+  border-radius: 30vh;
+  margin-right: $xxsmall;
+  border: none;
+
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 33px;
+  color: #ffffff;
+}
+
+.delete-btn {
+  width: 15vh;
+  height: 5vh;
+  background-color: #c83a3a;
+  border-radius: 30vh;
+  margin-right: $xxsmall;
+  border: none;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 33px;
+  color: #ffffff;
+}
+
+.rooms-img {
+  width: 15vw;
+  height: 10vw;
+}
+.addRoom {
+  width: 6vh;
+}
+.rooms {
+  margin: auto;
+}
+
+.column-room {
+  // float: left;
+  width: 20%;
+  padding: 10px;
+  // margin: auto;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.row-room {
+  margin-bottom: 2vh;
+  display: flex;
+  flex-wrap: wrap;
+  // flex-flow: column wrap;
+}
+
+.h2-margin {
+  margin-left: 17vw;
+  margin-bottom: 4vh;
+}
+
+.pt-4 {
+  padding-top: 2vh;
+}
+
+.box {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  width: 16vw;
+  text-align: center;
+  background-color: white;
+  margin-bottom: 2vh;
+  margin-left: 4vh;
+}
+
+.margin-box {
+  margin-top: 2vh;
+}
+
+.adRoom {
+  margin-left: 6vw;
+  margin-top: 5vw;
+}
+
+.rooms-container select {
+  width: 60%;
+  margin-bottom: 3vh;
+  margin-left: 3vh;
+  margin-right: 3vh;
+}
+
+.rooms-container h3{
+  margin-top: 2vh;
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.popup-inner {
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  bottom: 25%;
+  margin: auto;
+  background: $white;
+}
+
+.mar-auto {
+  margin-top: 4vh;
+  margin-left: 6vh;
+}
+
+.popup h1 {
+  margin-bottom: 3vh;
+}
+
+.popup button {
+  margin-left: 3vh;
+  width: 7vw;
+  cursor: pointer;
+}
+
+.popup button:active {
+  border-radius: 1vh;
+}
+
+.margin-r {
+  height: 2vh;
+  width: 13vw;
+}
+
+.btn-closePopup button {
+  background: none;
+  width: auto;
+}
+
+.grey-color {
+  padding-top: 1vh;
+  color: grey;
+}
+
+.mar-auto h2 {
+  font-size: 4vh;
+  margin-bottom: 4vh;
+  margin-left: 3vh;
+  color: #3ab397;
+}
+
+.popup-inner hr {
+  margin-top: 2vh;
+  width: 98%;
+  margin-left: 1%;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
