@@ -9,6 +9,7 @@ import userAvatar from '../../../assets/images/user.png';
 export class SingleApproval extends Component {
   componentWillMount() {
     const { getApproval, id } = this.props;
+    console.log(id);
     getApproval(id);
   }
 
