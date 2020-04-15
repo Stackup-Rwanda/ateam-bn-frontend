@@ -6,12 +6,14 @@ export default (state = approvals, { type, payload }) => {
     case approvalsTypes.FETCH_APPROVALS_START:
       return {
         ...state,
+        loading: true,
         getApprovals: { ...state.getApprovals, message: '', loading: true, errors: {} }
       };
     case approvalsTypes.FETCH_APPROVALS_SUCCESS:
       return {
         ...state,
         listOfApprovals: [...payload.data.paginate],
+        loading: false,
         Next: { ...payload.data.Next },
         Previous: { ...payload.data.Previous },
         getApprovals: {
@@ -29,6 +31,7 @@ export default (state = approvals, { type, payload }) => {
     case approvalsTypes.FETCH_APPROVALS_FAILURE:
       return {
         ...state,
+        errors: { ...payload.errors },
         getApprovals: {
           loading: false,
           message: '',

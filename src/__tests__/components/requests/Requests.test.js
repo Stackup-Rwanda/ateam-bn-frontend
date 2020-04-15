@@ -2,7 +2,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import Requests from '../../../components/Requests/User';
 import { shallow } from '../../../../config/enzymeConfig';
-import { fetchRequests, createTripRequestAction, editTripRequestAction } from '../../../actions/trips';
+import { getAllRequests, createTripRequestAction, editTripRequestAction } from '../../../actions/trips';
 import { fetchLocationsAction } from '../../../actions/location';
 
 const dispatch = jest.fn((action) => action);
@@ -10,9 +10,10 @@ const dispatch = jest.fn((action) => action);
 function shallowSetup() {
   // Sample props to pass to our shallow render
   const props = {
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoibWFuemkiLCJlbWFpbCI6ImJ1dGlyaWdpbWFuemlAZ21haWwuY29tIiwicm9sZSI6IlJFUVVFU1RFUiIsImlzVmVyaWZpZWQiOnRydWUsImlhdCI6MTU4NTA3Mjk4NX0.ugOs3iZMcGU54EfNInopJ6TuDeNOcBXoNPpgKKomnbw',
+    // eslint-disable-next-line max-len
+    // localStorage.token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoibWFuemkiLCJlbWFpbCI6ImJ1dGlyaWdpbWFuemlAZ21haWwuY29tIiwicm9sZSI6IlJFUVVFU1RFUiIsImlzVmVyaWZpZWQiOnRydWUsImlhdCI6MTU4NTA3Mjk4NX0.ugOs3iZMcGU54EfNInopJ6TuDeNOcBXoNPpgKKomnbw',
     history: { push: jest.fn() },
-    fetchRequests: (token, page, limit) => dispatch(fetchRequests(token, page, limit)),
+    getAllRequests: (page, limit) => dispatch(getAllRequests(page, limit)),
     fetchLocations: () => dispatch(fetchLocationsAction()),
     createTripRequest: (form) => dispatch(createTripRequestAction(form)),
     editTripRequest: (id, form) => dispatch(editTripRequestAction(id, form)),

@@ -8,16 +8,22 @@ import SingleApproval from './Approval';
 import '../../assets/style/layout.scss';
 
 export class Approval extends Component {
+  componentWillMount() {
+    const { history } = this.props;
+    const { token } = localStorage;
+    if (!token) {
+      history.push('/login');
+    }
+  }
+
   render() {
     const { id } = this.props.match.params;
-    console.log(id);
-    console.log(this.props.match.url);
     return (
-      <div className="wrapper" data-test="approvalsComponent">
+      <div className="wrapper" data-test="approvalComponent">
         <MenuBar data-test="menuBarComponent" />
         <div className="main" data-test="mainDiv">
           <TitleBar data-test="titleBarComponent" />
-          <SingleApproval id={id}/>
+          <SingleApproval data-test="singleApprovalComponent" id={id}/>
         </div>
         <SideBar data-test="sideBarComponent" />
       </div>

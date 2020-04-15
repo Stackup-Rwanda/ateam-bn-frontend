@@ -13,6 +13,7 @@ import * as accommodationActions from './accommodation';
 import { getApproval } from './approval';
 import { approveApproval } from './approve';
 import { rejectApproval } from './reject';
+import { getAllRequests } from './trips/fetchTripsActions';
 
 
 export {
@@ -30,5 +31,6 @@ export {
   accommodationActions,
   getApproval,
   approveApproval,
-  rejectApproval
+  rejectApproval,
+  getAllRequests
 };
