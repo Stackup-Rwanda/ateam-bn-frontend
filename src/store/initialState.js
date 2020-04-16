@@ -5,6 +5,7 @@ import approvals from './initialStates/approvalsInitialState';
 import room from './initialStates/roomInitialState/roomInitialState';
 import location from './initialStates/locationInitialState';
 import accommodation from './initialStates/accommodationInitialState';
+import destinations from './initialStates/destinationInitialState';
 
 export default {
   user,
@@ -13,5 +14,6 @@ export default {
   approvals,
   room,
   location,
-  accommodation
+  accommodation,
+  destinations
 };

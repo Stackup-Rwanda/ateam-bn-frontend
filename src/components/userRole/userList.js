@@ -99,16 +99,17 @@ class UserList extends Component {
 
           <Popup isOpen={ this.state.isOpen }>
             <div className="popout">
-              <form className="popup-form" onSubmit={this.editRole} >
+              <form className="popup-form" onSubmit={ this.editRole } >
+
                 <label htmlFor="role">Change Role</label>
                 <select className='popup-select' name="role" onChange={ this.onChange } value={ this.state.value }>
                     <option value="none" >select role</option>
                     <option value="requester">REQUESTER</option>
                     <option value="Manager">MANAGER</option>
                     <option value="Traveladmin">TRAVEL ADMINISTRATOR</option>
-                    <option value="superadmin"> SUPER ADMINISTRATOR</option>
+                  <option value="superadmin"> SUPER ADMINISTRATOR</option>
                 </select>
-                <input className="popup" type="submit" value="Save" />
+                <input className="popupi" type="submit" value="Save" />
               </form>
             </div>
           </Popup>
