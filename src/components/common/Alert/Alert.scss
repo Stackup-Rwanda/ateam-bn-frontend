@@ -1,0 +1,26 @@
+.Alert {
+  width: 100%;
+  margin: 5px 0;
+  box-shadow: 0 0 5px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  
+  .text {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 12px;
+    margin: 0;
+  }
+}
+
+.alert-danger {
+    background: #e6a2a2;
+    color: #b82020;
+}
+.alert-sucess {
+    background: #9fe6bc;
+    color: #0c7a3a;
+}
+.alert-info {
+    background: #6ecbe7;
+    color: #118aaf;
+}

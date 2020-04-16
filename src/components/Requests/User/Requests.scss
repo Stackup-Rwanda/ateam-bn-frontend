@@ -4,6 +4,7 @@
 @import '../../../assets/style/fontsize';
 @import '../../../assets/style/pixels';
 @import '../../../assets/style/mixin';
+@import '../../../assets/style/modal';
 
 .wrapper {
   width: 100%;
@@ -114,6 +115,13 @@
       text-align: center;
       color: #666666;
     }
+    .btn-close {
+      width: auto;
+      background: none;
+      border-radius: none;
+      margin: 3px;
+    }
+    .save-trip { background: $green; color: $white; }
 
     .requests {
       display: grid;
@@ -146,15 +154,15 @@
           color: white;
         }
 
-        .pending {
+        .Pending {
           background-color: #f6a240cc;
         }
 
-        .approved {
+        .Approved {
           background-color: #3ab397cc;
         }
 
-        .rejected {
+        .Rejected {
           background-color: #c83a3acc;
         }
 
@@ -201,6 +209,17 @@
 
         &:hover {
           box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+          .btn-edit {
+            display: block;
+          }
+        }
+        .btn-edit {
+          display: none;
+          position: absolute;
+          width: 50px;
+          margin: 10px;
+          bottom: 0;
+          right: 0;
         }
       }
     }

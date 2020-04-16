@@ -2,7 +2,8 @@ const initState = {
   loading: false,
   trips: [],
   errors: {},
-  searchErrors: 'null'
+  searchErrors: 'null',
+  message: '',
 };
 
 export default initState;

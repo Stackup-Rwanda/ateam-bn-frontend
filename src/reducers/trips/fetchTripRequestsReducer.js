@@ -33,6 +33,6 @@ export default (state, { type, payload }) => {
         searchErrors: payload
       };
     default:
-      return state;
+      return null;
   }
 };
