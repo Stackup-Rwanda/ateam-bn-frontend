@@ -22,7 +22,8 @@ const signUpRequest = () => ({ type: SIGNUP_USER_REQUEST });
 const SignUp = (data) => async (dispatch) => {
   dispatch(signUpRequest);
   try {
-    const result = await axios.post('https://ateam-bn-backend-staging.herokuapp.com/api/auth/signup', data);
+    // const result = await axios.post('https://ateam-bn-backend-staging.herokuapp.com/api/auth/signup', data);
+    const result = await axios.post('http://localhost:3000/api/auth/signup', data);
     const { user } = result.data;
     const { message } = result.data;
     return dispatch(signUpSuccess(user, message));
