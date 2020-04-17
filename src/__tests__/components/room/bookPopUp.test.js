@@ -7,12 +7,10 @@ import { MemoryRouter } from 'react-router-dom';
 import { mount } from '../../../../config/enzymeConfig';
 import store from '../../../__mocks__/store';
 import BookPopUp from '../../../components/accommodation/BookPopUp';
-import { resolvedRequest } from '../../../__mocks__/axios';
+import { bookedRoom2 } from '../../../__mocks__/room';
 
 export const mockStore = configureMockStore([thunk]);
 
-let inputs = '';
-const token = 'token';
 describe('Testing <Accmmodation />', () => {
   test('displays error if room is not booked', () => {
     const wrapper = mount(<Provider store={store}>
@@ -22,29 +20,44 @@ describe('Testing <Accmmodation />', () => {
       </Provider>);
       // eslint-disable-next-line no-unused-vars
     const button = wrapper.find('[data-test="btn"]');
-    mockAxios.post.mockRejectedValueOnce();
-    button.simulate('click', { target: { }, preventDefault: jest.fn() });
+    mockAxios.post.mockRejectedValueOnce({ response: { data: {}, status: 422 }, data: { error: {} } });
+    button.simulate('click', { target: { bookedRoom2 }, preventDefault: jest.fn() });
   });
-
   test('displays message if room is booked', () => {
     const wrapper = mount(<Provider store={store}>
       <MemoryRouter>
         <BookPopUp />
       </MemoryRouter>
     </Provider>);
-    inputs = wrapper.find('input');
-    inputs.map((input) => input.simulate('change', {
-      target: (
-        token, {
-          name: input.instance().name,
-          value: '2020-08-10'
-        }
-      )
-    }));
-    wrapper.setProps({ message: 'room successfully booked' });
     const button = wrapper.find('[data-test="btn"]');
-    mockAxios.post.mockResolvedValueOnce(resolvedRequest);
-    button.simulate('click', { preventDefault: jest.fn() });
+    mockAxios.post.mockResolvedValueOnce({ request: { data: {}, status: 201 }, data: { data: { message: 'message' } } });
+    button.simulate('click', { target: { }, preventDefault: jest.fn() });
+    expect(wrapper).toHaveLength(1);
+  });
+  test('displays error if room is not booked', () => {
+    const wrapper = mount(<Provider store={store}>
+        <MemoryRouter>
+          <BookPopUp />
+        </MemoryRouter>
+      </Provider>);
+      // eslint-disable-next-line no-unused-vars
+    const button = wrapper.find('[data-test="btn"]');
+    mockAxios.post.mockRejectedValueOnce({ response: { data: {}, status: 302 }, data: { error: 'error' } });
+    button.simulate('click', { target: { }, preventDefault: jest.fn() });
+    expect(wrapper).toHaveLength(1);
+  });
+
+  test('displays message if room is booked', () => {
+    const roomId = '1';
+    const tripId = '4';
+    const wrapper = mount(<Provider store={store}>
+      <MemoryRouter>
+        <BookPopUp tripId={tripId} roomId={roomId}/>
+      </MemoryRouter>
+    </Provider>);
+    const button = wrapper.find('[data-test="btn"]');
+    mockAxios.post.mockResolvedValueOnce({ request: { data: {}, status: 201 }, data: { data: { message: 'message' } } });
+    button.simulate('click', { target: { }, preventDefault: jest.fn() });
     expect(wrapper).toHaveLength(1);
   });
 });

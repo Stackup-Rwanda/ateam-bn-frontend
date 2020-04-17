@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BOOK_ROOM_SUCCESS, BOOK_ROOM_FAIL } from '../../actionTypes/roomActionsType';
+import { BOOK_ROOM_SUCCESS, BOOK_ROOM_FAIL, BOOKED_ROOM_FAIL } from '../../actionTypes/roomActionsType';
 
 const bookRoomSuccess = (message) => ({
   type: BOOK_ROOM_SUCCESS,
@@ -11,17 +11,25 @@ const bookRoomFail = (error) => ({
   payload: { error }
 });
 
+const bookedRoomFail = (bookedError) => ({
+  type: BOOKED_ROOM_FAIL,
+  payload: { bookedError }
+});
+
 const bookRoom = (token, data) => async (dispatch) => {
   try {
     const config = { headers: { token } };
     const result = await axios.post('https://ateam-bn-backend-staging.herokuapp.com/api/room/book', data, config);
-    console.log(result);
-
     const { message } = result.data;
-    console.log(message);
-
+    if (result.status === 302) {
+      return dispatch(bookedRoomFail(message));
+    }
     return dispatch(bookRoomSuccess(message));
   } catch (error) {
+    console.log(error.response);
+    if (error.response.status === 302) {
+      return dispatch(bookedRoomFail(error.response.data.message));
+    }
     return dispatch(bookRoomFail(error.response.data.error));
   }
 };

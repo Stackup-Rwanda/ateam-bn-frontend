@@ -28,7 +28,7 @@ describe('Testing <Login />', () => {
         <Login oauthActions={oauthActions} />
       </MemoryRouter>
     </Provider>);
-    const errors = wrapper.find('AuthError');
+    const errors = wrapper.find('[data-test="test-div"]');
     expect(errors).toHaveLength(1);
   });
 });

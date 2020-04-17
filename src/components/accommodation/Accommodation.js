@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 import Menu from '../MenuBar';
 import star from '../../assets/images/517-5179352_star-icon-yellow-star-with-black-background.png.jpeg';
 import wifi from '../../assets/images/wi-fi-computer-icons-wireless-symbol-wifi-vector.jpg';
@@ -13,6 +14,7 @@ import like from '../../assets/images/iindex.png';
 import fire from '../../assets/images/FireIcon.svg.png';
 import './accommodation.scss';
 import getRooms from '../../actions/rooms/getRoomsActions';
+import getOneTrip from '../../actions/trips/fetchOneTrip';
 import { componentHelper } from '../../helpers/ProfileHelper/profileHelper';
 import Room from './Room';
 
@@ -21,31 +23,38 @@ class accommodation extends Component {
     super(props);
     this.state = {
       displayedRooms: [],
-      viewRooms: ''
+      viewRooms: '',
+      tripId: '',
+      tripApproved: false
     };
   }
 
-  // componentWillMount() {
-  //   const { token, history } = this.props;
-  //   if (!token) {
-  //     history.push('/login');
-  //   }
-  // }
-
-  componentDidMount() {
+  async componentDidMount() {
     const { token } = componentHelper(localStorage.getItem('token'));
-    const { getRooms } = this.props;
-    getRooms(token);
+    const { getRooms, getOneTrip } = this.props;
+    const { match: { params: { accommodationId } } } = this.props;
+    const { match: { params: { tripId } } } = this.props;
+    this.setState({ tripId });
+    getRooms(token, accommodationId);
+    if (await getOneTrip(token, tripId) === true) {
+      this.setState({ tripApproved: true });
+    }
   }
 
   populateRooms = () => {
     const list = [];
     this.state.displayedRooms.forEach((room) => {
-      list.push(<Room room={room} />);
+      list.push(<Room room={room} tripId={this.state.tripId} />);
     });
 
     this.setState({ viewRooms: list });
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.bookRoomError) {
+      toast.error(nextProps.bookRoomError);
+    }
+  }
 
   handlechange = async (e) => {
     let filteredRooms;
@@ -68,7 +77,7 @@ class accommodation extends Component {
   };
 
   render() {
-    return (
+    return this.state.tripApproved ? (
       <div className="wrapper">
         <Menu />
         <div className="accommodation-container m-top">
@@ -108,62 +117,61 @@ class accommodation extends Component {
             </div>
           </div>
           <div className="card-two">
-              <h3>Highlights</h3>
-              <p>lorem ipsufsjfhnkf kjdbauhnakjnajn kudhnladnkajdakjdnasdkn</p>
-              <h3>Amenities</h3>
-              <p>kdjjnfsjnsnskndskn</p>
-              <h3>Description</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
+            <h3>Highlights</h3>
+            <p>lorem ipsufsjfhnkf kjdbauhnakjnajn kudhnladnkajdakjdnasdkn</p>
+            <h3>Amenities</h3>
+            <p>kdjjnfsjnsnskndskn</p>
+            <h3>Description</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
           </div>
         </div>
         <div className="rooms-container">
           <h2 className="m-top h2-margin">Rooms</h2>
           <div className="d-flex">
-          <select
-            id="roomType"
-            name="roomType"
-            className="lg-input border-0 bg-half-white-sign dropdown"
-            onChange={this.handlechange}
-          >
-            <option value="" disabled selected>
-              RoomType...
-            </option>
-            <option value="all">All</option>
-            <option value="Suites">Suites</option>
-            <option value="King-size">King-size</option>
-            <option value="Queen-size">Queen-size</option>
-          </select>
-          <h3>Select a room Type</h3>
+            <select
+              id="roomType"
+              name="roomType"
+              className="lg-input border-0 bg-half-white-sign dropdown"
+              onChange={this.handlechange}
+            >
+              <option value="" disabled selected>
+                RoomType...
+              </option>
+              <option value="all">All</option>
+              <option value="Suites">Suites</option>
+              <option value="King-size">King-size</option>
+              <option value="Queen-size">Queen-size</option>
+              <option value="Single">Single</option>
+              <option value="Double">Double</option>
+            </select>
+            <h3>Select a room Type</h3>
           </div>
           <div className="cards">
             <div className="row-room">
-              {/* <div className="column-room box">
-                <div className="adRoom">
-                  <img className="addRoom" src={addRoom} alt="" />
-                  <h2>Add Room</h2>
-                </div>
-              </div> */}
               {this.state.viewRooms}
             </div>
           </div>
         </div>
-      </div>
-    );
+      </div>) : (<div><ToastContainer position={toast.POSITION.TOP_CENTER} autoClose={8000}/></div>);
   }
 }
 
 const mapStateToProps = ({ room }) => ({
   rooms: room.rooms,
-  authErrors: room.authErrors
+  authErrors: room.authErrors,
+  bookRoomError: room.bookRoomError
 });
-const mapDispatchToProps = (dispatch) => ({ getRooms: (token) => dispatch(getRooms(token)) });
+const mapDispatchToProps = (dispatch) => ({
+  getRooms: (token, accommodationId) => dispatch(getRooms(token, accommodationId)),
+  getOneTrip: (token, tripId) => dispatch(getOneTrip(token, tripId))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(accommodation);
