@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { faBell, faPlaneDeparture } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './RightSideBar.scss';
+import tripStatsAction from '../../actions/trips/tripStatsAction';
 
 class RightSideBar extends Component {
+  componentDidMount() {
+    const { tripStatsAction } = this.props;
+    tripStatsAction();
+  }
+
   render() {
+    const { listOfStats } = this.props;
+    console.log(listOfStats, '000000000000000000');
     return (
       <div className="right-sidebar">
         <div className="title">
@@ -28,7 +37,7 @@ class RightSideBar extends Component {
             </div>
             <div className="text">
               <p className="approved">Approved</p>
-              <p>3</p>
+              <p>{listOfStats.approved}</p>
             </div>
           </div>
           <div className="status">
@@ -37,7 +46,7 @@ class RightSideBar extends Component {
             </div>
             <div className="text">
               <p className="pending">Pending</p>
-              <p>3</p>
+              <p>{listOfStats.pending}</p>
             </div>
           </div>
           <div className="status">
@@ -46,7 +55,7 @@ class RightSideBar extends Component {
             </div>
             <div className="text">
               <p className="rejected">Rejected</p>
-              <p>3</p>
+              <p>{listOfStats.rejected}</p>
             </div>
           </div>
         </div>
@@ -54,4 +63,19 @@ class RightSideBar extends Component {
     );
   }
 }
-export default RightSideBar;
+
+const mapStateToProps = ({
+  stats: {
+    listOfStats,
+    getStats: { message, loading, statsErrors }
+  }
+}) => ({
+  listOfStats,
+  message,
+  loading,
+  statsErrors
+});
+export default connect(
+  mapStateToProps,
+  { tripStatsAction }
+)(RightSideBar);
