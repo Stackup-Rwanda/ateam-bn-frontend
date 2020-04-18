@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-param-reassign */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -12,7 +13,7 @@ import MenuBar from '../../MenuBar';
 import TitleBar from '../../TitleBar';
 import RightSideBar from '../../RightSideBar';
 import { Button, Modal, Input, Form, TextArea, CheckBox, Alert } from '../../common';
-import { tripActions, locationActions, accommodationActions } from '../../../actions';
+import { tripActions, locationActions, accommodationActions, rememberMeActions } from '../../../actions';
 import './Requests.scss';
 
 class Requests extends Component {
@@ -32,17 +33,27 @@ class Requests extends Component {
     },
     fromLocation: '',
     rememberMe: false,
-    errors: {}
+    errors: {},
+    rememberMessage: {}
   };
 
   hideModal = () => this.setState({ modalStyle: 'none' });
 
-  showModal = (trip) => {
+  showModal = async (trip) => {
     this.props.fetchLocations();
     this.props.fetchAccommodations();
+    this.props.fetchRememberMeData();
+
+    const { rememberMeData } = this.props;
+
+    if (rememberMeData.rememberMe && !trip.id) {
+      trip.name = rememberMeData.name;
+      trip.passportId = rememberMeData.passportId;
+      this.setState({ rememberMe: rememberMeData.rememberMe });
+    }
 
     this.setState({ errors: {} });
-    this.setState({ modalStyle: 'block' });
+    this.setState({ rememberMessage: {} });
     this.setState({ tripId: trip.id });
     this.setState({
       form: {
@@ -58,6 +69,7 @@ class Requests extends Component {
       }
     });
     this.setState({ fromLocation: trip.from });
+    this.setState({ modalStyle: 'block' });
   };
 
   handleChangeCheckBox = (e) => this.setState({ [e.target.name]: !this.state.rememberMe });
@@ -75,7 +87,7 @@ class Requests extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { tripId, form } = this.state;
+    const { tripId, form, rememberMe } = this.state;
 
     form.tripType = 'One-way';
     form.to = form.to.map((data) => Number(data.value));
@@ -84,11 +96,15 @@ class Requests extends Component {
     form.accommodationId = Number(form.accommodationId);
 
     let message = '';
-    const { createTripRequest, editTripRequest } = this.props;
+    const { createTripRequest, editTripRequest, makeRememberMe, rememberMeData } = this.props;
+
+    if (rememberMeData.rememberMe && !rememberMe) message = await makeRememberMe(rememberMe);
 
     if (!tripId) message = await createTripRequest(form);
 
     if (tripId) message = await editTripRequest(tripId, form);
+
+    if (!rememberMeData.rememberMe && rememberMe) message = await makeRememberMe(rememberMe);
 
     this.setState({ tripId: '' });
     this.setState({
@@ -107,16 +123,11 @@ class Requests extends Component {
     this.setState({ rememberMe: false });
     this.setState({ fromLocation: '' });
 
-    const { getAllRequests } = this.props;
+    const { getAllRequests, fetchRequests, token } = this.props;
     getAllRequests(1, 6);
 
-    setInterval(() => {
-      this.setState({ errors: {} });
-    }, 7000);
-
-    setInterval(() => {
-      this.setState({ modalStyle: 'none' });
-    }, 9000);
+    fetchRequests(token, 1, 6);
+    this.props.fetchRememberMeData();
 
     return message;
   };
@@ -128,16 +139,24 @@ class Requests extends Component {
       6
     );
     fetchLocations();
+    this.props.fetchRememberMeData();
   }
 
   componentWillReceiveProps = (nextProps) => {
     let AlertMessage;
+    let AlertInfoMessage;
     if (nextProps.message || nextProps.errors.message) {
       AlertMessage = { message: nextProps.message || nextProps.errors.message, type: (nextProps.message) ? ('alert-sucess') : ('alert-danger') };
 
       this.setState({ errors: { ...this.state.errors, ...AlertMessage } });
     }
-    return !nextProps.loading && AlertMessage;
+
+    if (nextProps.rememberMeMessage || nextProps.rememberMeErrors.message) {
+      AlertInfoMessage = { message: nextProps.rememberMeMessage || nextProps.rememberMeErrors.message, type: (nextProps.rememberMeMessage) ? ('alert-info') : ('alert-danger') };
+
+      this.setState({ rememberMessage: { ...this.state.rememberMessage, ...AlertInfoMessage } });
+    }
+    return !nextProps.loading && AlertMessage && AlertInfoMessage;
   };
 
   componentWillMount() {
@@ -159,7 +178,7 @@ class Requests extends Component {
   }
 
   render() {
-    const { modalStyle, form, errors, fromLocation } = this.state;
+    const { modalStyle, form, errors, rememberMessage, fromLocation, rememberMe } = this.state;
 
     const { loading, requests, locationsList, accommodationList, Next, Previous } = this.props;
 
@@ -288,12 +307,25 @@ class Requests extends Component {
 
           <div className="">
             <Modal modalStyle={modalStyle} closeModal={this.hideModal}>
-              <Form formTitle="Create Trip" formClass="m-20" onSubmit={this.handleSubmit}>
-                {Object.keys(errors).length ? (
-                  <Alert
-                    children={errors.message}
-                    alertTypeClass={errors.type}
+              <Form formTitle="Create Trip" formClass="m-20" onSubmit={(e) => this.handleSubmit(e)}>
+                {Object.keys(rememberMessage).length ? (
+                  (rememberMessage.message) ? (
+                    <Alert
+                    children={rememberMessage.message}
+                    alertTypeClass={rememberMessage.type}
                   />
+                  ) : ('')
+                ) : (
+                  ''
+                )}
+
+                {Object.keys(errors).length ? (
+                  (errors.message) ? (
+                    <Alert
+                      children={errors.message}
+                      alertTypeClass={errors.type}
+                    />
+                  ) : ('')
                 ) : (
                   ''
                 )}
@@ -305,24 +337,24 @@ class Requests extends Component {
                     inputClass="lg-input border-0 bg-half-white"
                     placeholder="Type your Name"
                     isRequired
-                    onChange={this.handleChange}
+                    onChange={(e) => this.handleChange(e)}
                     value={form.name}
                   />
                   <Input
                     name="passportId"
-                    type="number"
+                    type="text"
                     inputFieldClass="form-field m-bottom"
                     inputClass="lg-input border-0 bg-half-white"
                     placeholder="Passport ID"
                     isRequired
-                    onChange={this.handleChange}
+                    onChange={(e) => this.handleChange(e)}
                     value={form.passportId}
                   />
                 </div>
                 <div className="row">
                   <div className="form-field m-bottom Select dropdown">
                     <label className="field-label">From</label>
-                    <select name="from" className="lg-input border-0 bg-half-white" value={form.from} onChange={this.handleChange} required>
+                    <select name="from" className="lg-input border-0 bg-half-white" value={form.from} onChange={(e) => this.handleChange(e)} required>
                       <option>Select...</option>
                       {locations.map((data) => <option key={data.value} value={data.value}>{data.label}</option>)}
                     </select>
@@ -338,7 +370,7 @@ class Requests extends Component {
                       required
                       isDisabled={!!(form.from === undefined || Number(form.from) < 1 || form.from === null || form.from === 'Select...')}
                       value={form.to}
-                      onChange={this.handleChange}
+                      onChange={(e) => this.handleChange(e)}
                     />
                   </div>
                 </div>
@@ -350,7 +382,7 @@ class Requests extends Component {
                     inputClass="lg-input border-0 bg-half-white"
                     placeholder="Departure date"
                     isRequired
-                    onChange={this.handleChange}
+                    onChange={(e) => this.handleChange(e)}
                     value={moment(form.date).format('YYYY-MM-DD')}
                   />
                   <Input
@@ -359,7 +391,7 @@ class Requests extends Component {
                     inputFieldClass="form-field m-bottom"
                     inputClass="lg-input border-0 bg-half-white"
                     placeholder="Return date"
-                    onChange={this.handleChange}
+                    onChange={(e) => this.handleChange(e)}
                     value={moment(form.returnDate).format('YYYY-MM-DD')}
                   />
                 </div>
@@ -371,12 +403,12 @@ class Requests extends Component {
                   textAreaClass="lg-input border-0 bg-half-white"
                   placeholder="Return date"
                   isRequired
-                  onChange={this.handleChange}
+                  onChange={(e) => this.handleChange(e)}
                   value={form.reasons}
                 />
                 <div className="form-field m-bottom Select dropdown">
                 <label className="field-label">Accommodation</label>
-                  <select name="accommodationId" className="lg-input border-0 bg-half-white" value={form.accommodationId} onChange={this.handleChange} required disabled={!!(form.to === undefined || Number(form.to.length) === 0 || form.to === null)}>
+                  <select name="accommodationId" className="lg-input border-0 bg-half-white" value={form.accommodationId} onChange={(e) => this.handleChange(e)} required disabled={!!(form.to === undefined || Number(form.to.length) === 0 || form.to === null)}>
                     <option>Select</option>
                     {accommodations.map((data) => ((data !== null) ? (<option key={data.value} value={data.value}>{data.label}</option>) : ('')))}
                   </select>
@@ -386,13 +418,13 @@ class Requests extends Component {
                   <CheckBox
                     inputFieldClass="form-field m-bottom"
                     name="rememberMe"
-                    value={form.rememberMe}
-                    checked={form.rememberMe}
+                    value={rememberMe}
+                    checked={rememberMe}
                     label="Remember my Name and Passport ID"
-                    onChange={this.handleChangeCheckBox}
+                    onChange={(e) => this.handleChangeCheckBox(e)}
                   />
                   <div className="form-field m-bottom">
-                  <Button type="submit" onClick={(e) => e} loading={loading} buttonClass="btn md-btn b-radius-circle save-trip text-center sm-title m-top-bottom-40" children="Save" />
+                  <Button type="submit" loading={loading} buttonClass="btn md-btn b-radius-circle save-trip text-center sm-title m-top-bottom-40" children="Save" />
                   </div>
                 </div>
               </Form>
@@ -416,10 +448,16 @@ Requests.propTypes = {
   loading: PropTypes.bool,
   message: PropTypes.string,
   errors: PropTypes.object,
+  rememberMeData: PropTypes.object,
+  rememberMeLoading: PropTypes.bool,
+  rememberMeMessage: PropTypes.string,
+  rememberMeErrors: PropTypes.object,
   fetchLocations: PropTypes.func,
   fetchAccommodations: PropTypes.func,
   createTripRequest: PropTypes.func,
   editTripRequest: PropTypes.func,
+  fetchRememberMeData: PropTypes.func,
+  makeRememberMe: PropTypes.func,
   match: PropTypes.object
 };
 
@@ -432,19 +470,26 @@ const mapStateToProps = ({ user, requests, location: { locations: { list } }, ac
   locationsList: list,
   accommodationList: accommodations.list,
   Next: requests.Next,
-  Previous: requests.Previous
+  Previous: requests.Previous,
+  rememberMeData: requests.rememberMeData.userData,
+  rememberMeLoading: requests.rememberMe.loading,
+  rememberMeMessage: requests.rememberMe.message,
+  rememberMeErrors: requests.rememberMe.errors,
 });
 
 const mapDispatchToProps = (dispatch) => {
   const { getAllRequests, createTripRequestAction, editTripRequestAction } = tripActions;
   const { fetchLocationsAction } = locationActions;
   const { fetchAccommodationAction } = accommodationActions;
+  const { fetchRememberMeDataAction, makeRememberMeAction } = rememberMeActions;
   return {
     getAllRequests: (page, limit) => dispatch(getAllRequests(page, limit)),
     fetchLocations: () => dispatch(fetchLocationsAction()),
     fetchAccommodations: () => dispatch(fetchAccommodationAction()),
     createTripRequest: (form) => dispatch(createTripRequestAction(form)),
-    editTripRequest: (id, form) => dispatch(editTripRequestAction(id, form))
+    editTripRequest: (id, form) => dispatch(editTripRequestAction(id, form)),
+    fetchRememberMeData: () => dispatch(fetchRememberMeDataAction()),
+    makeRememberMe: (state) => dispatch(makeRememberMeAction(state))
   };
 };
 

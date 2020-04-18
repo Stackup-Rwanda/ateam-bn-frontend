@@ -10,6 +10,7 @@ import * as accommodationActionTypes from './accommodationActionTypes';
 import * as approvalActionTypes from './approvalActionsTypes';
 import * as approveRejectActionTypes from './approveRejectActionsTypes';
 import * as commentsActionsTypes from './commentActionsTypes';
+import * as rememberMeActionTypes from './rememberMeActionTypes';
 
 export {
   apiActionsTypes,
@@ -23,5 +24,6 @@ export {
   accommodationActionTypes,
   approvalActionTypes,
   approveRejectActionTypes,
-  commentsActionsTypes
+  commentsActionsTypes,
+  rememberMeActionTypes
 };

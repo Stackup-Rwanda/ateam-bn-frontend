@@ -10,6 +10,7 @@ const CheckBox = ({
   inputLabelClass,
   inputClass,
   onChange,
+  onClick,
   value,
   name,
   isRequired,
@@ -26,10 +27,11 @@ const CheckBox = ({
         type={type}
         value={value}
         className={inputClass}
-        onChange={onChange}
         required={isRequired}
         checked={checked}
         disabled={disabled}
+        onChange={onChange}
+        onClick={onClick}
       />
       <span className="checkmark" />
     </label>
@@ -45,6 +47,7 @@ CheckBox.propTypes = {
   inputLabelClass: PropTypes.string,
   inputClass: PropTypes.string,
   onChange: PropTypes.func,
+  onClick: PropTypes.func,
   value: PropTypes.bool,
   label: PropTypes.string,
   checked: PropTypes.bool,
