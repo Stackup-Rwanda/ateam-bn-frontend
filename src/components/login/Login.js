@@ -27,6 +27,14 @@ class Login extends Component {
     }
   }
 
+  shouldComponentUpdate() {
+    if (localStorage.getItem('token')) {
+      window.location.replace('/profile');
+      return false;
+    }
+    return true;
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { loginRequest } = this.props;
@@ -120,6 +128,7 @@ class Login extends Component {
         </div>
       );
     } else {
+      console.log('token is already set, we are pushing the profile component');
       componentToRender = history.push('/profile');
     }
     return (

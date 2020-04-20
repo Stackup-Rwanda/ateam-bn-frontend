@@ -14,26 +14,26 @@ import Approvals from './Approvals';
 import Accommodation from './accommodation/Accommodation';
 
 const Routes = () => (
-  <Switch>
-    {/* Auth routes */}
-    <Route exact path="/profile" component={Profile} />
-    <Route exact path="/" component={SignUp} />
-    <Route exact path="/login" component={Login} />
+    <Switch>
+      {/* Auth routes */}
+      <Route exact path="/profile" component={Profile} />
+      <Route exact path="/" component={SignUp} />
+      <Route exact path="/login" component={Login} />
 
-    {/* reset password routes */}
-    <Route exact path="/forgot-password" render={(props) => <ForgotPassword {...props} />} />
-    <Route exact path="/reset-password/:userId/:token" render={(props) => <ResetPassword {...props} />} />
+      {/* reset password routes */}
+      <Route exact path="/forgot-password" render={(props) => <ForgotPassword {...props} />} />
+      <Route exact path="/reset-password/:userId/:token" render={(props) => <ResetPassword {...props} />} />
 
-    {/* trip requests table routes */}
-    <Route exact path="/requests" component={ Requests } />
-    {/* user role routes */ }
-    <Route exact path="/userRole" component={userRole} />
-    <Route exact path="/dashboard" component={Dashboard} />
-    <Route exact path="/dashboard" component={Dashboard} />
-    <Route exact path="/requests" component={Requests} />
+      {/* trip requests table routes */}
+      <Route exact path="/requests" component={ Requests } />
+      {/* user role routes */ }
+      <Route exact path="/userRole" component={userRole} />
+      <Route exact path="/dashboard" component={Dashboard} />
+      <Route exact path="/dashboard" component={Dashboard} />
+      <Route exact path="/requests" component={Requests} />
 
-    {/* Manager's approvals trip request */}
-    <Route exact path="/approvals" component={Approvals} />
+      {/* Manager's approvals trip request */}
+      <Route exact path="/approvals" component={Approvals} />
 
     {/* accommodation */}
     <Route exact path="/trip/:tripId/accommodation/:accommodationId" render={(props) => <Accommodation {...props} />} />

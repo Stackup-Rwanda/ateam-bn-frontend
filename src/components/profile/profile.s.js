@@ -7,13 +7,13 @@ export default class Profile extends Component {
   render() {
     const token = localStorage.getItem('token');
     const { history } = this.props;
-    const componentToRender = token ? 
-      (<div>
+    const componentToRender = token
+      ? (<div>
         <ProfileMenu />
         <ProfileDetails />
         <ProfileTravels />
-      </div>) :
-      history.push('/login');
+      </div>)
+      : history.push('/login');
     return (
       <div>
         { componentToRender }
