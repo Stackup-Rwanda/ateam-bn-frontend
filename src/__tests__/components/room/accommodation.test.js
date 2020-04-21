@@ -9,33 +9,29 @@ import Accommodation from '../../../components/accommodation/Accommodation';
 
 export const mockStore = configureMockStore([thunk]);
 
-let selects = '';
-
 describe('Testing <Accmmodation />', () => {
-  test('register user if all inputs are correct', () => {
-    const props = { match: { params: { token: 'token' } }, tripApproved: true };
-    const wrapper = mount(<Provider store={store}>
-      <MemoryRouter>
-        <Accommodation {...props}/>
-      </MemoryRouter>
-    </Provider>);
+  test('register user if all inputs are correct', async () => {
+    window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJNckR1bW15MyIsImVtYWlsIjoiZHVtbXkzQGVtYWlsLnJ3Iiwicm9sZSI6IlRSQVZFTCBBRE1JTklTVFJBVE9SIiwiaXNWZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNTg3NTU1NTczfQ.JBRS_z8Jn0gAuIKLeZ-4IWskatny_d4Xr_m78LB_-oM');
+    const accommodationId = '1';
+    const tripId = '4';
+    const props = { match: { params: { accommodationId, tripId } } };
+    const wrapper = await mount(<Provider store={store}>
+        <MemoryRouter>
+          <Accommodation {...props} />
+        </MemoryRouter>
+      </Provider>);
     expect(wrapper).toHaveLength(1);
   });
 
-  test('register user if all inputs are correct', () => {
-    const props = { match: { params: { token: 'token' } }, tripApproved: true };
-    const wrapper = mount(<Provider store={store}>
+  test('register user if all inputs are correct', async () => {
+    window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJNckR1bW15MyIsImVtYWlsIjoiZHVtbXkzQGVtYWlsLnJ3Iiwicm9sZSI6IlRSQVZFTCBBRE1JTklTVFJBVE9SIiwiaXNWZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNTg3NTU1NTczfQ.JBRS_z8Jn0gAuIKLeZ-4IWskatny_d4Xr_m78LB_-oM');
+    const accommodationId = '1';
+    const props = { tripApproved: true, match: { params: { accommodationId } } };
+    const wrapper = await mount(<Provider store={store}>
       <MemoryRouter>
         <Accommodation {...props}/>
       </MemoryRouter>
     </Provider>);
-    selects = wrapper.find('select');
-    selects.map((select) => select.simulate('change', {
-      target: {
-        name: select.instance().name,
-        value: 'Suites'
-      }
-    }));
     expect(wrapper).toHaveLength(1);
   });
 });

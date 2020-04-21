@@ -26,7 +26,6 @@ const bookRoom = (token, data) => async (dispatch) => {
     }
     return dispatch(bookRoomSuccess(message));
   } catch (error) {
-    console.log(error.response);
     if (error.response.status === 302) {
       return dispatch(bookedRoomFail(error.response.data.message));
     }

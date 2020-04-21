@@ -1,5 +1,5 @@
 import mockAxios from 'axios';
-import getRooms from '../../../actions/rooms/getRoomsActions';
+import { getRooms } from '../../../actions/rooms/getRoomsActions';
 import store from '../../../__mocks__/store';
 
 describe('get rooms action', () => {

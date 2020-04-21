@@ -46,6 +46,7 @@
 }
 .location {
   display: flex;
+  margin-bottom:4vh;
 }
 .location p {
   width: 135px;
@@ -117,6 +118,10 @@
   color: #000000;
 }
 
+.card-two h3{
+  color: black;
+}
+
 .card-two p {
   margin-bottom: 3vh;
   font-size: 2.5vh;
@@ -126,6 +131,36 @@
   width: 5vh;
   // margin-top: 2vh;
   margin-right: 3vh;
+  margin-bottom: 2vh;
+}
+
+.react-fire {
+  cursor: pointer;
+  margin-right: 1vw;
+  color:orangered;
+}
+
+.react-like {
+  cursor: pointer;
+  margin-right: 1vw;
+  color:#0a67f2;
+}
+
+.react-hate {
+  cursor: pointer;
+  margin-right: 1vw;
+  color: gray;
+}
+
+.reaction {
+  cursor: pointer;
+  margin-right: 1vw;
+  color:lightgray;
+}
+
+.reactions {
+  display: flex;
+  margin-top: 2vh;
   margin-bottom: 2vh;
 }
 
@@ -313,4 +348,14 @@
 
 .row .form-field-room {
   margin-left: 3vh;
+}
+
+.d-grid{
+  display: grid;
+}
+
+.mapouter{position:relative;height:40vh;width:20vw;}
+#gmap_canvas {overflow:hidden;background:none!important;
+  // height:500px;width:600px;
+  height:100%;
 }
