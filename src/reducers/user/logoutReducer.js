@@ -8,7 +8,7 @@ export default (state, { type, payload }) => {
         logout: { ...state.logout, loading: true }
       };
     case userActionTypes.LOGOUT_SUCCESS:
-      localStorage.removeItem('token');
+      localStorage.clear();
       window.location.replace('/login');
       return {
         ...state,
@@ -16,7 +16,7 @@ export default (state, { type, payload }) => {
         logout: { ...state.logout, logoutErrors: {}, message: payload.message }
       };
     case userActionTypes.LOGOUT_FAILURE:
-      localStorage.removeItem('token');
+      localStorage.clear();
       window.location.replace('/login');
       return {
         ...state,
