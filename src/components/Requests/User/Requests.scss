@@ -54,7 +54,7 @@
   }
 
   .main {
-    width: $middleWidth;
+    width: 100%;
     background-color: $white;
     height: 100%;
     @include flexLeftNu(column);

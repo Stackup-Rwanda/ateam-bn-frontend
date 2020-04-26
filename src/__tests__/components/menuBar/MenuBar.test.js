@@ -1,9 +1,16 @@
 import React from 'react';
+import thunk from 'redux-thunk';
+import configureMockStore from 'redux-mock-store';
 import MenuBar from '../../../components/MenuBar';
 import { shallow } from '../../../../config/enzymeConfig';
 
+export const mockStore = configureMockStore([thunk]);
+
 describe('Test for <MenuBar /> component', () => {
-  const wrapper = shallow(<MenuBar />);
+  const store = mockStore({
+    message: 'hello'
+  });
+  const wrapper = shallow(<MenuBar store={store}/>);
 
   test('rendering the wrapping div', () => {
     expect(wrapper.find('div'));

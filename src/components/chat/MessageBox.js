@@ -29,7 +29,6 @@ export class MessageBox extends Component {
       });
     });
     socket.on('server-chat-message', (data) => {
-      console.log('new message ', data);
       this.displayNewMessage(data);
     });
   }
@@ -56,7 +55,8 @@ export class MessageBox extends Component {
     e.preventDefault();
     const { socket } = this.props;
     const token = localStorage.getItem('token');
-    const { message } = this.state;
+    let { message } = this.state;
+    message = message.trim();
     if (message !== '') {
       const toSend = {
         message,

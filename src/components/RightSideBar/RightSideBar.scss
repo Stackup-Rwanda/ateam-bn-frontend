@@ -10,6 +10,7 @@
   background-color: #F4F8F7;
   .title {
     @include flexLeft(row);
+    margin-left: 0;
     margin-top: 35px;
     ul {
       list-style-type: none;

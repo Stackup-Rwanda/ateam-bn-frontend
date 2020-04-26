@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
-import ProfileMenu from './profileComponents/ProfileMenu.s';
 import ProfileDetails from './profileComponents/ProfileDetail.s';
 import ProfileTravels from './profileComponents/ProfileTravel.s';
+import Menubar from '../MenuBar';
 
 export default class Profile extends Component {
   render() {
-    const token = localStorage.getItem('token');
-    const { history } = this.props;
-    const componentToRender = token
-      ? (<div>
-        <ProfileMenu />
-        <ProfileDetails />
-        <ProfileTravels />
-      </div>)
-      : history.push('/login');
     return (
-      <div>
-        { componentToRender }
+      <div className='wrapper'>
+        <Menubar />
+        <div className='main'>
+          <div className='profile-wrapper'>
+            <ProfileDetails />
+            <ProfileTravels />
+          </div>
+        </div>
+        <div></div>
       </div>
     );
   }
