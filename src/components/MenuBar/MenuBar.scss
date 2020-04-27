@@ -5,36 +5,106 @@
 @import '../../assets/style/pixels';
 @import '../../assets/style/mixin';
 
-.menu {
+#root {
+  height: 100%;
+  width: 100%;
+  .App {
+    height: 100%;
+    width: 100%;
+    .wrapper {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.sidebar-menu {
+  height: 100%;
   position: relative;
-  width: $leftSidebarWidth;
+  min-width: 55px;
   background-color: $white;
-  border-right: 1px solid #D2CBCB;
   text-align: center;
+  margin-left: 0;
+  box-shadow: 2px 0px 2px 0 rgb(209, 209, 209);
   a {
     display: block;
-
+    width: 100%;
+    text-decoration: none;
     img {
+      height: 100%;
+      width: 100%;
       object-fit: cover;
     }
 
-    .logo {
-      width: $medium;
-      margin: 20px 10px;
+    .sidebar-logo {
+      width: $small;
+      margin: 25px auto;
     }
   }
 
 
-  .options {
+  .sidebar-options {
     display: block;
-    margin-top: 60px;
     text-align: center;
 
-    .menus {
-      width: $xsmall;
-      margin-bottom: 40px;
-      color: black;
+    .sidebar-menus {
+      width: 25px;
+      margin: 15px auto 15px;
     }
+  }
+
+  .hint {
+    position: absolute;
+    z-index: 123456789;
+    background: rgb(22, 22, 22);
+    color: white;
+    padding: 5px 5px;
+    font-size: .8em;
+    text-align: center;
+    border-radius: 3px;
+    margin-top: -10px;
+    margin-left: -5px;
+    opacity: 0;
+  }
+
+  .not-selected {
+    color: rgb(22, 22, 22);
+  }
+
+  .selected {
+    color: rgb(49, 170, 114);
+  }
+
+  .link {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  a[class="link"]:hover > .sidebar-menus{
+    color: rgb(49, 170, 114);
+  }
+
+  a[class="link"]:hover > .hint {
+    transition-delay: 0.9s;
+    opacity: 1;
+  }
+
+  
+  .indicator {
+    margin-top: 14px;
+    height: 35px;
+    width: 0;
+    background: rgb(49, 170, 114);
+    float: right;
+  }
+  
+  .indicated {
+    width: 7px;
+  }
+
+  .not-indicated {
+    transition: 0.2s;
+    width: 0;
   }
 
   .logout {
@@ -43,10 +113,10 @@
     width: 100%;
     text-align: center;
     padding: 10px 0;
-    .menus {
-      width: $xsmall;
-      margin: auto;
-      color: black;
+    .sidebar-menus {
+      width: 25px;
+      margin: 15px auto 15px;
+      color: rgb(22, 22, 22);
     }
   }
 }

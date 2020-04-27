@@ -63,13 +63,13 @@ class ProfileDetails extends Component {
     const componentError = localStorage.getItem('didAmountError');
     const { isUpdateFormShown } = this.state;
     return (
-      <div>
+      <div className='headache'>
         {
           this.props.userProfileDetails && componentError === 'null' ? (
-            <div>
+            <div className='pain-in-the'>
               <div className="profile">
                 {this.props.userProfileDetails.coverPhoto || this.props.userProfileDetails.coverPhoto !== null ? (<img src={this.props.userProfileDetails.coverPhoto} alt="backgroundProfile" className="background-profile" />) : <img src={backgroundProfile} alt="backgroundProfile" className="background-profile" />}
-                <div className="empty" />
+                {/* <div className="empty" /> */}
                 <div className="avatar">
                   {this.props.userProfileDetails.profilePhoto || this.props.userProfileDetails.profilePhoto !== null ? (<img src={this.props.userProfileDetails.profilePhoto} alt="profile" />) : <img src={profile} alt="profile" />}
                 </div>
@@ -86,7 +86,7 @@ class ProfileDetails extends Component {
                     <p><img src={currency} alt="currency" /> Preferred Currency: {this.props.userProfileDetails.preferredCurrency}</p>
                     <p><img src={email} alt="email" /> Email: {this.props.userProfileDetails.email} </p>
                   </div>
-                  <div> <button className="edit-button" type="submit" onClick={() => { isUpdateFormShown ? (this.HideForm()) : this.unHideForm(); }}> Edit Profile </button> </div>
+                  <div> <button className="edit-button" id='edit-button' type="submit" onClick={() => { isUpdateFormShown ? (this.HideForm()) : this.unHideForm(); }}> Edit Profile </button> </div>
                   {
                     isUpdateFormShown
                       ? (

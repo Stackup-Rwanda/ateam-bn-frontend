@@ -29,7 +29,6 @@ const Routes = () => (
       {/* user role routes */ }
       <Route exact path="/userRole" component={userRole} />
       <Route exact path="/dashboard" component={Dashboard} />
-      <Route exact path="/dashboard" component={Dashboard} />
       <Route exact path="/requests" component={Requests} />
 
       {/* Manager's approvals trip request */}
