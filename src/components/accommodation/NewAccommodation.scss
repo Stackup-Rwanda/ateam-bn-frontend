@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
-@import '../../../assets/style/button';
-@import '../../../assets/style/colors';
-@import '../../../assets/style/fontsize';
-@import '../../../assets/style/pixels';
-@import '../../../assets/style/mixin';
-@import '../../../assets/style/modal';
+@import '../../assets/style/button';
+@import '../../assets/style/colors';
+@import '../../assets/style/fontsize';
+@import '../../assets/style/pixels';
+@import '../../assets/style/mixin';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap');
 
 .wrapper {
   width: 100%;
+  // height: 100vh;
   @include flexCenter(row);
-  height: auto;
   .menu {
-    right: 20px;
-    width: 60px;
+    position: relative;
+    width: $leftSidebarWidth;
     background-color: $white;
     border-right: 1px solid #D2CBCB;
-    // text-align: center;
+    text-align: center;
     a {
       display: block;
 
@@ -53,10 +53,9 @@
       }
     }
   }
-}
+
   .main {
     width: 100%;
-    width: $middleWidth;
     background-color: $white;
     height: 100%;
     @include flexLeftNu(column);
@@ -102,29 +101,250 @@
         }
       }
     }
-
-    button {
-      width: 120px;
-      background: #F7F7F7;
-      border: none;
-      border-radius: 5px;
-      margin: 20px 40px;
-      font-family: 'Nunito', sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 16px;
-      line-height: 33px;
-      text-align: center;
-      color: #666666;
+    .Accommodation {
+      overflow-y: scroll;
+      height: 100%;
+.backButton {
+ background-color: $green;
+        color: white;
+        padding: 4px 10px;
+        margin: auto;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        outline: none;
+}
+.editButton {
+   width: 15%;
+  background-color:white;
+  outline: none;
+  color: black;
+  padding: 1px;
+  margin: 8px 0;
+  height: 10%;
+  border: none;
+  border-radius: 8px;
+  font-size: 1px;
+  .insideEdit{
+    background-color: rgb(247, 236, 30);
+    margin-left: 20px;
+    outline: none;
+  }
+  .insideEdit:hover{
+    background-color: rgb(217, 207, 24);
+  }
+}
+.deleteButton {
+  background-color: rgb(232, 31, 23);
+  color: white;
+  margin-left: 105px;
+  outline: none;
+}
+.deleteButton:hover {
+  background-color: rgb(204, 29, 22);
+  color: white;
+}
+.createButton {
+  width: 30%;
+  background-color: #F7F7F7;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 17px;
+  outline: none;
+}
+.createButton:hover {
+  width: 30%;
+  background-color: rgb(214, 211, 211);
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 17px;
+}
+.accommodationButton {
+  width: 100%;
+  background-color: $green;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 17px;
+  outline: none;
+}
+.accommodationButton:hover {
+  width: 100%;
+  background-color: rgb(33, 148, 123);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 17px;
+}
+.close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+  outline: none;
+}
+ .toastMessages {
+   width: 50%;
+   position: fixed;
+   left: 35%;
+ }
+ .accommodationGrid2{
+   width: 95%;
+  p{
+    font-family: 'Montserrat', sans-serif;
+  }
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	grid-auto-rows: minmax(100px, auto);
+	grid-gap: 1em;
+	justify-items: stretch;
+  align-items: stretch;
+}
+.labels {
+   font-family: 'Montserrat', sans-serif;
+   font-size: 20px;
+   font-weight: bold;
+   color: $green;
+ }
+ h2{
+   font-family: 'Montserrat', sans-serif;
+   font-size: 30px;
+   color: $green;
+ }
+.grid > div{
+  padding: 1em;
+  border-bottom: 4px solid $green;
+  box-shadow: 0 10px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+.box1 {
+grid-column: 1/3;
+grid-row: 1/3;
+width: 95%;
+img {
+          width: 100%;
+          height: 600px;
+        }
+        
+}
+.box2 {
+  width: 90%;
+}
+.box3 {
+	width: 90%;
+}
+.box4 {
+	grid-column: 1/4;
+  grid-row: 3;
+  width: 97.5%;
+  iframe{
+    width: 100%;
+  }
+}
+ }
+ .accommodationGrid {
+    display: grid;
+    width: 95%;
+    margin: 0 auto;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 2em;
+      padding: 10px 10px;
+      
+.AccommdationList {
+  transition: all .2s ease-in-out; 
+  font-family: 'Montserrat', sans-serif;
+        position: relative;
+        background: #FFFFFF;
+        box-sizing: border-box;
+        box-shadow: 0 10px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.25);
+        padding: 0 0 10px 0;
+        transition: all 0.5s ease-in-out;
+        padding-bottom: 1rem;
+        font-size: 16px;
+        border-bottom: 4px solid $green;
+        border-radius: 6px;
+         img {
+          width: 100%;
+          height: 200px;
+        }
+        .linkHolder{
+          font-family: 'Montserrat', sans-serif;
+          width: 100%;
+          text-align: center;
+          padding: 7px 0;
+          .accommodationLink{
+        background-color: $green;
+        color: white;
+        padding: 4px 10px;
+        margin: auto;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+          }
+        
+        }
+        h2{
+          font-size: 23px;
+          margin-left: 5px;
+        }
+        p{
+          white-space: nowrap;
+          margin-left: 5px;
+          width: 300px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+ }
+ .AccommdationList:hover{
+    z-index: 2147483647;
+   transform: scale(1.1); 
+ }
+ .SingleAccommodation {
+   font-family: 'Montserrat', sans-serif;
+        position: relative;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+        padding: 0 0 10px 0;
+         img {
+          width: 100%;
+          height: 600px;
+        }
+        
+ }
+}
     }
-    .btn-close {
-      width: auto;
-      background: none;
-      border-radius: none;
-      margin: 3px;
+    .Accommodation::-webkit-scrollbar {
+        width: 10px;
     }
-    .save-trip { background: $green; color: $white; }
-
+    .Accommodation::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: rgba(0, 0, 0, .1);
+    }
     .requests {
       display: grid;
       grid-template-columns: auto auto auto;
@@ -156,15 +376,15 @@
           color: white;
         }
 
-        .Pending {
+        .pending {
           background-color: #f6a240cc;
         }
 
-        .Approved {
+        .approved {
           background-color: #3ab397cc;
         }
 
-        .Rejected {
+        .rejected {
           background-color: #c83a3acc;
         }
 
@@ -211,17 +431,6 @@
 
         &:hover {
           box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
-          .btn-edit {
-            display: block;
-          }
-        }
-        .btn-edit {
-          display: none;
-          position: absolute;
-          width: 50px;
-          margin: 10px;
-          bottom: 0;
-          right: 0;
         }
       }
     }
@@ -361,3 +570,64 @@
       }
     }
   }
+}
+
+.wrapper::-webkit-scrollbar {
+        width: 10px;
+    }
+.wrapper::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .1);
+}
+
+.modal1 {
+  font-size: 20px;
+}
+.modal1 > .header {
+  width: 95%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+   border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.modal1 > .content {
+  width: 95%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  align-items: center;
+}
+.modal1 > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 17px;
+}
+input[type=file] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 17px;
+}
+
+button[type=submit]{
+  background-color: #45a049;
+  font-size: 17px;
+}

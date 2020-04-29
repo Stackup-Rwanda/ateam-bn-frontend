@@ -1,10 +1,13 @@
 const accommodationInitialState = {
+  loading: false,
+  accommodationErrors: null,
+  message: '',
   accommodations: {
     loading: false,
     list: [],
     message: '',
-    errors: {}
-  }
+    errors: {},
+  },
 };
 
 export default accommodationInitialState;
