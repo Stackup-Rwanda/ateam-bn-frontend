@@ -23,5 +23,14 @@ const getRooms = (token, accommodationId) => async (dispatch) => {
     return dispatch(getAllRoomsfail(error));
   }
 };
+const getAccommodation = async (token, accommodationId) => {
+  try {
+    const config = { headers: { token } };
+    const result = await axios.get(`https://ateam-bn-backend-staging.herokuapp.com/api/accommodation/${accommodationId}`, config);
+    return result.data.data;
+  } catch (error) {
+    return error.response.error;
+  }
+};
 
-export default getRooms;
+export { getRooms, getAccommodation };

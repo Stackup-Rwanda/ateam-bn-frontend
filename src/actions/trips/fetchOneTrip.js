@@ -23,7 +23,6 @@ const getOneTrip = (token, id) => async (dispatch) => {
     dispatch(getOneTripunApproved('Trip request has not been yet approved'));
     return false;
   } catch (error) {
-    console.log(error.response);
     dispatch(getOneTripFail(error.response.data.error));
     return false;
   }

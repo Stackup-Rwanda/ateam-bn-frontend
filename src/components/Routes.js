@@ -47,7 +47,7 @@ const Routes = () => (
     {/* accommodation */}
     <Route
       exact
-      path="/trip/:tripId/accommodation/:accommodationId"
+      path="/requests/:tripId/accommodation/:accommodationId"
       render={(props) => <Accommodation {...props} />}
     />
     {/* accommodation routes */}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -204,6 +205,7 @@ class Requests extends Component {
                   </p>
                   <p className="details-city">City:</p>
                   <p className="details-address">{goingTo(req.to)}</p>
+                  <button className='details-accommodation'><Link to={`/requests/${req.id}/accommodation/${req.Accommodations.id}`}>Book Room</Link></button>
                 </div>
                 {(req.status === 'Pending') ? (
                   <Button type="submit" onClick={() => this.showModal(req)} buttonClass="btn-edit">
