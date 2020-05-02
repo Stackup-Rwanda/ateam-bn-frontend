@@ -14,6 +14,7 @@ import { getApproval } from './approval';
 import { approveApproval } from './approve';
 import { rejectApproval } from './reject';
 import { getAllRequests } from './trips/fetchTripsActions';
+import { commentsActions, addCommentsActions, deleteCommentActions } from './comments';
 
 
 export {
@@ -32,5 +33,8 @@ export {
   getApproval,
   approveApproval,
   rejectApproval,
-  getAllRequests
+  getAllRequests,
+  commentsActions,
+  addCommentsActions,
+  deleteCommentActions
 };

@@ -8,6 +8,7 @@ import accommodation from './initialStates/accommodationInitialState';
 import destinations from './initialStates/destinationInitialState';
 import stats from './initialStates/statsInitialState';
 import approval from './initialStates/approvalInitialState';
+import comments from './initialStates/commentsInitialState';
 
 export default {
   user,
@@ -19,5 +20,6 @@ export default {
   accommodation,
   destinations,
   stats,
-  approval
+  approval,
+  comments
 };

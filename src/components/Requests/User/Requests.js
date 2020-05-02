@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { Link } from 'react-router-dom';
 import { faAngleLeft, faAngleRight, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from 'react-select';

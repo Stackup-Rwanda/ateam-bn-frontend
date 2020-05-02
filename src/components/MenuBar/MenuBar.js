@@ -73,10 +73,6 @@ export class MenuBar extends Component {
 
     const icon = document.querySelector(`#${currentPage}`);
     const indicationBar = document.querySelector(`#${currentPage}-indicator`);
-    indicationBar.classList.remove('not-indicated');
-    indicationBar.classList.add('indicated');
-    icon.classList.remove('not-selected');
-    icon.classList.add('selected');
   }
 
   getElementsByRole = () => {

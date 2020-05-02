@@ -13,7 +13,6 @@ export default (state, { type, payload }) => {
         getStats: { ...state.getStats, message: '', loading: false, statsErrors: {} }
       };
     case tripsActionTypes.GET_STATS_SUCCESS:
-      console.log(payload, 'reducer success case');
       return {
         ...state,
         listOfStats: payload.data,
@@ -25,7 +24,6 @@ export default (state, { type, payload }) => {
         }
       };
     case tripsActionTypes.GET_STATS_FAIL:
-      console.log(payload, 'reducer fail case');
       return {
         ...state,
         getStats: {

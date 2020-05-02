@@ -8,6 +8,7 @@ import accommodation from './accommodation';
 import destinations from './destinations';
 import stats from './stats';
 import approval from './approval';
+import comments from './commentsReducer';
 
 export default {
   user,
@@ -19,5 +20,6 @@ export default {
   accommodation,
   destinations,
   stats,
-  approval
+  approval,
+  comments,
 };

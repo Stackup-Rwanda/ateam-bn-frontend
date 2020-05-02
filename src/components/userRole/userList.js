@@ -1,11 +1,13 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ClipLoader from 'react-spinners/ClipLoader';
 import { adminGetUserAction, AssignUserRoleAction } from '../../actions/user';
 import Popup from './rolePopup';
 import './style.scss';
 import UsersPagination from './usersPagination';
 import { lineManager } from '../../helpers/lineManagerHelper';
+import '../Approvals/TableSection/TableSection.scss';
 
 class UserList extends Component {
   constructor(props) {
@@ -13,7 +15,6 @@ class UserList extends Component {
     this.state = {
       loading: false,
       isOpen: false,
-      showMe: true,
       value: '',
       username: null,
       message: '',
@@ -28,7 +29,7 @@ class UserList extends Component {
 
 
   chooseRole = (username) => {
-    this.setState({ isOpen: true, showMe: true, username });
+    this.setState({ isOpen: true, username });
   };
 
   onChange = (e) => {
@@ -40,14 +41,23 @@ class UserList extends Component {
 
     const { AssignUserRoleAction } = this.props;
     AssignUserRoleAction(this.state.value, this.state.username);
-    const { adminGetUserAction } = this.props;
-    adminGetUserAction();
-    this.setState({ isOpen: false, showMe: true, value: '' });
+    window.location.reload(false);
+    this.setState({ isOpen: false, value: '' });
   }
 
   render() {
-    const { Next, Previous } = this.props;
+    const { Next, Previous, loading } = this.props;
     const users = this.props.listOfUsers.sort((a, b) => (a.id - b.id));
+    const mainJsx = loading ? (
+      <div className="loader-section" data-test="LoaderComponent">
+        <ClipLoader
+          css={ { display: 'block', margin: ' 2rem 20rem ' }}
+          size={150}
+          color={'#3AB397'}
+          loading={loading}
+        />
+      </div>
+    ) : (null);
     const allUsers = users.map((user, index) => {
       const managerData = lineManager(user.lineManager, users);
       const data = { ...managerData };
@@ -60,22 +70,17 @@ class UserList extends Component {
         <td>{ user.role } </td>
         <td> <input className="square" name="checkbox" type="checkbox" /></td>
         <td>
-
           <input className="change" name="checkbox" type="submit" onClick={ () => this.chooseRole(user.username) } value="Change" /></td>
 
       </tr >
       );
     });
 
-
     return (
 
     <div>
-
-      {
-        this.state.showMe
-
-          ? <table className="users">
+{ mainJsx }
+          <table className="users">
               <thead>
                 <tr>
                   <th>NO</th>
@@ -89,12 +94,13 @@ class UserList extends Component {
                 </tr >
               </thead>
               <tbody>
-                { allUsers }
+              <>
+                  {allUsers}
+                  </>
               </tbody>
             </table>
-          : null
 
-        }
+
         <div >
 
           <Popup isOpen={ this.state.isOpen }>
