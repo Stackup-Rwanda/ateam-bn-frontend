@@ -13,7 +13,6 @@ class RightSideBar extends Component {
 
   render() {
     const { listOfStats } = this.props;
-    console.log(listOfStats, '000000000000000000');
     return (
       <div className="right-sidebar">
         <div className="title">

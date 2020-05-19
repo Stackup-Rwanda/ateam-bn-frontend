@@ -1,32 +1,13 @@
-import axios from 'axios';
-import { tripsActionTypes } from '../../actionTypes';
-import { backendURLs } from '../../helpers/index';
+import { tripsActionTypes as tripsTypes } from '../../actionTypes';
+import { BASE_URL } from '../../helpers/backendURLs';
+import { apiAction } from '../../helpers';
 
-export const fetchTripRequests = () => ({ type: tripsActionTypes.FETCH_REQUEST });
-
-export const fetchTripRequestsSuccess = (trips) => ({
-  type: tripsActionTypes.FETCH_REQUEST_SUCCESS,
-  payload: trips
-});
-
-
-export const fetchTripRequestsFailure = (error) => ({
-  type: tripsActionTypes.FETCH_REQUEST_FAILURE,
-  payload: error
-});
-
-export const fetchRequests = (token, page, limit) => (dispatch) => {
-  const config = { headers: { token } };
-
-  dispatch(fetchTripRequests());
-  axios.get(`${backendURLs.BASE_URL}/trips?page=${page}&limit=${limit}`, config)
-    .then((response) => {
-      const trips = response.data.data.paginate;
-      const pages = response.data.data.Next;
-      dispatch(fetchTripRequestsSuccess({ trips, pages }));
-    })
-    .catch((err) => {
-      const { error } = err.response.data;
-      dispatch(fetchTripRequestsFailure(error));
-    });
-};
+export const getAllRequests = (page = 1, limit = 10) => (dispatch) => dispatch(apiAction({
+  method: 'get',
+  httpOptions: { token: localStorage.token },
+  url: `${BASE_URL}/trips?page=${page}&limit=${limit}`,
+  onStart: tripsTypes.FETCH_REQUEST_START,
+  onEnd: tripsTypes.FETCH_REQUEST_END,
+  onSuccess: tripsTypes.FETCH_REQUEST_SUCCESS,
+  onFailure: tripsTypes.FETCH_REQUEST_FAILURE
+}));

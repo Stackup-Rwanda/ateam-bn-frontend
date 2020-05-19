@@ -10,7 +10,7 @@ describe('Testing approvalsReducer', () => {
       { type: approvalsTypes.FETCH_APPROVALS_START }
     );
     expect(result).toHaveProperty('loading');
-    expect(result.loading).toEqual(false);
+    expect(result.loading).toEqual(true);
   });
 
   it('FETCH_APPROVALS_SUCCESS', () => {

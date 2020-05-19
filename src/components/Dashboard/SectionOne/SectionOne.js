@@ -27,8 +27,6 @@ class SectionOne extends Component {
    render() {
      const { listOfDestinations } = this.props;
      const user = { ...this.props.userProfileDetails };
-     const error = this.props.destinationErrors.message;
-     console.log(error, '..................');
      const allDestinations = listOfDestinations.map((destination, index) => (
 
       <div className="place" key ={index}>
@@ -57,7 +55,6 @@ class SectionOne extends Component {
           <div className="destinations">
             { allDestinations }
           </div>
-             {/* {this.renderAlert(error)} */}
         </div>
       </div>
      );

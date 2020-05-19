@@ -1,6 +1,6 @@
-import { fetchTripRequests, fetchRequests } from './fetchTripsActions';
+import { getAllRequests } from './fetchTripsActions';
 import createTripRequestAction from './createTripRequestAction';
 import editTripRequestAction from './editTripRequestAction';
 import tripStatsActions from './tripStatsAction';
 
-export { fetchTripRequests, fetchRequests, createTripRequestAction, editTripRequestAction, tripStatsActions };
+export { getAllRequests, createTripRequestAction, editTripRequestAction, tripStatsActions };

@@ -10,6 +10,12 @@ import { searchData } from './search/searchAction';
 import { getAllApprovals } from './approvals';
 import * as locationActions from './location';
 import * as accommodationActions from './accommodation';
+import { getApproval } from './approval';
+import { approveApproval } from './approve';
+import { rejectApproval } from './reject';
+import { getAllRequests } from './trips/fetchTripsActions';
+import { commentsActions, addCommentsActions, deleteCommentActions } from './comments';
+
 
 export {
   oauthActions,
@@ -23,5 +29,12 @@ export {
   searchData,
   getAllApprovals,
   locationActions,
-  accommodationActions
+  accommodationActions,
+  getApproval,
+  approveApproval,
+  rejectApproval,
+  getAllRequests,
+  commentsActions,
+  addCommentsActions,
+  deleteCommentActions
 };

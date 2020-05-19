@@ -80,6 +80,9 @@
         "ignoreTemplateLiterals": true,
         "ignoreTrailingComments": true
       }
-    ]
+    ],
+    "react/forbid-foreign-prop-types": 0,
+    "guard-for-in": 0,
+    "no-restricted-syntax": 0
   }
 }

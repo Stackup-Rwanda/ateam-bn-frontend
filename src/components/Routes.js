@@ -14,6 +14,7 @@ import Approvals from './Approvals';
 import Accommodation from './accommodation/Accommodation';
 import NewAccommodation from './accommodation/NewAccommodation';
 import SpecificAccommodation from './accommodation/SpecificAccommodation';
+import Approval from './SingleApproval';
 
 const Routes = () => (
   <Switch>
@@ -53,7 +54,13 @@ const Routes = () => (
     {/* accommodation routes */}
     <Route exact path="/accommodations" component={NewAccommodation} />
     <Route exact path="/accommodations/:id" component={SpecificAccommodation} />
-  </Switch>
+      {/* Manager's approvals trip request */}
+      <Route exact path="/approvals" component={Approvals} />
+      <Route exact path="/approvals/:id" component={Approval} />
+
+      {/* accommodation */}
+      <Route exact path="/trip/:tripId/accommodation/:accommodationId" render={(props) => <Accommodation {...props} />} />
+    </Switch>
 );
 
 Routes.propTypes = { isAuth: PropTypes.bool, role: PropTypes.string, match: PropTypes.object };
