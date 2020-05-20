@@ -15,7 +15,7 @@ import { approveApproval } from './approve';
 import { rejectApproval } from './reject';
 import { getAllRequests } from './trips/fetchTripsActions';
 import { commentsActions, addCommentsActions, deleteCommentActions } from './comments';
-
+import * as rememberMeActions from './rememberMe';
 
 export {
   oauthActions,
@@ -36,5 +36,6 @@ export {
   getAllRequests,
   commentsActions,
   addCommentsActions,
-  deleteCommentActions
+  deleteCommentActions,
+  rememberMeActions
 };

@@ -2,7 +2,7 @@ import createTripRequestReducer from '../../../reducers/trips/createTripRequestR
 import initialState from '../../../store/initialState';
 import { tripsActionTypes } from '../../../actionTypes';
 
-describe('Create Password reducer', () => {
+describe('Create Trip reducer', () => {
   test('CREATE_TRIP_START', () => {
     const reducer = createTripRequestReducer(initialState, {
       type: tripsActionTypes.CREATE_TRIP_START,
